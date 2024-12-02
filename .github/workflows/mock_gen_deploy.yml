@@ -46,6 +46,23 @@ jobs:
 
           echo "td_wf_project=${td_wf_project}" >> $GITHUB_OUTPUT
 
+      - name: Prepare Environment API
+        id: prep_env_var
+        run: |
+          if [[ "${{ inputs.td_region }}" == "aws" ]]; then
+            td_wf_url="https://api-workflow.treasuredata.com"
+          elif [[ "${{ inputs.td_region }}" == "aws-tokyo" ]]; then
+            td_wf_url="https://api-workflow.treasuredata.co.jp"
+          elif [[ "${{ inputs.eu01 }}" == "eu01" ]]; then
+            td_wf_url="https://api-workflow.eu01.treasuredata.com/"
+          elif [[ "${{ inputs.td_region }}" == "ap01" ]]; then
+            td_wf_url="https://api-workflow.ap01.treasuredata.com/"
+          else
+            td_wf_url="default_value" # Fallback option if no match is found
+          fi
+
+          echo "td_wf_url=${td_wf_url}" >> $GITHUB_OUTPUT
+
       - name: Mask and Set API Key as Environment Variable
         env:
           API_KEY: ${{ github.event.inputs.td_apikey }}
@@ -72,6 +89,6 @@ jobs:
             curr_build_sha: ${{ steps.chkout_ver.outputs.sha }}
             dply_version: ""
             api_token: ${{ env.API_KEY }}
-            wf_endpoint: ${{ vars.WF_URL }}
+            wf_endpoint: ${{ steps.prep_var.outputs.td_wf_url }}
             env_label: ""
             fbranch: ""
