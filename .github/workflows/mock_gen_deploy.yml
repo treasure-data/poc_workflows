@@ -33,11 +33,11 @@ jobs:
         id: prep_var
         run: |
           if [[ "${{ inputs.workflow_name }}" == "standard" ]]; then
-            td_wf_project="standard_workflow"
+            td_wf_project="standard_poc_workflow"
           elif [[ "${{ inputs.workflow_name }}" == "adv-prob" ]]; then
             td_wf_project="advance_probabalistic"
           elif [[ "${{ inputs.workflow_name }}" == "api_export" ]]; then
-            td_wf_project="api_export"
+            td_wf_project="general_api_export"
           elif [[ "${{ inputs.workflow_name }}" == "incremental" ]]; then
             td_wf_project="incremental"
           else
