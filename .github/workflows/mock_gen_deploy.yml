@@ -89,6 +89,6 @@ jobs:
             curr_build_sha: ${{ steps.chkout_ver.outputs.sha }}
             dply_version: ""
             api_token: ${{ env.API_KEY }}
-            wf_endpoint: ${{ steps.prep_var.outputs.td_wf_url }}
+            wf_endpoint: ${{ steps.prep_env_var.outputs.td_wf_url }}
             env_label: ""
             fbranch: ""
