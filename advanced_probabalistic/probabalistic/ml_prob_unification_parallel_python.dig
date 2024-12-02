@@ -1,0 +1,63 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
++create_empty_output_table:
+  td_ddl>:
+  empty_tables: ["${output_table}"]
+
++get_total_rows:
+  td>: sql/get_total_rows.sql
+  store_last_results: true
+
++parallel_execution:
+  _parallel:
+    limit: 10
+    
+  for_range>:
+    from: 0
+    to: ${td.last_results.upper_limit}
+    step: 1
+
+  _do:
+    +extract_records_as_integers:
+      td>:
+        data: "SELECT CAST(${range.from}*${record_limit} as INTEGER) as lower_lim, CAST(${range.to}*${record_limit} as INTEGER) as upper_lim , CAST(${range.index} as INTEGER) as range_index"
+      store_last_results: true
+
+    +echo_records_being_processed:
+      echo>: processing records from ${td.last_results.lower_lim} to ${td.last_results.upper_lim} for the range index ${td.last_results.range_index}
+
+    +execute_python_code:
+
+      docker:
+        image: "digdag/digdag-python:3.9"
+      # py>: python.main.execute_main
+      py>: python.probabilistic_lib.execute_main
+      
+      _env:
+        TD_API_KEY: ${secret:secret_key}
+        TD_SINK_DATABASE: ${sink_database}
+        TD_API_SERVER: ${api_server}
+        
+    #---- input_table: ${input_table}
+        id_col: ${id_col}
+        cluster_col_name: ${cluster_col_name}
+        convergence_threshold: ${convergence_threshold}
+        cluster_threshold: ${cluster_threshold}
+        string_type: ${string_type}
+        fill_missing: ${fill_missing}
+
+        feature_dict: ${dedupe_columns}
+
+        blocking_table: ${blocking_table}
+        output_table: ${output_table}
+
+        lower_limit: ${td.last_results.lower_lim}
+        upper_limit: ${td.last_results.upper_lim}
+        range_index: ${td.last_results.range_index}
+        record_limit: ${record_limit}
+        paralelism: 'yes'
+      
+  

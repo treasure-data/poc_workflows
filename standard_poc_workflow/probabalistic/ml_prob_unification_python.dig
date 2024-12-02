@@ -1,0 +1,38 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
++get_total_rows:
+  td>: sql/get_total_rows.sql
+  store_last_results: true
+
++execute_python_code:
+  docker:
+    image: "digdag/digdag-python:3.9"
+ # py>: python.main.execute_main
+  py>: python.probabilistic_lib.execute_main
+
+  _env:
+    TD_API_KEY: ${secret:secret_key}
+    TD_SINK_DATABASE: ${sink_database}
+    TD_API_SERVER: ${api_server}
+
+#---- input_table: ${input_table}
+    id_col: ${id_col}
+    cluster_col_name: ${cluster_col_name}
+    convergence_threshold: ${convergence_threshold}
+    cluster_threshold: ${cluster_threshold}
+    string_type: ${string_type}
+    fill_missing: ${fill_missing}
+
+    feature_dict: ${dedupe_columns}
+
+    blocking_table: ${blocking_table}
+    output_table: ${output_table}
+
+    lower_limit: 0
+    range_index: 1
+    upper_limit: ${td.last_results.total_rows}
+    record_limit: ${record_limit}
+    paralelism: 'no'

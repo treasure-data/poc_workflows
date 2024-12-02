@@ -1,0 +1,64 @@
+###Database created by unification workflow where the id_lookup and key_stats tables live
+source_db: cdp_unification_inc_unification_vishal
+
+##Reporting database (output DB where idu_dashboard tables are written) --> sink_database should be SAME as reporting_db
+reporting_db: idu_reporting_vishal
+sink_database: idu_reporting_vishal
+
+##Global Prams
+canonical_id_col: 'canonical_id'                 #name of the canonical ID col output by unification workflow
+id_lookup_main_id: 'persistent_id'
+prefix: 'idu_'
+api_endpoint: api.treasuredata.com
+workflow_api_url: api-workflow.treasuredata.com     ##- use 'api-workflow.eu01.treasuredata.com' for EU Region
+model_config_table: 'datamodel_build_history'       ## table where model OID is saved to be used for udpating datamodel/dashboard via API
+create_dashboard: 'yes'
+
+##Input Tables with ID Stats before and after Unification Process
+canonical_id_source_key_stats: canonical_id_source_key_stats   #leave as DEFAULT
+canonical_id_result_key_stats: canonical_id_result_key_stats   #leave as DEFAULT
+id_lookup_table: ${source_db}.${canonical_id_col}_lookup       #leave as DEFAULT --> name of id_lookup table from unification DB
+# user_master_id_table: ${source_db}.enriched_master             #ONLY needed if source table id stats are output in enriched_master table in unification
+
+##ID unification Project & Workflow
+unification_project: 'incremental_dev'      #name of the unification WF project
+unification_workflow: 'orchestration'         #name of the sub-wf .dig that runs unification process in the above project
+num_runs: 30                                       #Gets runtimes on the last n-runs of unification WF
+unification_output: 'inc'                          ###-- use 'old' when not doing INC Custom IDU, and 'inc' when running INC Custom IDU with '_unify_td' table
+
+##id_list
+include_all_cols: 'yes' ### yes --> includes all columns in the id_lookup_table. Use 'no' to only show columns in the dash that are listed under the distinct_ids list below.
+
+distinct_ids:
+  - col_name: plain_text_email
+    id_type: 'email'
+    known: 1
+    addressable: 1
+  - col_name: xid
+    id_type: 'xid'
+    known: 0
+    addressable: 1
+  - col_name: permutive_id
+    id_type: 'permutive_id'
+    known: 0
+    addressable: 1
+
+
+
+########### IDU QA Params #######
+run_qa: 'yes'              #if == 'yes' --> Runs idu_qa.dig, which gets stats on over-merged IDs
+top_k_most_freq_ids: 30   #used to extract all IDs that occur more in more than n-rows in a source table 
+known_ids_only: 'no'     ### 'yes' will only use known IDS to flag oer-merged profiles, else will use all IDs 
+merged_ids_limit: 55      #param for deciding the number of Distinct IDs merged to a single canonical_id to be considered as an 'over-merged' record
+
+###Temp Tables list
+cleanup_temp_tables: 'yes'
+temporary_tables:
+- calculations_temp
+- calculations_2
+- columns_temp
+- identities_temp
+- session_information_temp
+- ids_histogram_temp
+- merge_keys_updated_temp
+- col_mapping_temp

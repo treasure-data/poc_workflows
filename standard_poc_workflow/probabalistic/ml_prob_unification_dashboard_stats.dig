@@ -1,0 +1,27 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
+#Apply Custom filter logic if needed
++check_if_custom_filter_required:
+  if>: ${custom_filter == 'yes'}
+  _do:
+    +run_record_approval_workflow:
+      call>: ml_prob_final_approval_logic.dig
+  
+# Queries below extract useful stats from final tables and global params
++get_final_process_stats:
+  _parallel: true
+
+  +get_model_and_table_params:
+    td>: sql/save_model_stats.sql
+    insert_into: prob_model_table_params
+
+  +get_final_dedupe_stats:
+    td>: sql/get_cluster_histogram.sql
+    insert_into: prob_final_cluster_histogram
+
++get_session_global_filter:
+  td>: sql/global_session_filter.sql
+  create_table: prob_session_global_filter

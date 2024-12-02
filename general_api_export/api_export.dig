@@ -1,0 +1,50 @@
+_export:
+  ## Records to handle per container
+  container_limit: 1000000
+  ## Records to handle per api call 
+  api_limit: 50000
+  
+  td:
+    database: bill_staging
+  td_table: org360_pendo_1m
+  td_columns: '*'
+
++get_total_rows:
+  td>: sql/get_total_rows.sql
+  store_last_results: true
+
++parallel_execution:
+  _parallel:
+    limit: 10
+    
+  for_range>:
+    from: 0
+    to: ${td.last_results.upper_limit}
+    step: 1
+
+  _do:
+    +extract_records_as_integers:
+      td>:
+        data: "SELECT CAST(${range.from}*${container_limit} as INTEGER) as lower_lim, CAST(${range.to}*${container_limit} as INTEGER) as upper_lim , CAST(${range.index} as INTEGER) as range_index"
+      store_last_results: true
+
+    +echo_records_being_processed:
+      echo>: processing records from ${td.last_results.lower_lim} to ${td.last_results.upper_lim} for the range index ${td.last_results.range_index}
+
+
+    +load_into_pendo_with_python:
+      docker:
+        image: "digdag/digdag-python:3.10"
+      py>: pendo_export.load_df
+      _env:
+        API_KEY: '${secret:pendo_api_key}'
+        TD_API_SERVER: ''
+        TD_API_KEY: '${secret:secret_key}'
+        TD_DATABASE: '${td.database}'
+        TD_TABLE: '${td_table}'
+        TD_COLUMNS: ${columns}
+        api_limit: ${api_limit}
+        lower_limit: ${td.last_results.lower_lim}
+        upper_limit: ${td.last_results.upper_lim}
+        container_limit: ${container_limit}
+        

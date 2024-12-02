@@ -1,0 +1,28 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
++create_table:
+  td_ddl>:
+  empty_tables: ["prob_approval_schema"]
+
++generate_custom_query_for_final_approval:
+  _parallel: true
+  for_each>:
+    column_name: ${dedupe_columns}
+  _do:
+    +check_if_required_for_approval:
+      if>: ${column_name.final_approval == 'yes'}
+      _do:
+        +insert_into_schema:
+          td>: sql/acceptance_syntax_schema.sql
+          insert_into: prob_approval_schema
+
++generate_query:
+  td>: sql/acceptance_generate_query.sql
+  store_last_results: true
+
++apply_custom_approval_logic:
+  td>: sql/acceptance_create_final_table.sql
+  create_table: ${output_table}_approved

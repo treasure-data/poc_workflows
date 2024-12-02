@@ -1,0 +1,57 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
++create_empty_table:
+  td_ddl>:
+  create_tables:: ["prob_eda_input_columns_temp"]
+
+#Below inserts the top-K string values by value_count() for each input column
++iterate_through_each_column_for_eda:
+  _parallel: true
+  for_each>:
+    column_name: ${dedupe_columns}
+  _do:
+    +extract_columns_eda:
+      td>: sql/get_features_info.sql
+      insert_into: prob_eda_input_columns_temp
+
+#Below insert the top-K string values by value_count() for each input column pair
++iterate_through_each_column_pairs_for_eda: 
+  _parallel: true
+  td_for_each>: sql/get_feature_pairs.sql 
+  _do: 
+    +extract_column_pairs_eda:
+      td>: sql/get_feature_pairs_info.sql
+      insert_into: prob_eda_input_column_pairs
+
+#Below insert the top-K string values by value_count() for all input columns combined
++extract_all_column_count_for_eda: 
+  _parallel: true
+  td_for_each>: sql/get_feature_combo.sql 
+  _do: 
+    +extract_column_pairs_eda:
+      td>: sql/get_feature_combo_info.sql
+      insert_into: prob_eda_input_column_combo
+  
+
+#Below adds col_idx to each col_name for dashboard purposes
++create_final_eda_table:
+  td>: sql/create_eda_final.sql
+  create_table: prob_eda_input_columns
+
+    
+#Below creates an input_table with the overmeged Top-K IDs excluded
++check_if_create_exclude_table:
+  if>: ${exclude_overmerging =='yes'}
+  _do:
+    +create_exclusion_syntax:
+      td>: sql/exclude_cols_syntax.sql
+      store_last_results: true
+
+    +create_input_table_excluded_ids:
+      td>: sql/exclude_cols_create_table.sql
+      create_table: ${input_table}_excl_overmerge
+  
+  

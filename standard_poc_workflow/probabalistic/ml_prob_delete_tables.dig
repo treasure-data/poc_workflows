@@ -1,0 +1,17 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
+
++delete_tables:
+  _parallel: true
+
+  td_for_each>: sql/select_tables_to_delete.sql
+  _do:
+    +print_table_name:
+      echo>: '####### Deleting table ${td.each.table_name}..........'
+
+    +delete_table:
+      td_ddl>:
+      drop_tables: ["${td.each.table_name}"]

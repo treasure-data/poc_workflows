@@ -1,0 +1,27 @@
+_export:
+  !include : 'config/src_params.yml'
+  td:
+    database: ${src}
++transform: 
+  _parallel: true    
+  +transformed_presto:
+    _parallel: true
+    for_each>:
+      tbl: [
+        'alterian_xref_email_id', 'alterian_xref_universal_id', 'cds_athena_data', 'cds', 
+      'daily_email_updates_decrypted', 'gam', 'id_conde_rds_decrypted', 'martech_d_email_extd', 
+      'martech_t_chargebee_subscription_created_decrypted', 
+      'sailthru_daily_profile_updates', 'sailthru_daily_stream_events', 'slv_core_events',
+      'slv_page_ping', 'trackonomics'
+      ] 
+    _do:
+      td>: staging/queries/${tbl}.sql
+
+  +transformed_hive:
+    _parallel: true
+    for_each>:
+      tbl: ['permutive_unify_table'] 
+    _do:
+      td>: staging/queries/${tbl}.sql
+      create_table: ${stg}_${sub}.${tbl}
+      engine: hive

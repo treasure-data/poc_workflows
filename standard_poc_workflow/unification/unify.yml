@@ -1,0 +1,224 @@
+name: ${sub}
+
+#####################################################
+##
+##Declare Validation logic for unification keys
+##
+#####################################################
+
+keys:
+  - name: email
+    valid_regexp: ".*@.*"
+    invalid_texts: ['', null]    
+  - name: phone
+    invalid_texts: ['', null]
+  - name: cf_global_id
+    invalid_texts: ['', null]
+  # - name: cf_primary_key
+  #   invalid_texts: ['', null]
+  - name: cf_iid
+    invalid_texts: ['', null]
+  # - name: cf_agc_id_sales
+  #   invalid_texts: ['', null]    
+  - name: address
+    invalid_texts: ['', null]
+#####################################################
+##
+## Declare databases, tables, and keys to use during unification
+##
+#####################################################
+
+tables:
+  - database: ${stg}_${sub}
+    table: micros_payments
+    key_columns:
+      - {column: email, key: email}
+      - {column: global_id, key: cf_global_id }
+      - {column: address_unified, key: address }
+
+  - database: ${stg}_${sub}
+    table: mobile_app_registration
+    key_columns:
+      - {column: email, key: email}
+      - {column: global_id, key: cf_global_id}
+
+  - database: ${stg}_${sub}
+    table: attentive_subs
+    key_columns:
+      - {column: email, key: email}
+      - {column: phone_number, key: phone}
+      - {column: cf_global_id, key: cf_global_id}
+      - {column: address_unified, key: address }
+
+  - database: ${stg}_${sub}
+    table: gc_attendance
+    key_columns:
+      - {column: email, key: email}
+      - {column: global_id, key: cf_global_id}
+      - {column: address_unified, key: address }
+
+  - database: ${stg}_${sub}
+    table: gc_sales
+    key_columns:
+      - {column: email, key: email}
+      - {column: global_id, key: cf_global_id}
+      - {column: address_unified, key: address }
+
+  - database: ${stg}_${sub}
+    table: micros_discountsales
+    key_columns:
+      - {column: email, key: email}
+      - {column: global_id, key: cf_global_id}
+      - {column: address_unified, key: address }
+
+  - database: ${stg}_${sub}
+    table: micros_menuitemsales
+    key_columns:
+      - {column: email, key: email}
+      - {column: global_id, key: cf_global_id}
+      - {column: address_unified, key: address }
+
+  - database: ${stg}_${sub}
+    table: opt_out
+    key_columns:
+      - {column: email, key: email}
+      - {column: iid, key: cf_iid}
+      - {column: globalid_sales, key: cf_global_id}
+      # - {column: agc_id_sales, key: cf_agc_id_sales}
+      - {column: address_unified, key: address }
+
+  - database: ${stg}_${sub}
+    table: resort_file
+    key_columns:
+      - {column: globalid_sales, key: cf_global_id}
+      - {column: iid, key: cf_iid}
+      # - {column: primary_key, key: cf_primary_key}
+      # - {column: agc_id_sales, key: cf_agc_id_sales}
+  
+  - database: ${stg}_${sub}
+    table: wifi
+    key_columns:
+      - {column: email, key: email}
+      - {column: globalid_sales, key: cf_global_id}
+      - {column: iid, key: cf_iid}
+      # - {column: primary_key, key: cf_primary_key}
+      # - {column: agc_id_sales, key: cf_agc_id_sales}
+
+#####################################################
+##
+##Declare hierarchy for unification. Define keys to use for each level.
+##
+#####################################################
+
+canonical_ids:
+  - name: cf_unification_id
+    # merge_by_keys: [email, phone, cf_global_id, cf_primary_key, cf_iid, cf_agc_id_sales]
+    merge_by_keys: [email, phone, cf_global_id, cf_iid]
+  - name: cf_household_unification_id
+    # merge_iterations: 5
+    # incremental_merge_iterations: 4
+    merge_by_canonical_ids: [cf_unification_id]
+    merge_by_keys: [address]
+
+#####################################################
+##
+##Declare Survivorship Rules to Determine Best Value for Each Attribute
+##
+#####################################################
+
+master_tables:
+  - name: unification_master
+    canonical_id: cf_unification_id
+    attributes:
+      - name: email
+        source_columns:
+          - {table: micros_payments, column: email, priority: 1}
+          - {table: mobile_app_registration, column: email, priority: 2}
+          - {table: attentive_subs, column: email, priority: 2}
+          - {table: gc_attendance, column: email, priority: 2}
+          - {table: gc_sales, column: email, priority: 2}
+          - {table: micros_discountsales, column: email, priority: 2}
+          - {table: micros_menuitemsales, column: email, priority: 2}
+          - {table: opt_out, column: email, priority: 2}
+          - {table: wifi, column: email, priority: 2}
+      - name: phone
+        source_columns:
+          - {table: attentive_subs, column: phone_number, priority: 1}
+      - name: cf_global_id
+        source_columns:
+          - {table: micros_payments, column: global_id, priority: 1}
+          - {table: mobile_app_registration, column: global_id, priority: 2}
+          - {table: gc_attendance, column: global_id, priority: 2}
+          - {table: gc_sales, column: global_id, priority: 2}
+          - {table: micros_discountsales, column: global_id, priority: 2}
+          - {table: micros_menuitemsales, column: global_id, priority: 2}
+          - {table: opt_out, column: globalid_sales, priority: 2}
+          - {table: resort_file, column: globalid_sales, priority: 2}
+          - {table: wifi, column: globalid_sales, priority: 2}
+      # - name: cf_primary_key
+      #   source_columns:
+      #     - {table: resort_file, column: primary_key, priority: 1}
+      #     - {table: wifi, column: primary_key, priority: 2}
+      - name: cf_iid
+        source_columns:
+          - {table: resort_file, column: iid, priority: 1}
+          - {table: wifi, column: iid, priority: 2}
+          - {table: opt_out, column: globalid_sales, priority: 2}
+      # - name: cf_agc_id_sales
+      #   source_columns:
+      #     - {table: resort_file, column: agc_id_sales, priority: 1}
+      #     - {table: wifi, column: agc_id_sales, priority: 2}
+      #     - {table: opt_out, column: agc_id_sales, priority: 2}          
+
+  - name: unification_household_master
+    canonical_id: cf_household_unification_id
+    attributes:
+      - name: cf_unification_id
+        source_canonical_id: cf_unification_id    
+      - name: address
+        source_columns:
+          - {table: micros_payments, column: address_unified, priority: 1}
+          - {table: attentive_subs, column: address_unified, priority: 2}
+          - {table: gc_attendance, column: address_unified, priority: 2}
+          - {table: gc_sales, column: address_unified, priority: 2}
+          - {table: micros_discountsales, column: address_unified, priority: 2}
+          - {table: micros_menuitemsales, column: address_unified, priority: 2}
+          - {table: opt_out, column: address_unified, priority: 2}
+      - name: email
+        source_columns:
+          - {table: micros_payments, column: email, priority: 1}
+          - {table: mobile_app_registration, column: email, priority: 2}
+          - {table: attentive_subs, column: email, priority: 2}
+          - {table: gc_attendance, column: email, priority: 2}
+          - {table: gc_sales, column: email, priority: 2}
+          - {table: micros_discountsales, column: email, priority: 2}
+          - {table: micros_menuitemsales, column: email, priority: 2}
+          - {table: opt_out, column: email, priority: 2}
+      - name: phone
+        source_columns:
+          - {table: attentive_subs, column: phone_number, priority: 1}          
+      - name: cf_global_id
+        source_columns:
+          - {table: micros_payments, column: global_id, priority: 1}
+          - {table: mobile_app_registration, column: global_id, priority: 2}
+          - {table: gc_attendance, column: global_id, priority: 2}
+          - {table: gc_sales, column: global_id, priority: 2}
+          - {table: micros_discountsales, column: global_id, priority: 2}
+          - {table: micros_menuitemsales, column: global_id, priority: 2}
+          - {table: opt_out, column: globalid_sales, priority: 2}
+          - {table: resort_file, column: globalid_sales, priority: 2}
+          - {table: wifi, column: globalid_sales, priority: 2}
+      # - name: cf_primary_key
+      #   source_columns:
+      #     - {table: resort_file, column: primary_key, priority: 1}
+      #     - {table: wifi, column: primary_key, priority: 2}
+      - name: cf_iid
+        source_columns:
+          - {table: resort_file, column: iid, priority: 1}
+          - {table: wifi, column: iid, priority: 2}
+          - {table: opt_out, column: globalid_sales, priority: 2}
+      # - name: cf_agc_id_sales
+      #   source_columns:
+      #     - {table: resort_file, column: agc_id_sales, priority: 1}
+      #     - {table: wifi, column: agc_id_sales, priority: 2}
+      #     - {table: opt_out, column: agc_id_sales, priority: 2}        

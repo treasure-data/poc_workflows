@@ -1,0 +1,11 @@
+_export:
+  !include : 'config/src_params.yml'
+  td:
+    database: ${src}
++transformed:
+  _parallel: true
+  for_each>:
+    tbl: [stg_edwh_cdp_match_bill_org, stg_edwh_cdp_match_divvy_company]
+  _do:
+    td>: deterministic_staging/queries/${tbl}.sql
+    create_table: ${stg}2_${sub}.${tbl}

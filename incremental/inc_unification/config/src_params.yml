@@ -1,0 +1,44 @@
+##### Required parameters for custom incremental unification solution
+
+unif_type: inc ## Provide only "full" or "inc".
+canonical_id_name: canonical_id ## This is canonical_id name
+run_pid_unif: yes ## provide "yes" or "no". "yes" mean running PID unification, "no" means running normal unification
+unif_name: inc_unification_vishal ## This is suffix of unification database name;
+
+src_tbl: profile # This may all recods from all sources, may have extra columns other than unification merged keys.
+src_db: stg_vishal_dev_inc # the db which have src_tbl
+
+dest_tbl: work_profile # This contains unique set of keys derived from ${src_tbl} -- 5 keys, 1 time, 1 ingest_time. This is created at runtime.
+dest_db: stg_vishal_dev_inc # the db which have dest_tbl
+
+join_key_delimiter: '|' # This is used to separate the key values inind in join_key in ${dest_tbl} table.
+
+unif_src_tbl_suffix: '_unify_td' # keep this as is.
+unif_src_tbl: ${dest_tbl}${unif_src_tbl_suffix} ## work_profile_unify and this would be created in ${dest_db} database and unification runs on this table.
+
+
+merged_keys_list: "amg_uuid, appnexus,fbp,fingerprint_id,hash_email,mdw_id,permutive_id,plain_text_email,profile_id,source_legacy_id,universal_id,xid" ## List of all key_columns specified in unification yml file.
+
+## Provide only "yes" or "no". "yes" means there are different keys_name for same key type, For example: key_type=phone,
+## and unification input table have cell_phone, home_phone and bus_phone and all of these different key columns are mapped to
+## single key_type i.e. phone, then provide "yes" as input. otherwise simply provide "no".
+## Here in this case, we have don't multiple key columns per key_type, see merged_keys_list parameter. Hence "no" is assigned.
+multiple_keycols_of_same_keytype: no
+
+## If multiple_keycols_of_same_keytype: yes, Then please multiple columns using comma separated.
+## For example, There are 2 emails columns then plesse specify email_1, email_2 as key value in below.
+# multiple_keys_map:
+#   - key: hash_key
+#   - key: surrogate_key
+
+## Provide the Digdag workflow API corresponding to TD region. Below wf_api_endpoint is for US region.
+wf_api_endpoint: 'https://api-workflow.treasuredata.com'
+
+## Provide the Unification workflow endpoint corresponding to TD region. Below unif_wf_endpoint is for US region.
+unif_wf_endpoint: 'https://api-cdp.treasuredata.com/unifications/workflow_call'
+
+## provide "yes" or "no". "yes" mean bucketing will be created on target tables, "no" means bucketing will be no available on target tables
+bucketing_flag: yes
+
+## provide "yes" or "no". "yes" means result_key_stats and source_key_stats will be populated with incremental data, "no" means result_key_stats and source_key_stats will not be populated with incremental data
+run_unif_stats: no

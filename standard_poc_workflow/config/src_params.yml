@@ -1,0 +1,10 @@
+site: us
+raw: raw
+src: src
+stg: stg
+sub: customer_name
+gld: gld
+ana: analytics
+project_name: 
+parent_segment_id: 12345
+run_all: true

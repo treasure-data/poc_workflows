@@ -1,0 +1,14 @@
+site: us
+raw: raw
+src: src
+stg: stg
+sub: vishal_dev
+gld: gld
+ana: analytics
+project_name: incremental_dev
+parent_segment_id: 12345
+run_all: true
+
+incremental: 
+  time_chunk: "800w"
+  loops: 1

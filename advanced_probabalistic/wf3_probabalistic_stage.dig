@@ -1,0 +1,11 @@
+_export:
+  !include : 'config/src_params.yml'
+  td:
+    database: ${src}
++transformed:
+  _parallel: true
+  for_each>:
+    tbl: [company_name, address]
+  _do:
+    td>: probabalistic_staging/queries/${tbl}.sql
+    create_table: ${stg}_${sub}.${tbl}

@@ -1,0 +1,5779 @@
+{
+  "title": "[PROD] Prob ID Unification Template",
+  "desc": "",
+  "source": null,
+  "type": "dashboard",
+  "style": {
+    "palette": {
+      "name": "Vivid",
+      "colors": [
+        "#00cee6",
+        "#9b9bd7",
+        "#6EDA55",
+        "#fc7570",
+        "#fbb755",
+        "#218A8C"
+      ]
+    }
+  },
+  "layout": {
+    "instanceid": "849F8-EDDD-A6",
+    "type": "columnar",
+    "columns": [
+      {
+        "width": 100,
+        "cells": [
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 68,
+                    "maxHeight": 1208,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "height": 234,
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac88"
+                  }
+                ],
+                "width": 100,
+                "stretchable": false,
+                "pxlWidth": 1897,
+                "index": 0
+              }
+            ]
+          },
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 68,
+                    "maxHeight": 1063,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "height": "300px",
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac87"
+                  }
+                ],
+                "width": 100,
+                "stretchable": false,
+                "pxlWidth": 1897,
+                "index": 0
+              }
+            ]
+          },
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 64,
+                    "maxHeight": 1028,
+                    "minWidth": 48,
+                    "maxWidth": 1028,
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac8e",
+                    "height": "208px"
+                  }
+                ],
+                "width": 25.214321734745347,
+                "stretchable": false,
+                "pxlWidth": 478.312,
+                "index": 0
+              },
+              {
+                "elements": [
+                  {
+                    "minHeight": 128,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "height": "208px",
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac86",
+                    "autoHeight": "82px"
+                  }
+                ],
+                "width": 74.78567826525465,
+                "stretchable": false,
+                "pxlWidth": 1418.67,
+                "index": 1
+              }
+            ]
+          },
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 68,
+                    "maxHeight": 1272,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "height": 36.7045,
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac8c"
+                  }
+                ],
+                "width": 100,
+                "stretchable": false,
+                "pxlWidth": 1897,
+                "index": 0
+              }
+            ]
+          },
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 64,
+                    "maxHeight": 1028,
+                    "height": "312px",
+                    "minWidth": 48,
+                    "maxWidth": 1028,
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac8a"
+                  }
+                ],
+                "width": 26.829847972327784,
+                "stretchable": false,
+                "pxlWidth": 508.953,
+                "index": 0
+              },
+              {
+                "elements": [
+                  {
+                    "minHeight": 96,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac8b",
+                    "height": "312px"
+                  }
+                ],
+                "width": 73.17015202767222,
+                "stretchable": false,
+                "pxlWidth": 1388.03,
+                "index": 1
+              }
+            ]
+          },
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 96,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac89",
+                    "height": 384
+                  }
+                ],
+                "width": 52.12262533433921,
+                "stretchable": false,
+                "pxlWidth": 988.766,
+                "index": 0
+              },
+              {
+                "elements": [
+                  {
+                    "minHeight": 96,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "height": 384,
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac85"
+                  }
+                ],
+                "width": 47.87737466566079,
+                "stretchable": false,
+                "pxlWidth": 908.219,
+                "index": 1
+              }
+            ]
+          },
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 68,
+                    "maxHeight": 1272,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "height": 36.7045,
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac8d"
+                  }
+                ],
+                "width": 100,
+                "stretchable": false,
+                "pxlWidth": 1897,
+                "index": 0
+              }
+            ]
+          },
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 96,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "height": "384px",
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac81"
+                  }
+                ],
+                "width": 51.302605210420815,
+                "stretchable": false,
+                "pxlWidth": 973.203,
+                "index": 0
+              },
+              {
+                "elements": [
+                  {
+                    "minHeight": 96,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac82",
+                    "height": "384px"
+                  }
+                ],
+                "width": 48.697394789579185,
+                "stretchable": false,
+                "pxlWidth": 923.781,
+                "index": 1
+              }
+            ]
+          },
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 96,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac83",
+                    "height": "384px"
+                  }
+                ],
+                "width": 51.238798102266735,
+                "stretchable": false,
+                "pxlWidth": 972,
+                "index": 0
+              },
+              {
+                "elements": [
+                  {
+                    "minHeight": 96,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "defaultWidth": 512,
+                    "widgetid": "633c68f6b01182003760ac84",
+                    "height": "384px"
+                  }
+                ],
+                "width": 48.76120189773327,
+                "stretchable": false,
+                "pxlWidth": 925,
+                "index": 1
+              }
+            ]
+          },
+          {
+            "subcells": [
+              {
+                "elements": [
+                  {
+                    "minHeight": 128,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "height": "620px",
+                    "defaultWidth": 512,
+                    "widgetid": "653ffd7bff412e00331a075b",
+                    "autoHeight": "238px"
+                  }
+                ],
+                "width": 24.881391671059568,
+                "stretchable": false,
+                "pxlWidth": 472,
+                "index": 0
+              },
+              {
+                "elements": [
+                  {
+                    "minHeight": 128,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "defaultWidth": 512,
+                    "widgetid": "654071c858589b00334a33c5",
+                    "height": "620px",
+                    "autoHeight": "238px"
+                  }
+                ],
+                "width": 26.35740643120717,
+                "stretchable": false,
+                "pxlWidth": 500,
+                "index": 1
+              },
+              {
+                "elements": [
+                  {
+                    "minHeight": 128,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "defaultWidth": 512,
+                    "widgetid": "654071bf58589b00334a33c3",
+                    "height": "620px",
+                    "autoHeight": "238px"
+                  }
+                ],
+                "width": 23.431734317343174,
+                "stretchable": false,
+                "pxlWidth": 444.5,
+                "index": 2
+              },
+              {
+                "elements": [
+                  {
+                    "minHeight": 128,
+                    "maxHeight": 2048,
+                    "minWidth": 128,
+                    "maxWidth": 2048,
+                    "defaultWidth": 512,
+                    "widgetid": "654071cb58589b00334a33c7",
+                    "height": "620px",
+                    "autoHeight": "620px"
+                  }
+                ],
+                "width": 25.329467580390087,
+                "stretchable": false,
+                "pxlWidth": 480.5,
+                "index": 3
+              }
+            ]
+          }
+        ],
+        "pxlWidth": 1897,
+        "index": 0
+      }
+    ],
+    "container": {
+      "sizzle1698876700701": {
+        "undefined": {
+          "parentNode": [
+            218.14661753032996,
+            29,
+            true
+          ]
+        }
+      }
+    }
+  },
+  "original": null,
+  "oid": "633c68f6b01182003760ac80",
+  "dataExploration": false,
+  "lastOpened": null,
+  "datasource": {
+    "fullname": "localhost/dm_11125_prob_unification_prod",
+    "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+    "address": "LocalHost",
+    "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+    "live": false,
+    "title": "dm_11125_prob_unification_prod"
+  },
+  "filters": [
+    {
+      "instanceid": "4F99A-FECB-52",
+      "isCascading": true,
+      "levels": [
+        {
+          "table": "prob_eda_input_columns",
+          "column": "session_idx",
+          "dim": "[prob_eda_input_columns.session_idx]",
+          "datatype": "numeric",
+          "collapsed": true,
+          "title": "session_idx",
+          "isDashboardFilter": true,
+          "panel": "scope",
+          "instanceid": "4F99A-FECB-52",
+          "datasource": {
+            "fullname": "localhost/dm_11125_prob_unification_prod",
+            "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+            "address": "LocalHost",
+            "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+            "live": false,
+            "title": "dm_11125_prob_unification_prod"
+          },
+          "filter": {
+            "explicit": true,
+            "multiSelection": true,
+            "members": [
+              "1"
+            ]
+          }
+        },
+        {
+          "table": "prob_session_global_filter",
+          "column": "session_id",
+          "dim": "[prob_session_global_filter.session_id]",
+          "datatype": "numeric",
+          "merged": true,
+          "collapsed": true,
+          "title": "session_id",
+          "datasource": {
+            "fullname": "localhost/dm_11125_prob_unification_prod",
+            "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+            "address": "LocalHost",
+            "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+            "live": false,
+            "title": "dm_11125_prob_unification_prod"
+          },
+          "filter": {
+            "explicit": false,
+            "multiSelection": true,
+            "all": true
+          },
+          "isDashboardFilter": true,
+          "panel": "scope"
+        },
+        {
+          "table": "prob_session_global_filter",
+          "column": "event_time",
+          "dim": "[prob_session_global_filter.event_time (Calendar)]",
+          "datatype": "datetime",
+          "merged": true,
+          "level": "days",
+          "collapsed": true,
+          "title": "Date",
+          "datasource": {
+            "fullname": "localhost/dm_11125_prob_unification_prod",
+            "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+            "address": "LocalHost",
+            "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+            "live": false,
+            "title": "dm_11125_prob_unification_prod"
+          },
+          "isDashboardFilter": true,
+          "filter": {
+            "explicit": false,
+            "multiSelection": true,
+            "all": true
+          }
+        }
+      ],
+      "model": {
+        "instanceid": "336E4-D5A9-FD",
+        "__store": [
+          "[prob_eda_input_columns.session_idx]",
+          "[prob_session_global_filter.session_id]",
+          "[prob_session_global_filter.event_time (Calendar)]"
+        ]
+      },
+      "disabled": false
+    }
+  ],
+  "editing": true,
+  "settings": {
+    "autoUpdateOnFiltersChange": true
+  },
+  "filterToDatasourceMapping": {},
+  "lastPublish": "2023-11-01T22:23:33.806Z",
+  "allowChangeSubscription": false,
+  "isPublic": null,
+  "previewLayout": [],
+  "defaultFilters": null,
+  "parentFolder": "6297733e6fb84f003831ba45",
+  "subscription": {
+    "subscribe": false,
+    "executionPerDay": 1,
+    "schedule": "* * * * * *",
+    "isDataChange": true,
+    "type": "onUpdate",
+    "reportType": {
+      "inline": true
+    },
+    "emailSettings": {
+      "isEmail": true,
+      "isPdf": false
+    },
+    "context": {
+      "dashboardid": "633c68f6b01182003760ac80"
+    },
+    "startAt": "2022-10-04",
+    "tzName": "America/New_York",
+    "timezone": 240,
+    "active": false
+  },
+  "widgets": [
+    {
+      "title": "User Count Distribution - per Block",
+      "type": "chart/pie",
+      "subtype": "pie/donut",
+      "oid": "633c68f6b01182003760ac81",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "categories",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_final_cluster_histogram",
+                  "column": "num_records_per_block",
+                  "dim": "[prob_final_cluster_histogram.num_records_per_block]",
+                  "datatype": "numeric",
+                  "title": "num_records_per_block"
+                },
+                "format": {
+                  "members": {
+                    "2": {
+                      "color": "#00cee6",
+                      "title": "2",
+                      "sortData": 2,
+                      "inResultset": true
+                    },
+                    "3": {
+                      "color": "#9b9bd7",
+                      "title": "3",
+                      "sortData": 3,
+                      "inResultset": true
+                    },
+                    "4": {
+                      "color": "#6EDA55",
+                      "title": "4",
+                      "sortData": 4,
+                      "inResultset": true
+                    },
+                    "5": {
+                      "color": "#fc7570",
+                      "title": "5",
+                      "sortData": 5,
+                      "inResultset": true
+                    },
+                    "6": {
+                      "color": "#fbb755",
+                      "title": "6",
+                      "sortData": 6,
+                      "inResultset": true
+                    },
+                    "7": {
+                      "color": "#218A8C",
+                      "title": "7",
+                      "sortData": 7,
+                      "inResultset": true
+                    },
+                    "8": {
+                      "color": "#06e5ff",
+                      "title": "8",
+                      "sortData": 8,
+                      "inResultset": true
+                    },
+                    "9": {
+                      "color": "#b2b2f7",
+                      "title": "9",
+                      "sortData": 9,
+                      "inResultset": true
+                    },
+                    "11": {
+                      "color": "#7efb62",
+                      "title": "11",
+                      "sortData": 11,
+                      "inResultset": true
+                    },
+                    "12": {
+                      "color": "#ff8a86",
+                      "title": "12",
+                      "sortData": 12,
+                      "inResultset": true
+                    },
+                    "13": {
+                      "color": "#ffc26a",
+                      "title": "13",
+                      "sortData": 13,
+                      "inResultset": true
+                    },
+                    "17": {
+                      "color": "#269fa1",
+                      "title": "17",
+                      "sortData": 17,
+                      "inResultset": true
+                    },
+                    "19": {
+                      "color": "#00cee6",
+                      "title": "19",
+                      "sortData": 19,
+                      "inResultset": true
+                    },
+                    "20": {
+                      "color": "#9b9bd7",
+                      "title": "20",
+                      "sortData": 20,
+                      "inResultset": true
+                    },
+                    "27": {
+                      "color": "#6eda55",
+                      "title": "27",
+                      "sortData": 27,
+                      "inResultset": true
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_final_cluster_histogram",
+                  "column": "block_cnt",
+                  "dim": "[prob_final_cluster_histogram.block_cnt]",
+                  "datatype": "numeric",
+                  "agg": "sum",
+                  "title": "Total block_cnt"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": true
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ]
+      },
+      "style": {
+        "legend": {
+          "enabled": true,
+          "position": "bottom"
+        },
+        "labels": {
+          "enabled": true,
+          "categories": false,
+          "value": false,
+          "percent": true,
+          "decimals": false,
+          "fontFamily": "Open Sans",
+          "color": "red"
+        },
+        "convolution": {
+          "enabled": true,
+          "selectedConvolutionType": "bySlicesCount",
+          "minimalIndependentSlicePercentage": 3,
+          "independentSlicesCount": "7"
+        },
+        "dataLimits": {
+          "seriesCapacity": 100000
+        },
+        "seriesLabels": {
+          "enabled": false,
+          "rotation": 0,
+          "labels": {
+            "enabled": false,
+            "types": {
+              "count": false,
+              "percentage": false,
+              "relative": false,
+              "totals": false
+            },
+            "stacked": false,
+            "stackedPercentage": false
+          }
+        },
+        "xAxis": {
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "x2Title": {
+            "enabled": false
+          },
+          "gridLines": true,
+          "isIntervalEnabled": false
+        },
+        "yAxis": {
+          "inactive": false,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": true,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "y2Axis": {
+          "inactive": true,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "navigator": {
+          "enabled": true
+        },
+        "lineWidth": {
+          "width": "bold"
+        },
+        "markers": {
+          "enabled": false,
+          "fill": "filled",
+          "size": "small"
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "num_records_per_block",
+              "title": "num_records_per_block",
+              "singular": "num_records_per_block",
+              "plural": "num_records_per_block"
+            }
+          ]
+        },
+        "automaticHeight": false
+      },
+      "instanceid": "8DD15-BE11-2B",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 1,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "drillToAnywhere": true
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "lastOpened": null
+    },
+    {
+      "title": "User Count Distribution - per Cluster",
+      "type": "chart/pie",
+      "subtype": "pie/donut",
+      "oid": "633c68f6b01182003760ac82",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "categories",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_final_cluster_histogram",
+                  "column": "num_records_per_cluster",
+                  "dim": "[prob_final_cluster_histogram.num_records_per_cluster]",
+                  "datatype": "numeric",
+                  "title": "num_records_per_cluster"
+                },
+                "format": {
+                  "members": {
+                    "2": {
+                      "color": "#9b9bd7",
+                      "title": "2",
+                      "sortData": 2,
+                      "inResultset": true
+                    },
+                    "N\\A": {
+                      "color": "#00cee6",
+                      "title": "N\\A",
+                      "sortData": "N\\A",
+                      "inResultset": true
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_final_cluster_histogram",
+                  "column": "cluster_cnt",
+                  "dim": "[prob_final_cluster_histogram.cluster_cnt]",
+                  "datatype": "numeric",
+                  "agg": "sum",
+                  "title": "Total cluster_cnt"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": true
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ]
+      },
+      "style": {
+        "legend": {
+          "enabled": true,
+          "position": "bottom"
+        },
+        "labels": {
+          "enabled": true,
+          "categories": false,
+          "value": false,
+          "percent": true,
+          "decimals": false,
+          "fontFamily": "Open Sans",
+          "color": "red"
+        },
+        "convolution": {
+          "enabled": true,
+          "selectedConvolutionType": "bySlicesCount",
+          "minimalIndependentSlicePercentage": 3,
+          "independentSlicesCount": "7"
+        },
+        "dataLimits": {
+          "seriesCapacity": 100000
+        },
+        "seriesLabels": {
+          "enabled": false,
+          "rotation": 0,
+          "labels": {
+            "enabled": false,
+            "types": {
+              "count": false,
+              "percentage": false,
+              "relative": false,
+              "totals": false
+            },
+            "stacked": false,
+            "stackedPercentage": false
+          }
+        },
+        "xAxis": {
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "x2Title": {
+            "enabled": false
+          },
+          "gridLines": true,
+          "isIntervalEnabled": false
+        },
+        "yAxis": {
+          "inactive": false,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": true,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "y2Axis": {
+          "inactive": true,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "navigator": {
+          "enabled": true
+        },
+        "lineWidth": {
+          "width": "bold"
+        },
+        "markers": {
+          "enabled": false,
+          "fill": "filled",
+          "size": "small"
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "num_records_per_cluster",
+              "title": "num_records_per_cluster",
+              "singular": "num_records_per_cluster",
+              "plural": "num_records_per_cluster"
+            }
+          ]
+        },
+        "automaticHeight": false
+      },
+      "instanceid": "8DD15-BE11-2B",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 1,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "drillToAnywhere": true
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "lastOpened": null
+    },
+    {
+      "title": "User Count Distribution - per Block",
+      "type": "chart/area",
+      "subtype": "area/spline",
+      "oid": "633c68f6b01182003760ac83",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "x-axis",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_final_cluster_histogram",
+                  "column": "num_records_per_block",
+                  "dim": "[prob_final_cluster_histogram.num_records_per_block]",
+                  "datatype": "numeric",
+                  "title": "num_records_per_block"
+                },
+                "instanceid": "8A41E-1CC5-E0"
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_final_cluster_histogram",
+                  "column": "block_cnt",
+                  "dim": "[prob_final_cluster_histogram.block_cnt]",
+                  "datatype": "numeric",
+                  "agg": "sum",
+                  "title": "User Count per Block Size"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": true
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  },
+                  "color": {
+                    "color": "#00cee6",
+                    "type": "color"
+                  }
+                },
+                "instanceid": "0C7E3-4FC1-02"
+              }
+            ]
+          },
+          {
+            "name": "break by",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_final_cluster_histogram",
+                  "column": "block_cnt",
+                  "dim": "[prob_final_cluster_histogram.block_cnt]",
+                  "datatype": "numeric",
+                  "title": "Block Counts",
+                  "filter": {
+                    "explicit": false,
+                    "multiSelection": true,
+                    "exclude": {
+                      "members": [
+                        "N\\A"
+                      ]
+                    }
+                  },
+                  "datasource": {
+                    "fullname": "localhost/dm_11125_prob_unification_prod",
+                    "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "address": "LocalHost",
+                    "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "live": false,
+                    "title": "dm_11125_prob_unification_prod"
+                  },
+                  "collapsed": true
+                },
+                "instanceid": "CC06A-9FD9-54"
+              }
+            ]
+          }
+        ],
+        "usedFormulasMapping": {}
+      },
+      "style": {
+        "lineWidth": {
+          "width": "bold"
+        },
+        "legend": {
+          "enabled": true,
+          "position": "top"
+        },
+        "markers": {
+          "enabled": false,
+          "fill": "filled",
+          "size": "small"
+        },
+        "seriesLabels": {
+          "enabled": false,
+          "rotation": 0,
+          "labels": {
+            "enabled": false,
+            "types": {
+              "count": false,
+              "percentage": false,
+              "relative": false,
+              "totals": false
+            },
+            "stacked": false,
+            "stackedPercentage": false
+          }
+        },
+        "xAxis": {
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "x2Title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "isIntervalEnabled": false
+        },
+        "yAxis": {
+          "inactive": false,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "y2Axis": {
+          "inactive": true,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "navigator": {
+          "enabled": false
+        },
+        "dataLimits": {
+          "seriesCapacity": 50,
+          "categoriesCapacity": 100000
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "num_records_per_block",
+              "title": "num_records_per_block",
+              "singular": "num_records_per_block",
+              "plural": "num_records_per_block"
+            },
+            {
+              "id": "block_counts",
+              "title": "Block Counts",
+              "singular": "Block Counts",
+              "plural": "Block Counts"
+            }
+          ]
+        }
+      },
+      "instanceid": "4154E-81AC-88",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 1,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "drillToAnywhere": true,
+        "previousScrollerLocation": {
+          "min": null,
+          "max": null
+        }
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "viewState": {
+        "activeTab": "design"
+      },
+      "lastOpened": null
+    },
+    {
+      "title": "User Count Distribution - per Cluster",
+      "type": "chart/area",
+      "subtype": "area/spline",
+      "oid": "633c68f6b01182003760ac84",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "x-axis",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_final_cluster_histogram",
+                  "column": "num_records_per_cluster",
+                  "dim": "[prob_final_cluster_histogram.num_records_per_cluster]",
+                  "datatype": "numeric",
+                  "title": "num_records_per_cluster"
+                },
+                "instanceid": "E8A55-F602-2A"
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_final_cluster_histogram",
+                  "column": "cluster_cnt",
+                  "dim": "[prob_final_cluster_histogram.cluster_cnt]",
+                  "datatype": "numeric",
+                  "agg": "sum",
+                  "title": "Count of Users per ClusterSize"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": true
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  },
+                  "color": {
+                    "color": "#00cee6",
+                    "type": "color"
+                  }
+                },
+                "instanceid": "698AA-7E57-54"
+              }
+            ]
+          },
+          {
+            "name": "break by",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_final_cluster_histogram",
+                  "column": "cluster_cnt",
+                  "dim": "[prob_final_cluster_histogram.cluster_cnt]",
+                  "datatype": "numeric",
+                  "title": "cluster_cnt",
+                  "filter": {
+                    "explicit": false,
+                    "multiSelection": true,
+                    "exclude": {
+                      "members": [
+                        "N\\A"
+                      ]
+                    }
+                  },
+                  "collapsed": true,
+                  "datasource": {
+                    "fullname": "localhost/dm_11125_prob_unification_prod",
+                    "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "address": "LocalHost",
+                    "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "live": false,
+                    "title": "dm_11125_prob_unification_prod"
+                  }
+                },
+                "instanceid": "64F19-4E71-55"
+              }
+            ]
+          }
+        ],
+        "usedFormulasMapping": {}
+      },
+      "style": {
+        "lineWidth": {
+          "width": "bold"
+        },
+        "legend": {
+          "enabled": true,
+          "position": "top"
+        },
+        "markers": {
+          "enabled": false,
+          "fill": "filled",
+          "size": "small"
+        },
+        "seriesLabels": {
+          "enabled": false,
+          "rotation": 0,
+          "labels": {
+            "enabled": false,
+            "types": {
+              "count": false,
+              "percentage": false,
+              "relative": false,
+              "totals": false
+            },
+            "stacked": false,
+            "stackedPercentage": false
+          }
+        },
+        "xAxis": {
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "x2Title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "isIntervalEnabled": false
+        },
+        "yAxis": {
+          "inactive": false,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "y2Axis": {
+          "inactive": true,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "navigator": {
+          "enabled": true
+        },
+        "dataLimits": {
+          "seriesCapacity": 50,
+          "categoriesCapacity": 100000
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "num_records_per_cluster",
+              "title": "num_records_per_cluster",
+              "singular": "num_records_per_cluster",
+              "plural": "num_records_per_cluster"
+            },
+            {
+              "id": "cluster_cnt",
+              "title": "cluster_cnt",
+              "singular": "cluster_cnt",
+              "plural": "cluster_cnt"
+            }
+          ]
+        }
+      },
+      "instanceid": "527FE-960D-CE",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 1,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "drillToAnywhere": true,
+        "previousScrollerLocation": {
+          "min": 0,
+          "max": 79
+        }
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "viewState": {
+        "activeTab": "design"
+      },
+      "lastOpened": null
+    },
+    {
+      "title": "Daily Dedupe % Trend",
+      "type": "chart/line",
+      "subtype": "line/spline",
+      "oid": "633c68f6b01182003760ac85",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": true
+        },
+        "panels": [
+          {
+            "name": "x-axis",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_session_global_filter",
+                  "column": "event_time",
+                  "dim": "[prob_session_global_filter.event_time (Calendar)]",
+                  "datatype": "datetime",
+                  "merged": true,
+                  "level": "days",
+                  "title": "Days in event_time"
+                },
+                "format": {
+                  "mask": {
+                    "years": "yyyy",
+                    "quarters": "yyyy Q",
+                    "months": "MM/yyyy",
+                    "weeks": "ww yyyy",
+                    "days": "shortDate",
+                    "minutes": "HH:mm",
+                    "isdefault": true
+                  }
+                },
+                "hierarchies": [
+                  "calendar",
+                  "calendar - weeks"
+                ],
+                "instanceid": "FD05D-5181-07"
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "[F414F-B7A]/[44F18-E19]",
+                  "context": {
+                    "[44F18-E19]": {
+                      "table": "prob_model_table_params",
+                      "column": "raw_record_cnt",
+                      "dim": "[prob_model_table_params.raw_record_cnt]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total raw_record_cnt"
+                    },
+                    "[F414F-B7A]": {
+                      "table": "prob_model_table_params",
+                      "column": "deduped_ids",
+                      "dim": "[prob_model_table_params.deduped_ids]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total deduped_ids"
+                    }
+                  },
+                  "title": "Deduplication %"
+                },
+                "format": {
+                  "mask": {
+                    "decimals": 2,
+                    "percent": true,
+                    "percentMultiplier": 100
+                  },
+                  "color": {
+                    "color": "#00cee6",
+                    "type": "color"
+                  }
+                },
+                "instanceid": "1EBB8-895C-04"
+              }
+            ]
+          },
+          {
+            "name": "break by",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ],
+        "usedFormulasMapping": {}
+      },
+      "style": {
+        "lineWidth": {
+          "width": "thin"
+        },
+        "legend": {
+          "enabled": true,
+          "position": "top"
+        },
+        "seriesLabels": {
+          "enabled": true,
+          "rotation": 0
+        },
+        "markers": {
+          "enabled": false,
+          "fill": "filled",
+          "size": "small"
+        },
+        "xAxis": {
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "x2Title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "isIntervalEnabled": false
+        },
+        "yAxis": {
+          "inactive": false,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true
+        },
+        "y2Axis": {
+          "inactive": true,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true
+        },
+        "navigator": {
+          "enabled": true
+        },
+        "dataLimits": {
+          "seriesCapacity": 50,
+          "categoriesCapacity": 100000
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "days_in_event_time",
+              "title": "Days in event_time",
+              "singular": "Days in event_time",
+              "plural": "Days in event_time"
+            }
+          ]
+        }
+      },
+      "instanceid": "0FF7E-12E5-08",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 1,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "viewState": {
+        "activeTab": "design"
+      },
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "drillToAnywhere": true,
+        "previousScrollerLocation": {
+          "min": 0,
+          "max": 8
+        }
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "lastOpened": null
+    },
+    {
+      "title": "ID Unification Model Params",
+      "type": "pivot2",
+      "subtype": "pivot2",
+      "oid": "633c68f6b01182003760ac86",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "rows",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "run_date",
+                  "dim": "[prob_model_table_params.run_date (Calendar)]",
+                  "datatype": "datetime",
+                  "merged": true,
+                  "level": "days",
+                  "title": "Date"
+                },
+                "panel": "rows",
+                "field": {
+                  "id": "[prob_model_table_params.run_date (Calendar)]_days",
+                  "index": 0
+                },
+                "format": {
+                  "mask": {
+                    "years": "yyyy",
+                    "quarters": "yyyy Q",
+                    "months": "MM/yyyy",
+                    "weeks": "ww yyyy",
+                    "days": "shortDate",
+                    "minutes": "HH:mm",
+                    "isdefault": true
+                  }
+                },
+                "hierarchies": [
+                  "calendar",
+                  "calendar - weeks"
+                ]
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "dedupe_col_params",
+                  "dim": "[prob_model_table_params.dedupe_col_params]",
+                  "datatype": "text",
+                  "merged": true,
+                  "title": "Dedupe Rules"
+                },
+                "panel": "rows",
+                "field": {
+                  "id": "[prob_model_table_params.dedupe_col_params]",
+                  "index": 1
+                }
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "string_similarity_algo",
+                  "dim": "[prob_model_table_params.string_similarity_algo]",
+                  "datatype": "text",
+                  "merged": true,
+                  "title": "Similarity"
+                },
+                "panel": "rows",
+                "field": {
+                  "id": "[prob_model_table_params.string_similarity_algo]",
+                  "index": 2
+                }
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "hashes",
+                  "dim": "[prob_model_table_params.hashes]",
+                  "datatype": "numeric",
+                  "title": "Hashes"
+                },
+                "panel": "rows",
+                "field": {
+                  "id": "[prob_model_table_params.hashes]",
+                  "index": 3
+                }
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "keygroups",
+                  "dim": "[prob_model_table_params.keygroups]",
+                  "datatype": "numeric",
+                  "title": "Keygroups"
+                },
+                "panel": "rows",
+                "field": {
+                  "id": "[prob_model_table_params.keygroups]",
+                  "index": 4
+                }
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "cluster_threshold",
+                  "dim": "[prob_model_table_params.cluster_threshold]",
+                  "datatype": "numeric",
+                  "title": "cluster_thre"
+                },
+                "panel": "rows",
+                "field": {
+                  "id": "[prob_model_table_params.cluster_threshold]",
+                  "index": 5
+                }
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "jaccard_sim_threshold",
+                  "dim": "[prob_model_table_params.jaccard_sim_threshold]",
+                  "datatype": "numeric",
+                  "title": "jaccard_thre"
+                },
+                "panel": "rows",
+                "field": {
+                  "id": "[prob_model_table_params.jaccard_sim_threshold]",
+                  "index": 6
+                }
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "fill_missing",
+                  "dim": "[prob_model_table_params.fill_missing]",
+                  "datatype": "text",
+                  "merged": true,
+                  "title": "Fill Missing"
+                },
+                "panel": "rows",
+                "field": {
+                  "id": "[prob_model_table_params.fill_missing]",
+                  "index": 7
+                }
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "convergence_threshold",
+                  "dim": "[prob_model_table_params.convergence_threshold]",
+                  "datatype": "numeric",
+                  "title": "conv_thre"
+                },
+                "panel": "rows",
+                "field": {
+                  "id": "[prob_model_table_params.convergence_threshold]",
+                  "index": 8
+                }
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "deduped_ids",
+                  "dim": "[prob_model_table_params.deduped_ids]",
+                  "datatype": "numeric",
+                  "title": "Deduped IDs",
+                  "agg": "sum"
+                },
+                "panel": "measures",
+                "field": {
+                  "id": "[prob_model_table_params.deduped_ids]",
+                  "index": 9
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "t": true,
+                    "b": true,
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  },
+                  "color": {
+                    "type": "color",
+                    "color": "transparent"
+                  }
+                }
+              },
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "[176D9-81F]/[10D04-324]",
+                  "context": {
+                    "[10D04-324]": {
+                      "table": "prob_model_table_params",
+                      "column": "raw_record_cnt",
+                      "dim": "[prob_model_table_params.raw_record_cnt]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total raw_record_cnt"
+                    },
+                    "[176D9-81F]": {
+                      "table": "prob_model_table_params",
+                      "column": "deduped_ids",
+                      "dim": "[prob_model_table_params.deduped_ids]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total deduped_ids"
+                    }
+                  },
+                  "title": "Dedup Rate",
+                  "datatype": "numeric"
+                },
+                "panel": "measures",
+                "field": {
+                  "id": "[176D9-81F]/[10D04-324]",
+                  "index": 10
+                },
+                "format": {
+                  "mask": {
+                    "decimals": 2,
+                    "percent": true
+                  },
+                  "color": {
+                    "type": "color",
+                    "color": "transparent"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "columns",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ]
+      },
+      "style": {
+        "scroll": false,
+        "pageSize": 25,
+        "automaticHeight": true,
+        "colors": {
+          "rows": true,
+          "columns": false,
+          "headers": false,
+          "members": false,
+          "totals": false
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "date",
+              "title": "Date",
+              "singular": "Date",
+              "plural": "Date"
+            },
+            {
+              "id": "dedupe_rules",
+              "title": "Dedupe Rules",
+              "singular": "Dedupe Rules",
+              "plural": "Dedupe Rules"
+            },
+            {
+              "id": "similarity_type",
+              "title": "Similarity Type",
+              "singular": "Similarity Type",
+              "plural": "Similarity Type"
+            },
+            {
+              "id": "hashes",
+              "title": "hashes",
+              "singular": "hashes",
+              "plural": "hashes"
+            },
+            {
+              "id": "keygroups",
+              "title": "keygroups",
+              "singular": "keygroups",
+              "plural": "keygroups"
+            },
+            {
+              "id": "cluster_thresh",
+              "title": "cluster_thresh",
+              "singular": "cluster_thresh",
+              "plural": "cluster_thresh"
+            },
+            {
+              "id": "jaccard_sim_thresh",
+              "title": "jaccard_sim_thresh",
+              "singular": "jaccard_sim_thresh",
+              "plural": "jaccard_sim_thresh"
+            },
+            {
+              "id": "fill_missing",
+              "title": "fill_missing",
+              "singular": "fill_missing",
+              "plural": "fill_missing"
+            },
+            {
+              "id": "conv_thresh",
+              "title": "conv_thresh",
+              "singular": "conv_thresh",
+              "plural": "conv_thresh"
+            }
+          ]
+        }
+      },
+      "instanceid": "00176-D899-41",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 2,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": false,
+        "triggersDomready": true,
+        "drillToAnywhere": true,
+        "autoUpdateOnEveryChange": true
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "lastOpened": null
+    },
+    {
+      "title": "Unification Overview",
+      "type": "BloX",
+      "subtype": "BloX",
+      "oid": "633c68f6b01182003760ac87",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "Items",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "raw_record_cnt",
+                  "dim": "[prob_model_table_params.raw_record_cnt]",
+                  "datatype": "numeric",
+                  "title": "total"
+                },
+                "PanelName": "total",
+                "format": {
+                  "mask": {
+                    "abbreviations": {
+                      "t": false,
+                      "b": false,
+                      "m": true,
+                      "k": false
+                    },
+                    "decimals": "auto",
+                    "number": {
+                      "separated": true
+                    }
+                  }
+                },
+                "instanceid": "B1108-F35B-EE"
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "deduped_ids",
+                  "dim": "[prob_model_table_params.deduped_ids]",
+                  "datatype": "numeric",
+                  "title": "deduped_ids"
+                },
+                "PanelName": "deduped_ids",
+                "instanceid": "C72D6-A58B-27"
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "final_cluster_table_cnt",
+                  "dim": "[prob_model_table_params.final_cluster_table_cnt]",
+                  "datatype": "numeric",
+                  "title": "block_clusters"
+                },
+                "PanelName": "block_clusters",
+                "instanceid": "F1E2D-86EF-DC"
+              }
+            ]
+          },
+          {
+            "name": "Values",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "([48F08-DEB]/[AF8F5-24C])*100",
+                  "context": {
+                    "[48F08-DEB]": {
+                      "table": "prob_model_table_params",
+                      "column": "num_final_clusters",
+                      "dim": "[prob_model_table_params.num_final_clusters]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total num_final_clusters"
+                    },
+                    "[AF8F5-24C]": {
+                      "table": "prob_model_table_params",
+                      "column": "raw_record_cnt",
+                      "dim": "[prob_model_table_params.raw_record_cnt]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total raw_record_cnt"
+                    }
+                  },
+                  "title": "block_clusters_pct"
+                },
+                "PanelName": "block_clusters_pct",
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "decimals": "auto",
+                    "separated": true,
+                    "isdefault": true
+                  }
+                },
+                "instanceid": "AA58E-15F3-23"
+              },
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "([061BE-ED4]/[FC4B0-F85])*100\n",
+                  "context": {
+                    "[FC4B0-F85]": {
+                      "table": "prob_model_table_params",
+                      "column": "raw_record_cnt",
+                      "dim": "[prob_model_table_params.raw_record_cnt]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total raw_record_cnt"
+                    },
+                    "[061BE-ED4]": {
+                      "table": "prob_model_table_params",
+                      "column": "deduped_ids",
+                      "dim": "[prob_model_table_params.deduped_ids]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total deduped_ids"
+                    }
+                  },
+                  "title": "deduped_ids_pct"
+                },
+                "PanelName": "deduped_ids_pct",
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "decimals": "auto",
+                    "separated": true,
+                    "isdefault": true
+                  }
+                },
+                "instanceid": "22C8D-3BF1-62"
+              },
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "[53B89-88C]/[3ECEB-5A9]",
+                  "context": {
+                    "[3ECEB-5A9]": {
+                      "table": "prob_model_table_params",
+                      "column": "raw_record_cnt",
+                      "dim": "[prob_model_table_params.raw_record_cnt]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total raw_record_cnt"
+                    },
+                    "[53B89-88C]": {
+                      "table": "prob_model_table_params",
+                      "column": "deduped_ids",
+                      "dim": "[prob_model_table_params.deduped_ids]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total deduped_ids"
+                    }
+                  },
+                  "title": "dedupe_rate"
+                },
+                "PanelName": "dedupe_rate",
+                "format": {
+                  "mask": {
+                    "decimals": "auto",
+                    "percent": true
+                  }
+                },
+                "instanceid": "A55AB-4467-BD"
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "estimated_savings",
+                  "dim": "[prob_model_table_params.estimated_savings]",
+                  "datatype": "numeric",
+                  "agg": "sum",
+                  "title": "savings"
+                },
+                "PanelName": "savings",
+                "format": {
+                  "mask": {
+                    "abbreviations": {
+                      "t": false,
+                      "b": false,
+                      "m": true,
+                      "k": false
+                    },
+                    "decimals": "auto",
+                    "currency": {
+                      "symbol": "$",
+                      "position": "pre"
+                    }
+                  }
+                },
+                "instanceid": "CE9B9-6F1C-5F"
+              }
+            ]
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ],
+        "usedFormulasMapping": {}
+      },
+      "style": {
+        "currentCard": {
+          "style": ".circular-chart { display:block; margin:10px auto; max-width: 60%;  }.circle-bg { fill: none; stroke: #dae4ec; stroke-width: 3.8; }.circle { fill: none; stroke-width: 2.8; stroke-linecap: round; }.circular-chart.green .circle { stroke: #21D5D7; }.percentage { fill: #666; font-family: Avenir, sans-serif; font-size: 0.3em; text-anchor: middle; }.circular-chart.purple .circle { stroke: #8855ff; }.circular-chart.blue .circle{stroke: #4285F4; }.circular-chart.red .circle{stroke: #F16463; }.circular-chart.orange .circle{stroke: #E58001; }",
+          "script": "",
+          "title": "",
+          "showCarousel": false,
+          "body": [
+            {
+              "type": "Container",
+              "horizontalAlignment": "center",
+              "style": {
+                "padding": "15px 0px ",
+                "color": "#3A4356"
+              },
+              "items": [
+                {
+                  "type": "ColumnSet",
+                  "columns": [
+                    {
+                      "type": "Column",
+                      "style": {
+                        "width": "25%"
+                      },
+                      "items": [
+                        {
+                          "type": "TextBlock",
+                          "horizontalAlignment": "center",
+                          "text": "<div class='single-chart'> <svg viewBox='0 0 36 36' class='circular-chart blue'><path class='circle-bg' d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831' /><path class='circle' stroke-dasharray='{panel:value0}, 100' d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831' /><text x='18' y='20.35' class='percentage'>{panel:total}</text> </svg> <p>Total IDs</p></div>"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Column",
+                      "style": {
+                        "width": "25%"
+                      },
+                      "items": [
+                        {
+                          "type": "TextBlock",
+                          "horizontalAlignment": "center",
+                          "text": "<div class='single-chart'> <svg viewBox='0 0 36 36' class='circular-chart purple'><path class='circle-bg' d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831' /><path class='circle' stroke-dasharray='{panel:block_clusters_pct}, 100' d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831' /><text x='18' y='20.35' class='percentage'>{panel:block_clusters}</text> </svg> <p>Eligible for Probabilistic Match</p></div>"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Column",
+                      "style": {
+                        "width": "25%"
+                      },
+                      "items": [
+                        {
+                          "type": "TextBlock",
+                          "horizontalAlignment": "center",
+                          "text": "<div class='single-chart'> <svg viewBox='0 0 36 36' class='circular-chart red'><path class='circle-bg' d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831' /><path class='circle' stroke-dasharray='{panel:deduped_ids_pct}, 100' d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831' /><text x='18' y='20.35' class='percentage'>{panel:deduped_ids}</text> </svg> <p>Deduped IDs</p></div>"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Column",
+                      "style": {
+                        "width": "25%"
+                      },
+                      "items": [
+                        {
+                          "type": "TextBlock",
+                          "horizontalAlignment": "center",
+                          "text": "<div class='single-chart'> <svg viewBox='0 0 36 36' class='circular-chart orange'><path class='circle-bg' d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831' /><path class='circle' stroke-dasharray='{panel:dedupe_rate}, 100' d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831' /><text x='18' y='20.35' class='percentage'>{panel:dedupe_rate}</text> </svg> <p>Deduplication Rate</p></div>"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Column",
+                      "style": {
+                        "width": "25%"
+                      },
+                      "items": [
+                        {
+                          "type": "TextBlock",
+                          "horizontalAlignment": "center",
+                          "text": "<div class='single-chart'> <svg viewBox='0 0 36 36' class='circular-chart green'><path class='circle-bg' d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831' /><path class='circle' stroke-dasharray='{panel:savings}, 100' d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831' /><text x='18' y='20.35' class='percentage'>{panel:savings}</text> </svg> <p>Annual Savings Estimate</p></div>"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": []
+        },
+        "currentConfig": {
+          "fontFamily": "Avenir",
+          "fontSizes": {
+            "default": 16,
+            "small": 16,
+            "medium": 20,
+            "large": 50,
+            "extraLarge": 32
+          },
+          "fontWeights": {
+            "default": 200,
+            "light": 100,
+            "bold": 1000
+          },
+          "containerStyles": {
+            "default": {
+              "backgroundColor": "#ecf0f5",
+              "foregroundColors": {
+                "default": {
+                  "normal": "#000000"
+                },
+                "white": {
+                  "normal": "#ffffff"
+                },
+                "grey": {
+                  "normal": "#5C6372"
+                },
+                "orange": {
+                  "normal": "#f2B900"
+                },
+                "yellow": {
+                  "normal": "#ffcb05"
+                },
+                "black": {
+                  "normal": "#000000"
+                },
+                "lightGreen": {
+                  "normal": "#3ADCCA"
+                },
+                "green": {
+                  "normal": "#54a254"
+                },
+                "red": {
+                  "normal": "#dd1111"
+                },
+                "accent": {
+                  "normal": "#2E89FC"
+                },
+                "good": {
+                  "normal": "#54a254"
+                },
+                "warning": {
+                  "normal": "#e69500"
+                },
+                "attention": {
+                  "normal": "#cc3300"
+                }
+              }
+            }
+          },
+          "imageSizes": {
+            "default": 40,
+            "small": 40,
+            "medium": 80,
+            "large": 160
+          },
+          "imageSet": {
+            "imageSize": "medium",
+            "maxImageHeight": 100
+          },
+          "actions": {
+            "color": "",
+            "backgroundColor": "white",
+            "maxActions": 5,
+            "spacing": "extraLarge",
+            "buttonSpacing": 20,
+            "actionsOrientation": "horizontal",
+            "actionAlignment": "center",
+            "showCard": {
+              "actionMode": "inline",
+              "inlineTopMargin": 16,
+              "style": "default"
+            }
+          },
+          "spacing": {
+            "default": 5,
+            "small": 20,
+            "medium": 60,
+            "large": 20,
+            "extraLarge": 40,
+            "padding": 0
+          },
+          "separator": {
+            "lineThickness": 1,
+            "lineColor": "#eeeeee"
+          },
+          "factSet": {
+            "title": {
+              "size": "default",
+              "color": "default",
+              "weight": "bold",
+              "warp": true
+            },
+            "value": {
+              "size": "default",
+              "color": "default",
+              "weight": "default",
+              "warp": true
+            },
+            "spacing": 20
+          },
+          "supportsInteractivity": true,
+          "imageBaseUrl": "",
+          "height": 970
+        },
+        "currentCardName": "default",
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "total",
+              "title": "total",
+              "singular": "total",
+              "plural": "total"
+            },
+            {
+              "id": "deduped_ids",
+              "title": "deduped_ids",
+              "singular": "deduped_ids",
+              "plural": "deduped_ids"
+            },
+            {
+              "id": "block_clusters",
+              "title": "block_clusters",
+              "singular": "block_clusters",
+              "plural": "block_clusters"
+            }
+          ]
+        }
+      },
+      "instanceid": "5FFDF-271B-DB",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 4,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "drilledDashboardDisplay": {},
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": true,
+        "title": false,
+        "drillTarget": "dummy",
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "viewState": {
+        "activeTab": "filters"
+      },
+      "lastOpened": null
+    },
+    {
+      "title": "Probabilistic ID Unification",
+      "type": "BloX",
+      "subtype": "BloX",
+      "oid": "633c68f6b01182003760ac88",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "Items",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "run_date",
+                  "dim": "[prob_model_table_params.run_date (Calendar)]",
+                  "datatype": "datetime",
+                  "merged": true,
+                  "level": "days",
+                  "title": "date"
+                },
+                "PanelName": "date",
+                "format": {
+                  "mask": {
+                    "years": "yyyy",
+                    "quarters": "yyyy Q",
+                    "months": "MM/yyyy",
+                    "weeks": "ww yyyy",
+                    "days": "shortDate",
+                    "minutes": "HH:mm",
+                    "isdefault": true
+                  }
+                },
+                "hierarchies": [
+                  "calendar",
+                  "calendar - weeks"
+                ]
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "run_duration_mins",
+                  "dim": "[prob_model_table_params.run_duration_mins]",
+                  "datatype": "numeric",
+                  "title": "duration"
+                },
+                "PanelName": "duration"
+              }
+            ]
+          },
+          {
+            "name": "Values",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "time",
+                  "dim": "[prob_model_table_params.time]",
+                  "datatype": "numeric",
+                  "filter": {
+                    "top": 1,
+                    "by": {
+                      "table": "prob_model_table_params",
+                      "column": "time",
+                      "dim": "[prob_model_table_params.time]",
+                      "datatype": "numeric",
+                      "agg": "sum"
+                    }
+                  },
+                  "title": "time",
+                  "datasource": {
+                    "fullname": "localhost/dm_11125_prob_unification_prod",
+                    "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "address": "LocalHost",
+                    "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "live": false,
+                    "title": "dm_11125_prob_unification_prod"
+                  },
+                  "collapsed": false
+                },
+                "disabled": true
+              }
+            ]
+          }
+        ]
+      },
+      "style": {
+        "currentCard": {
+          "style": "",
+          "script": "",
+          "title": "",
+          "titleStyle": [
+            {
+              "display": "none"
+            }
+          ],
+          "showCarousel": true,
+          "backgroundImage": "",
+          "backgroundColor": "#ecf0f5",
+          "body": [
+            {
+              "type": "Container",
+              "backgroundImage": "",
+              "BackgroundImageMode": "no-repeat",
+              "style": {
+                "padding": "15px 0px"
+              },
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Probabilistic ID Unification Summary",
+                  "size": "large",
+                  "color": "default",
+                  "weight": "normal",
+                  "horizontalAlignment": "left",
+                  "style": {
+                    "padding-left": "10px"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Container",
+              "items": [
+                {
+                  "type": "ColumnSet",
+                  "spacing": "extraLarge",
+                  "columns": [
+                    {
+                      "type": "Column",
+                      "separator": true,
+                      "spacing": "medium",
+                      "items": [
+                        {
+                          "type": "Column",
+                          "style": {
+                            "width": "60px",
+                            "height": "100%",
+                            "display": "table",
+                            "background-color": "#098dda"
+                          },
+                          "items": [
+                            {
+                              "type": "Image",
+                              "url": "https://treasurebikes.com/wp-content/uploads/preunification.png",
+                              "spacing": "small",
+                              "horizontalAlignment": "center",
+                              "size": "small",
+                              "style": {
+                                "display": "none"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Column",
+                          "items": [
+                            {
+                              "type": "TextBlock",
+                              "size": "light",
+                              "weight": "light",
+                              "horizontalAlignment": "left",
+                              "spacing": "small",
+                              "color": "default",
+                              "text": "Date Last Run",
+                              "style": {
+                                "padding-left": "70px",
+                                "padding-top": "20px"
+                              }
+                            },
+                            {
+                              "type": "TextBlock",
+                              "size": "large",
+                              "weight": "normal",
+                              "horizontalAlignment": "left",
+                              "spacing": "small",
+                              "color": "default",
+                              "text": "{panel:date}",
+                              "style": {
+                                "padding-left": "70px"
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "style": {
+                        "background-color": "#ffffff",
+                        "padding-left": "0px",
+                        "margin-right": "10px"
+                      }
+                    },
+                    {
+                      "type": "Column",
+                      "separator": true,
+                      "spacing": "medium",
+                      "items": [
+                        {
+                          "type": "Column",
+                          "style": {
+                            "width": "60px",
+                            "height": "100%",
+                            "display": "table",
+                            "background-color": "#098dda"
+                          },
+                          "items": [
+                            {
+                              "type": "Image",
+                              "url": "https://treasurebikes.com/wp-content/uploads/preunification.png",
+                              "spacing": "small",
+                              "horizontalAlignment": "center",
+                              "size": "small",
+                              "style": {
+                                "display": "none"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Column",
+                          "items": [
+                            {
+                              "type": "TextBlock",
+                              "size": "light",
+                              "weight": "light",
+                              "horizontalAlignment": "left",
+                              "spacing": "small",
+                              "color": "default",
+                              "text": "Workflow Runtime",
+                              "style": {
+                                "padding-left": "70px",
+                                "padding-top": "20px"
+                              }
+                            },
+                            {
+                              "type": "TextBlock",
+                              "size": "large",
+                              "weight": "normal",
+                              "horizontalAlignment": "left",
+                              "spacing": "small",
+                              "color": "default",
+                              "text": "{panel:duration} mins",
+                              "style": {
+                                "padding-left": "70px"
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "style": {
+                        "background-color": "#ffffff",
+                        "padding-left": "0px",
+                        "margin-right": "10px"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": []
+        },
+        "currentConfig": {
+          "fontFamily": "Avenir",
+          "fontSizes": {
+            "default": 16,
+            "small": 12,
+            "medium": 22,
+            "large": 30,
+            "extraLarge": 40
+          },
+          "fontWeights": {
+            "default": 300,
+            "light": 100,
+            "medium": 400,
+            "bold": 900
+          },
+          "containerStyles": {
+            "default": {
+              "backgroundColor": "#ecf0f5",
+              "foregroundColors": {
+                "default": {
+                  "normal": "#3A4356"
+                },
+                "white": {
+                  "normal": "#ffffff"
+                },
+                "grey": {
+                  "normal": "#dcdcdc"
+                },
+                "orange": {
+                  "normal": "#f2B900"
+                },
+                "blue": {
+                  "normal": "#5e3ca7"
+                },
+                "yellow": {
+                  "normal": "#ffcb05"
+                },
+                "black": {
+                  "normal": "#000000"
+                },
+                "lightGreen": {
+                  "normal": "#93c0c0"
+                },
+                "green": {
+                  "normal": "#54a254"
+                },
+                "red": {
+                  "normal": "#dd1111"
+                },
+                "accent": {
+                  "normal": "#2E89FC"
+                },
+                "good": {
+                  "normal": "#54a254"
+                },
+                "warning": {
+                  "normal": "#e69500"
+                },
+                "attention": {
+                  "normal": "#cc3300"
+                }
+              }
+            }
+          },
+          "imageSizes": {
+            "default": 40,
+            "small": 40,
+            "smaller": 48,
+            "medium": 70,
+            "notsmall": 75,
+            "notbig": 60,
+            "large": 160
+          },
+          "imageSet": {
+            "imageSize": "medium",
+            "maxImageHeight": 100
+          },
+          "actions": {
+            "color": "",
+            "backgroundColor": "",
+            "maxActions": 5,
+            "spacing": "extraLarge",
+            "buttonSpacing": 20,
+            "actionsOrientation": "horizontal",
+            "actionAlignment": "center",
+            "showCard": {
+              "actionMode": "inline",
+              "inlineTopMargin": 16,
+              "style": "default"
+            }
+          },
+          "spacing": {
+            "default": 5,
+            "small": 5,
+            "medium": 10,
+            "large": 26,
+            "big": 24,
+            "extraLarge": 26,
+            "padding": 20
+          },
+          "separator": {
+            "lineThickness": 1,
+            "lineColor": "#dedddd"
+          },
+          "factSet": {
+            "title": {
+              "size": "default",
+              "color": "default",
+              "weight": "bold",
+              "warp": true
+            },
+            "value": {
+              "size": "default",
+              "color": "default",
+              "weight": "default",
+              "warp": true
+            },
+            "spacing": 20
+          },
+          "supportsInteractivity": true,
+          "imageBaseUrl": "",
+          "height": 234
+        },
+        "currentCardName": "default",
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "date",
+              "title": "date",
+              "singular": "date",
+              "plural": "date"
+            },
+            {
+              "id": "duration",
+              "title": "duration",
+              "singular": "duration",
+              "plural": "duration"
+            },
+            {
+              "id": "time",
+              "title": "time",
+              "singular": "time",
+              "plural": "time"
+            }
+          ]
+        }
+      },
+      "instanceid": "D3FE4-B3DC-18",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 4,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "drilledDashboardDisplay": {},
+      "options": {
+        "dashboardFiltersMode": "select",
+        "selector": true,
+        "title": false,
+        "drillTarget": "dummy",
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "viewState": {
+        "activeTab": "design"
+      },
+      "lastOpened": null
+    },
+    {
+      "title": "Daily Dedupe ID Counts",
+      "type": "chart/line",
+      "subtype": "line/spline",
+      "oid": "633c68f6b01182003760ac89",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": true
+        },
+        "panels": [
+          {
+            "name": "x-axis",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_session_global_filter",
+                  "column": "event_time",
+                  "dim": "[prob_session_global_filter.event_time (Calendar)]",
+                  "datatype": "datetime",
+                  "merged": true,
+                  "level": "days",
+                  "title": "Days in event_time"
+                },
+                "format": {
+                  "mask": {
+                    "years": "yyyy",
+                    "quarters": "yyyy Q",
+                    "months": "MM/yyyy",
+                    "weeks": "ww yyyy",
+                    "days": "shortDate",
+                    "minutes": "HH:mm",
+                    "isdefault": true
+                  }
+                },
+                "hierarchies": [
+                  "calendar",
+                  "calendar - weeks"
+                ],
+                "instanceid": "8AE38-B1BD-8F"
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "final_cluster_table_cnt",
+                  "dim": "[prob_model_table_params.final_cluster_table_cnt]",
+                  "datatype": "numeric",
+                  "agg": "sum",
+                  "title": "IDs Eligible for Dedupe"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": true
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  },
+                  "color_bkp": {
+                    "color": "#9b9bd7",
+                    "type": "color"
+                  },
+                  "color": {
+                    "color": "#9b9bd7",
+                    "type": "color"
+                  }
+                },
+                "instanceid": "4AC9E-444F-77"
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "deduped_ids",
+                  "dim": "[prob_model_table_params.deduped_ids]",
+                  "datatype": "numeric",
+                  "agg": "sum",
+                  "title": "Deduped IDs"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": true
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  },
+                  "color": {
+                    "color": "#6EDA55",
+                    "type": "color"
+                  }
+                },
+                "disabled": false,
+                "instanceid": "2303B-7845-D5"
+              },
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "num_final_clusters",
+                  "dim": "[prob_model_table_params.num_final_clusters]",
+                  "datatype": "numeric",
+                  "agg": "sum",
+                  "title": "ID Count After Dedupe"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": true
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  },
+                  "color": {
+                    "type": "color",
+                    "color": "#00cee6"
+                  }
+                },
+                "instanceid": "02024-06A9-1E"
+              }
+            ]
+          },
+          {
+            "name": "break by",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ],
+        "usedFormulasMapping": {}
+      },
+      "style": {
+        "lineWidth": {
+          "width": "thin"
+        },
+        "legend": {
+          "enabled": true,
+          "position": "top"
+        },
+        "seriesLabels": {
+          "enabled": false,
+          "rotation": -45,
+          "labels": {
+            "enabled": false,
+            "stacked": false,
+            "stackedPercentage": false,
+            "types": {
+              "count": false,
+              "relative": false,
+              "totals": false,
+              "percentage": false
+            }
+          }
+        },
+        "markers": {
+          "enabled": true,
+          "fill": "hollow",
+          "size": "small"
+        },
+        "xAxis": {
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "x2Title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "isIntervalEnabled": false
+        },
+        "yAxis": {
+          "inactive": false,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "y2Axis": {
+          "inactive": true,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "navigator": {
+          "enabled": true
+        },
+        "dataLimits": {
+          "seriesCapacity": 50,
+          "categoriesCapacity": 100000
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "days_in_event_time",
+              "title": "Days in event_time",
+              "singular": "Days in event_time",
+              "plural": "Days in event_time"
+            }
+          ]
+        }
+      },
+      "instanceid": "96F3C-57E9-C9",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 1,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "viewState": {
+        "activeTab": "design"
+      },
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "drillToAnywhere": true,
+        "previousScrollerLocation": {
+          "min": 0,
+          "max": 8
+        }
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "lastOpened": null
+    },
+    {
+      "title": "AVG Annual Marketing Spend per User",
+      "type": "indicator",
+      "subtype": "indicator/numeric",
+      "oid": "633c68f6b01182003760ac8a",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "value",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "[79F60-F58] / [213C9-838]",
+                  "context": {
+                    "[79F60-F58]": {
+                      "table": "prob_model_table_params",
+                      "column": "estimated_savings",
+                      "dim": "[prob_model_table_params.estimated_savings]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total estimated_savings"
+                    },
+                    "[213C9-838]": {
+                      "table": "prob_model_table_params",
+                      "column": "deduped_ids",
+                      "dim": "[prob_model_table_params.deduped_ids]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total deduped_ids"
+                    }
+                  },
+                  "title": "Annual Marketing Spend Per User"
+                },
+                "format": {
+                  "mask": {
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": true
+                    },
+                    "decimals": 2,
+                    "currency": {
+                      "symbol": "$",
+                      "position": "pre"
+                    }
+                  },
+                  "color": {
+                    "color": "#00cee6",
+                    "type": "color"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "secondary",
+            "items": []
+          },
+          {
+            "name": "min",
+            "items": [
+              {
+                "jaql": {
+                  "formula": "0",
+                  "title": "0 (default)"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": false
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "max",
+            "items": [
+              {
+                "jaql": {
+                  "formula": "100",
+                  "title": "100 (default)"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": false
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ]
+      },
+      "style": {
+        "subtype": "simple",
+        "skin": "vertical",
+        "components": {
+          "title": {
+            "inactive": false,
+            "enabled": true
+          },
+          "icon": {
+            "inactive": true,
+            "enabled": true
+          },
+          "secondaryTitle": {
+            "inactive": true,
+            "enabled": true
+          }
+        },
+        "indicator/numeric": {
+          "subtype": "simple",
+          "skin": "vertical",
+          "components": {
+            "title": {
+              "inactive": false,
+              "enabled": true
+            },
+            "icon": {
+              "inactive": false,
+              "enabled": true
+            },
+            "secondaryTitle": {
+              "inactive": true,
+              "enabled": true
+            }
+          }
+        },
+        "indicator/gauge": {
+          "subtype": "round",
+          "skin": "1",
+          "components": {
+            "ticks": {
+              "inactive": false,
+              "enabled": true
+            },
+            "labels": {
+              "inactive": false,
+              "enabled": true
+            },
+            "title": {
+              "inactive": false,
+              "enabled": true
+            },
+            "secondaryTitle": {
+              "inactive": true,
+              "enabled": true
+            }
+          }
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": []
+        }
+      },
+      "instanceid": "11340-4161-21",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 3,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": false,
+        "disallowSelector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "supportsHierarchies": false
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "lastOpened": null
+    },
+    {
+      "title": "",
+      "type": "chart/column",
+      "subtype": "column/classic",
+      "oid": "633c68f6b01182003760ac8b",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": true
+        },
+        "panels": [
+          {
+            "name": "categories",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_session_global_filter",
+                  "column": "event_time",
+                  "dim": "[prob_session_global_filter.event_time (Calendar)]",
+                  "datatype": "datetime",
+                  "merged": true,
+                  "level": "weeks",
+                  "title": "Weeks in event_time",
+                  "firstday": "mon"
+                },
+                "format": {
+                  "mask": {
+                    "years": "yyyy",
+                    "quarters": "yyyy Q",
+                    "months": "MM/yyyy",
+                    "weeks": "MMM-dd-yy",
+                    "days": "shortDate",
+                    "minutes": "HH:mm"
+                  }
+                },
+                "hierarchies": [
+                  "calendar",
+                  "calendar - weeks"
+                ],
+                "instanceid": "5F046-F98D-93"
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "[2C0B5-98C]*[C274F-0FF]",
+                  "context": {
+                    "[C274F-0FF]": {
+                      "table": "prob_model_table_params",
+                      "column": "weely_marketing_spend_per_user",
+                      "dim": "[prob_model_table_params.weely_marketing_spend_per_user]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total weely_marketing_spend_per_user"
+                    },
+                    "[2C0B5-98C]": {
+                      "table": "prob_model_table_params",
+                      "column": "deduped_ids",
+                      "dim": "[prob_model_table_params.deduped_ids]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total deduped_ids"
+                    }
+                  },
+                  "title": "Weekly Savings on Marketing Spend"
+                },
+                "format": {
+                  "mask": {
+                    "abbreviations": {
+                      "t": false,
+                      "b": false,
+                      "m": true,
+                      "k": true
+                    },
+                    "decimals": 1,
+                    "currency": {
+                      "symbol": "$",
+                      "position": "pre"
+                    }
+                  },
+                  "color": {
+                    "steps": 0,
+                    "minvalue": null,
+                    "midvalue": null,
+                    "maxvalue": null,
+                    "minValueValid": true,
+                    "midValueValid": true,
+                    "maxValueValid": true,
+                    "type": "range",
+                    "rangeMode": "both"
+                  }
+                },
+                "instanceid": "7035F-1BDC-F4"
+              }
+            ]
+          },
+          {
+            "name": "break by",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ],
+        "usedFormulasMapping": {}
+      },
+      "style": {
+        "legend": {
+          "enabled": true,
+          "position": "top"
+        },
+        "seriesLabels": {
+          "enabled": true,
+          "rotation": 0,
+          "labels": {
+            "enabled": false,
+            "stacked": false,
+            "stackedPercentage": false,
+            "types": {
+              "count": false,
+              "relative": false,
+              "percentage": false,
+              "totals": false
+            }
+          }
+        },
+        "xAxis": {
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "x2Title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "isIntervalEnabled": false
+        },
+        "yAxis": {
+          "inactive": false,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "y2Axis": {
+          "inactive": true,
+          "enabled": true,
+          "ticks": true,
+          "labels": {
+            "enabled": true,
+            "rotation": 0
+          },
+          "title": {
+            "enabled": false
+          },
+          "gridLines": false,
+          "logarithmic": false,
+          "isIntervalEnabled": true,
+          "hideMinMax": false
+        },
+        "navigator": {
+          "enabled": true
+        },
+        "dataLimits": {
+          "seriesCapacity": 50,
+          "categoriesCapacity": 100000
+        },
+        "lineWidth": {
+          "width": "thin"
+        },
+        "markers": {
+          "enabled": false,
+          "fill": "filled",
+          "size": "small"
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "weeks_in_event_time",
+              "title": "Weeks in event_time",
+              "singular": "Weeks in event_time",
+              "plural": "Weeks in event_time"
+            }
+          ]
+        }
+      },
+      "instanceid": "CB7A6-4692-FE",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 1,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "viewState": {
+        "activeTab": "design"
+      },
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "drillToAnywhere": true,
+        "previousScrollerLocation": {
+          "min": null,
+          "max": null
+        }
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "lastOpened": null,
+      "realTimeRefreshing": false
+    },
+    {
+      "title": ".",
+      "type": "BloX",
+      "subtype": "BloX",
+      "oid": "633c68f6b01182003760ac8c",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "Items",
+            "items": []
+          },
+          {
+            "name": "Values",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ]
+      },
+      "style": {
+        "currentCard": {
+          "style": "",
+          "script": "",
+          "titleStyle": [
+            {
+              "display": "none"
+            }
+          ],
+          "showCarousel": true,
+          "backgroundImage": "",
+          "backgroundColor": "#5b70fe",
+          "body": [
+            {
+              "type": "Container",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Deduplication Rate & Savings Tracker",
+                  "style": {
+                    "text-align": "center",
+                    "color": "white",
+                    "font-weight": "bold",
+                    "font-size": "24px",
+                    "margin": "2px"
+                  }
+                }
+              ]
+            }
+          ],
+          "actions": []
+        },
+        "currentConfig": {
+          "fontFamily": "Open Sans",
+          "fontSizes": {
+            "default": 14,
+            "small": 16,
+            "medium": 20,
+            "large": 50,
+            "extraLarge": 32
+          },
+          "fontWeights": {
+            "default": 500,
+            "light": 100,
+            "bold": 1000
+          },
+          "containerStyles": {
+            "default": {
+              "backgroundColor": "#5b70fe",
+              "foregroundColors": {
+                "default": {
+                  "normal": "#000000"
+                },
+                "white": {
+                  "normal": "#ffffff"
+                },
+                "grey": {
+                  "normal": "#5C6372"
+                },
+                "orange": {
+                  "normal": "#f2B900"
+                },
+                "yellow": {
+                  "normal": "#ffcb05"
+                },
+                "black": {
+                  "normal": "#000000"
+                },
+                "lightGreen": {
+                  "normal": "#3ADCCA"
+                },
+                "green": {
+                  "normal": "#54a254"
+                },
+                "red": {
+                  "normal": "#dd1111"
+                },
+                "accent": {
+                  "normal": "#2E89FC"
+                },
+                "good": {
+                  "normal": "#54a254"
+                },
+                "warning": {
+                  "normal": "#e69500"
+                },
+                "attention": {
+                  "normal": "#cc3300"
+                }
+              }
+            }
+          },
+          "imageSizes": {
+            "default": 40,
+            "small": 40,
+            "medium": 80,
+            "large": 160
+          },
+          "imageSet": {
+            "imageSize": "medium",
+            "maxImageHeight": 100
+          },
+          "actions": {
+            "color": "",
+            "backgroundColor": "white",
+            "maxActions": 5,
+            "spacing": "extraLarge",
+            "buttonSpacing": 20,
+            "actionsOrientation": "horizontal",
+            "actionAlignment": "center",
+            "showCard": {
+              "actionMode": "inline",
+              "inlineTopMargin": 16,
+              "style": "default"
+            }
+          },
+          "spacing": {
+            "default": 5,
+            "small": 20,
+            "medium": 60,
+            "large": 20,
+            "extraLarge": 40,
+            "padding": 0
+          },
+          "separator": {
+            "lineThickness": 1,
+            "lineColor": "#eeeeee"
+          },
+          "factSet": {
+            "title": {
+              "size": "default",
+              "color": "default",
+              "weight": "bold",
+              "warp": true
+            },
+            "value": {
+              "size": "default",
+              "color": "default",
+              "weight": "default",
+              "warp": true
+            },
+            "spacing": 20
+          },
+          "supportsInteractivity": true,
+          "imageBaseUrl": "",
+          "height": 36.7045
+        },
+        "currentCardName": "default",
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": []
+        }
+      },
+      "instanceid": "DEA11-078D-1F",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 4,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "drilledDashboardDisplay": {},
+      "options": {
+        "dashboardFiltersMode": "select",
+        "selector": true,
+        "title": false,
+        "drillTarget": "dummy",
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "lastOpened": null
+    },
+    {
+      "title": ".",
+      "type": "BloX",
+      "subtype": "BloX",
+      "oid": "633c68f6b01182003760ac8d",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "Items",
+            "items": []
+          },
+          {
+            "name": "Values",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ]
+      },
+      "style": {
+        "currentCard": {
+          "style": "",
+          "script": "",
+          "titleStyle": [
+            {
+              "display": "none"
+            }
+          ],
+          "showCarousel": true,
+          "backgroundImage": "",
+          "backgroundColor": "#5b70fe",
+          "body": [
+            {
+              "type": "Container",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Unification Clusters Statistics",
+                  "style": {
+                    "text-align": "center",
+                    "color": "white",
+                    "font-weight": "bold",
+                    "font-size": "24px",
+                    "margin": "2px"
+                  }
+                }
+              ]
+            }
+          ],
+          "actions": []
+        },
+        "currentConfig": {
+          "fontFamily": "Open Sans",
+          "fontSizes": {
+            "default": 14,
+            "small": 16,
+            "medium": 20,
+            "large": 50,
+            "extraLarge": 32
+          },
+          "fontWeights": {
+            "default": 500,
+            "light": 100,
+            "bold": 1000
+          },
+          "containerStyles": {
+            "default": {
+              "backgroundColor": "#5b70fe",
+              "foregroundColors": {
+                "default": {
+                  "normal": "#000000"
+                },
+                "white": {
+                  "normal": "#ffffff"
+                },
+                "grey": {
+                  "normal": "#5C6372"
+                },
+                "orange": {
+                  "normal": "#f2B900"
+                },
+                "yellow": {
+                  "normal": "#ffcb05"
+                },
+                "black": {
+                  "normal": "#000000"
+                },
+                "lightGreen": {
+                  "normal": "#3ADCCA"
+                },
+                "green": {
+                  "normal": "#54a254"
+                },
+                "red": {
+                  "normal": "#dd1111"
+                },
+                "accent": {
+                  "normal": "#2E89FC"
+                },
+                "good": {
+                  "normal": "#54a254"
+                },
+                "warning": {
+                  "normal": "#e69500"
+                },
+                "attention": {
+                  "normal": "#cc3300"
+                }
+              }
+            }
+          },
+          "imageSizes": {
+            "default": 40,
+            "small": 40,
+            "medium": 80,
+            "large": 160
+          },
+          "imageSet": {
+            "imageSize": "medium",
+            "maxImageHeight": 100
+          },
+          "actions": {
+            "color": "",
+            "backgroundColor": "white",
+            "maxActions": 5,
+            "spacing": "extraLarge",
+            "buttonSpacing": 20,
+            "actionsOrientation": "horizontal",
+            "actionAlignment": "center",
+            "showCard": {
+              "actionMode": "inline",
+              "inlineTopMargin": 16,
+              "style": "default"
+            }
+          },
+          "spacing": {
+            "default": 5,
+            "small": 20,
+            "medium": 60,
+            "large": 20,
+            "extraLarge": 40,
+            "padding": 0
+          },
+          "separator": {
+            "lineThickness": 1,
+            "lineColor": "#eeeeee"
+          },
+          "factSet": {
+            "title": {
+              "size": "default",
+              "color": "default",
+              "weight": "bold",
+              "warp": true
+            },
+            "value": {
+              "size": "default",
+              "color": "default",
+              "weight": "default",
+              "warp": true
+            },
+            "spacing": 20
+          },
+          "supportsInteractivity": true,
+          "imageBaseUrl": "",
+          "height": 36.7045
+        },
+        "currentCardName": "default",
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": []
+        }
+      },
+      "instanceid": "DEA11-078D-1F",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 4,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "drilledDashboardDisplay": {},
+      "options": {
+        "dashboardFiltersMode": "select",
+        "selector": true,
+        "title": false,
+        "drillTarget": "dummy",
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "lastOpened": null
+    },
+    {
+      "title": "Similarity Metrics",
+      "type": "indicator",
+      "subtype": "indicator/gauge",
+      "oid": "633c68f6b01182003760ac8e",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "value",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "[6C489-D2C]",
+                  "context": {
+                    "[6C489-D2C]": {
+                      "table": "prob_model_table_params",
+                      "column": "jaccard_sim_threshold",
+                      "dim": "[prob_model_table_params.jaccard_sim_threshold]",
+                      "datatype": "numeric",
+                      "agg": "sum",
+                      "title": "Total jaccard_sim_threshold"
+                    }
+                  },
+                  "title": "Jaccard Similarity Threshold"
+                },
+                "format": {
+                  "mask": {
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": true
+                    },
+                    "decimals": 2,
+                    "number": {
+                      "separated": true
+                    }
+                  },
+                  "color": {
+                    "type": "condition",
+                    "conditions": [
+                      {
+                        "color": "#fbb755",
+                        "operator": "<",
+                        "expression": "0.5",
+                        "expressionValue": "0.5"
+                      },
+                      {
+                        "color": "#6eda55",
+                        "operator": "≥",
+                        "expression": "0.5",
+                        "expressionValue": "0.5"
+                      },
+                      {
+                        "color": "#00adc1",
+                        "operator": "≥",
+                        "expression": "0.8",
+                        "expressionValue": "0.8"
+                      }
+                    ]
+                  }
+                },
+                "instanceid": "0866F-B323-F9"
+              }
+            ]
+          },
+          {
+            "name": "secondary",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_model_table_params",
+                  "column": "cluster_threshold",
+                  "dim": "[prob_model_table_params.cluster_threshold]",
+                  "datatype": "numeric",
+                  "agg": "sum",
+                  "title": "Cluster Threshold"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": false
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                },
+                "instanceid": "743A9-0824-63"
+              }
+            ]
+          },
+          {
+            "name": "min",
+            "items": [
+              {
+                "jaql": {
+                  "formula": "0",
+                  "title": "0 (default)"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": false
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                },
+                "instanceid": "5F43C-CDDC-72"
+              }
+            ]
+          },
+          {
+            "name": "max",
+            "items": [
+              {
+                "jaql": {
+                  "type": "measure",
+                  "formula": "1",
+                  "context": {},
+                  "title": "1"
+                },
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "abbreviations": {
+                      "t": true,
+                      "b": true,
+                      "m": true,
+                      "k": false
+                    },
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  }
+                },
+                "instanceid": "AD64D-87B1-47"
+              }
+            ]
+          },
+          {
+            "name": "filters",
+            "items": []
+          }
+        ],
+        "usedFormulasMapping": {}
+      },
+      "style": {
+        "subtype": "round",
+        "skin": "1",
+        "components": {
+          "ticks": {
+            "inactive": false,
+            "enabled": false
+          },
+          "labels": {
+            "inactive": false,
+            "enabled": true
+          },
+          "title": {
+            "inactive": false,
+            "enabled": true
+          },
+          "secondaryTitle": {
+            "inactive": false,
+            "enabled": true
+          }
+        },
+        "narration": {
+          "labels": []
+        },
+        "indicator/numeric": {
+          "subtype": "simple",
+          "skin": "vertical",
+          "components": {
+            "title": {
+              "inactive": false,
+              "enabled": true
+            },
+            "icon": {
+              "inactive": false,
+              "enabled": true
+            },
+            "secondaryTitle": {
+              "inactive": true,
+              "enabled": true
+            }
+          }
+        },
+        "indicator/gauge": {
+          "subtype": "round",
+          "skin": "1",
+          "components": {
+            "ticks": {
+              "inactive": false,
+              "enabled": true
+            },
+            "labels": {
+              "inactive": false,
+              "enabled": true
+            },
+            "title": {
+              "inactive": false,
+              "enabled": true
+            },
+            "secondaryTitle": {
+              "inactive": true,
+              "enabled": true
+            }
+          }
+        }
+      },
+      "instanceid": "11340-4161-21",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 3,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": false,
+        "disallowSelector": true,
+        "triggersDomready": true,
+        "autoUpdateOnEveryChange": true,
+        "supportsHierarchies": false
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "lastOpened": null
+    },
+    {
+      "title": "IDs Causing Over-Merging #1",
+      "type": "pivot2",
+      "subtype": "pivot2",
+      "oid": "653ffd7bff412e00331a075b",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "rows",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "column_name",
+                  "dim": "[prob_eda_input_columns.column_name]",
+                  "datatype": "text",
+                  "merged": true,
+                  "title": "Column"
+                },
+                "instanceid": "79A77-B3B0-08",
+                "field": {
+                  "id": "[prob_eda_input_columns.column_name]",
+                  "index": 0
+                },
+                "panel": "rows",
+                "format": {
+                  "width": 99.75
+                }
+              },
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "col_value",
+                  "dim": "[prob_eda_input_columns.col_value]",
+                  "datatype": "text",
+                  "merged": true,
+                  "title": "Value"
+                },
+                "instanceid": "6C3D9-7427-3F",
+                "field": {
+                  "id": "[prob_eda_input_columns.col_value]",
+                  "index": 1
+                },
+                "panel": "rows",
+                "format": {
+                  "width": 119.71875
+                }
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "value_counts",
+                  "dim": "[prob_eda_input_columns.value_counts]",
+                  "datatype": "numeric",
+                  "title": "Value Counts",
+                  "sort": "desc",
+                  "sortDetails": {
+                    "field": 2,
+                    "dir": "desc",
+                    "sortingLastDimension": "sum",
+                    "initialized": true,
+                    "isLastApplied": true
+                  },
+                  "agg": "sum"
+                },
+                "instanceid": "A8BE2-1F01-3B",
+                "field": {
+                  "id": "[prob_eda_input_columns.value_counts]_sum",
+                  "index": 2
+                },
+                "panel": "measures",
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "t": true,
+                    "b": true,
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  },
+                  "color": {
+                    "type": "color"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "columns",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "col_idx",
+                  "dim": "[prob_eda_input_columns.col_idx]",
+                  "datatype": "numeric",
+                  "filter": {
+                    "explicit": true,
+                    "multiSelection": true,
+                    "members": [
+                      "1"
+                    ]
+                  },
+                  "collapsed": true,
+                  "title": "col_idx",
+                  "datasource": {
+                    "fullname": "localhost/dm_11125_prob_unification_prod",
+                    "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "address": "LocalHost",
+                    "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "live": false,
+                    "title": "dm_11125_prob_unification_prod"
+                  }
+                },
+                "instanceid": "1CC52-FD5B-B3",
+                "panel": "scope"
+              }
+            ]
+          }
+        ],
+        "usedFormulasMapping": {}
+      },
+      "style": {
+        "scroll": false,
+        "pageSize": 25,
+        "automaticHeight": true,
+        "colors": {
+          "rows": true,
+          "columns": false,
+          "headers": false,
+          "members": false,
+          "totals": false
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "column",
+              "title": "Column",
+              "singular": "Column",
+              "plural": "Column"
+            },
+            {
+              "id": "value",
+              "title": "Value",
+              "singular": "Value",
+              "plural": "Value"
+            },
+            {
+              "id": "col_idx",
+              "title": "col_idx",
+              "singular": "col_idx",
+              "plural": "col_idx"
+            }
+          ]
+        }
+      },
+      "instanceid": "3DAF8-8AE4-B6",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 2,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "realTimeRefreshing": false,
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": false,
+        "triggersDomready": true,
+        "drillToAnywhere": true,
+        "autoUpdateOnEveryChange": true
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "viewState": {
+        "activeTab": "filters"
+      },
+      "lastOpened": null
+    },
+    {
+      "title": "IDs Causing Over-Merging #3",
+      "type": "pivot2",
+      "subtype": "pivot2",
+      "oid": "654071bf58589b00334a33c3",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "rows",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "column_name",
+                  "dim": "[prob_eda_input_columns.column_name]",
+                  "datatype": "text",
+                  "merged": true,
+                  "title": "Column"
+                },
+                "instanceid": "79A77-B3B0-08",
+                "field": {
+                  "id": "[prob_eda_input_columns.column_name]",
+                  "index": 0
+                },
+                "panel": "rows",
+                "format": {
+                  "width": 99.75
+                }
+              },
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "col_value",
+                  "dim": "[prob_eda_input_columns.col_value]",
+                  "datatype": "text",
+                  "merged": true,
+                  "title": "Value"
+                },
+                "instanceid": "6C3D9-7427-3F",
+                "field": {
+                  "id": "[prob_eda_input_columns.col_value]",
+                  "index": 1
+                },
+                "panel": "rows",
+                "format": {
+                  "width": 119.71875
+                }
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "value_counts",
+                  "dim": "[prob_eda_input_columns.value_counts]",
+                  "datatype": "numeric",
+                  "title": "Value Counts",
+                  "sort": "desc",
+                  "sortDetails": {
+                    "field": 2,
+                    "dir": "desc",
+                    "sortingLastDimension": "sum",
+                    "initialized": true,
+                    "isLastApplied": true
+                  },
+                  "agg": "sum"
+                },
+                "instanceid": "A8BE2-1F01-3B",
+                "field": {
+                  "id": "[prob_eda_input_columns.value_counts]_sum",
+                  "index": 2
+                },
+                "panel": "measures",
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "t": true,
+                    "b": true,
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  },
+                  "color": {
+                    "type": "color"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "columns",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "col_idx",
+                  "dim": "[prob_eda_input_columns.col_idx]",
+                  "datatype": "numeric",
+                  "filter": {
+                    "explicit": true,
+                    "multiSelection": true,
+                    "members": [
+                      "3"
+                    ]
+                  },
+                  "collapsed": true,
+                  "title": "col_idx",
+                  "datasource": {
+                    "fullname": "localhost/dm_11125_prob_unification_prod",
+                    "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "address": "LocalHost",
+                    "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "live": false,
+                    "title": "dm_11125_prob_unification_prod"
+                  }
+                },
+                "instanceid": "1CC52-FD5B-B3",
+                "panel": "scope"
+              }
+            ]
+          }
+        ],
+        "usedFormulasMapping": {}
+      },
+      "style": {
+        "scroll": false,
+        "pageSize": 25,
+        "automaticHeight": true,
+        "colors": {
+          "rows": true,
+          "columns": false,
+          "headers": false,
+          "members": false,
+          "totals": false
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "column",
+              "title": "Column",
+              "singular": "Column",
+              "plural": "Column"
+            },
+            {
+              "id": "value",
+              "title": "Value",
+              "singular": "Value",
+              "plural": "Value"
+            },
+            {
+              "id": "col_idx",
+              "title": "col_idx",
+              "singular": "col_idx",
+              "plural": "col_idx"
+            }
+          ]
+        }
+      },
+      "instanceid": "3DAF8-8AE4-B6",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 2,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "realTimeRefreshing": false,
+      "viewState": {
+        "activeTab": "filters"
+      },
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": false,
+        "triggersDomready": true,
+        "drillToAnywhere": true,
+        "autoUpdateOnEveryChange": true
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "lastOpened": null
+    },
+    {
+      "title": "IDs Causing Over-Merging #2",
+      "type": "pivot2",
+      "subtype": "pivot2",
+      "oid": "654071c858589b00334a33c5",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": false
+        },
+        "panels": [
+          {
+            "name": "rows",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "column_name",
+                  "dim": "[prob_eda_input_columns.column_name]",
+                  "datatype": "text",
+                  "merged": true,
+                  "title": "Column"
+                },
+                "instanceid": "79A77-B3B0-08",
+                "field": {
+                  "id": "[prob_eda_input_columns.column_name]",
+                  "index": 0
+                },
+                "panel": "rows",
+                "format": {
+                  "width": 99.75
+                }
+              },
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "col_value",
+                  "dim": "[prob_eda_input_columns.col_value]",
+                  "datatype": "text",
+                  "merged": true,
+                  "title": "Value"
+                },
+                "instanceid": "6C3D9-7427-3F",
+                "field": {
+                  "id": "[prob_eda_input_columns.col_value]",
+                  "index": 1
+                },
+                "panel": "rows",
+                "format": {
+                  "width": 119.71875
+                }
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "value_counts",
+                  "dim": "[prob_eda_input_columns.value_counts]",
+                  "datatype": "numeric",
+                  "title": "Value Counts",
+                  "sort": "desc",
+                  "sortDetails": {
+                    "field": 2,
+                    "dir": "desc",
+                    "sortingLastDimension": "sum",
+                    "initialized": true,
+                    "isLastApplied": true
+                  },
+                  "agg": "sum"
+                },
+                "instanceid": "A8BE2-1F01-3B",
+                "field": {
+                  "id": "[prob_eda_input_columns.value_counts]_sum",
+                  "index": 2
+                },
+                "panel": "measures",
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "t": true,
+                    "b": true,
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  },
+                  "color": {
+                    "type": "color"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "columns",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "col_idx",
+                  "dim": "[prob_eda_input_columns.col_idx]",
+                  "datatype": "numeric",
+                  "filter": {
+                    "explicit": true,
+                    "multiSelection": true,
+                    "members": [
+                      "2"
+                    ]
+                  },
+                  "collapsed": true,
+                  "title": "col_idx",
+                  "datasource": {
+                    "fullname": "localhost/dm_11125_prob_unification_prod",
+                    "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "address": "LocalHost",
+                    "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "live": false,
+                    "title": "dm_11125_prob_unification_prod"
+                  }
+                },
+                "instanceid": "1CC52-FD5B-B3",
+                "panel": "scope"
+              }
+            ]
+          }
+        ],
+        "usedFormulasMapping": {}
+      },
+      "style": {
+        "scroll": false,
+        "pageSize": 25,
+        "automaticHeight": true,
+        "colors": {
+          "rows": true,
+          "columns": false,
+          "headers": false,
+          "members": false,
+          "totals": false
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "column",
+              "title": "Column",
+              "singular": "Column",
+              "plural": "Column"
+            },
+            {
+              "id": "value",
+              "title": "Value",
+              "singular": "Value",
+              "plural": "Value"
+            },
+            {
+              "id": "col_idx",
+              "title": "col_idx",
+              "singular": "col_idx",
+              "plural": "col_idx"
+            }
+          ]
+        }
+      },
+      "instanceid": "3DAF8-8AE4-B6",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 2,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "realTimeRefreshing": false,
+      "viewState": {
+        "activeTab": "filters"
+      },
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": false,
+        "triggersDomready": true,
+        "drillToAnywhere": true,
+        "autoUpdateOnEveryChange": true
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "lastOpened": null
+    },
+    {
+      "title": "Excluded Values",
+      "type": "pivot2",
+      "subtype": "pivot2",
+      "oid": "654071cb58589b00334a33c7",
+      "desc": null,
+      "source": null,
+      "datasource": {
+        "fullname": "localhost/dm_11125_prob_unification_prod",
+        "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "address": "LocalHost",
+        "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+        "live": false,
+        "title": "dm_11125_prob_unification_prod"
+      },
+      "selection": null,
+      "metadata": {
+        "ignore": {
+          "dimensions": [],
+          "ids": [],
+          "all": true
+        },
+        "panels": [
+          {
+            "name": "rows",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "session_id",
+                  "dim": "[prob_eda_input_columns.session_id]",
+                  "datatype": "numeric",
+                  "merged": true,
+                  "title": "Session ID"
+                },
+                "instanceid": "32474-4006-78",
+                "panel": "rows",
+                "field": {
+                  "id": "[prob_eda_input_columns.session_id]",
+                  "index": 0
+                },
+                "format": {
+                  "width": 99
+                }
+              },
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "column_name",
+                  "dim": "[prob_eda_input_columns.column_name]",
+                  "datatype": "text",
+                  "merged": true,
+                  "title": "Column"
+                },
+                "instanceid": "79A77-B3B0-08",
+                "field": {
+                  "id": "[prob_eda_input_columns.column_name]",
+                  "index": 1
+                },
+                "panel": "rows",
+                "format": {
+                  "width": 98.75
+                }
+              },
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "col_value",
+                  "dim": "[prob_eda_input_columns.col_value]",
+                  "datatype": "text",
+                  "merged": true,
+                  "title": "Value"
+                },
+                "instanceid": "6C3D9-7427-3F",
+                "field": {
+                  "id": "[prob_eda_input_columns.col_value]",
+                  "index": 2
+                },
+                "panel": "rows",
+                "format": {
+                  "width": 150.71875
+                }
+              }
+            ]
+          },
+          {
+            "name": "values",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "value_counts",
+                  "dim": "[prob_eda_input_columns.value_counts]",
+                  "datatype": "numeric",
+                  "title": "Value Counts",
+                  "agg": "sum",
+                  "sort": "desc",
+                  "sortDetails": {
+                    "field": 2,
+                    "dir": "desc",
+                    "sortingLastDimension": "sum",
+                    "isLastApplied": true,
+                    "initialized": true
+                  }
+                },
+                "instanceid": "A8BE2-1F01-3B",
+                "field": {
+                  "id": "[prob_eda_input_columns.value_counts]_sum",
+                  "index": 3
+                },
+                "panel": "measures",
+                "format": {
+                  "mask": {
+                    "type": "number",
+                    "t": true,
+                    "b": true,
+                    "separated": true,
+                    "decimals": "auto",
+                    "isdefault": true
+                  },
+                  "color": {
+                    "type": "color"
+                  },
+                  "width": 99.5
+                }
+              }
+            ]
+          },
+          {
+            "name": "columns",
+            "items": []
+          },
+          {
+            "name": "filters",
+            "items": [
+              {
+                "jaql": {
+                  "table": "prob_eda_input_columns",
+                  "column": "session_idx",
+                  "dim": "[prob_eda_input_columns.session_idx]",
+                  "datatype": "numeric",
+                  "filter": {
+                    "explicit": true,
+                    "multiSelection": true,
+                    "members": [
+                      "2"
+                    ]
+                  },
+                  "collapsed": true,
+                  "title": "session_idx",
+                  "datasource": {
+                    "fullname": "localhost/dm_11125_prob_unification_prod",
+                    "id": "localhost_admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "address": "LocalHost",
+                    "database": "admXwAa11125XwAaprobXwAaunificationXwAaprod",
+                    "live": false,
+                    "title": "dm_11125_prob_unification_prod"
+                  }
+                },
+                "instanceid": "47E17-777D-9C",
+                "panel": "scope"
+              }
+            ]
+          }
+        ],
+        "usedFormulasMapping": {}
+      },
+      "style": {
+        "scroll": false,
+        "pageSize": 25,
+        "automaticHeight": true,
+        "colors": {
+          "rows": true,
+          "columns": false,
+          "headers": false,
+          "members": false,
+          "totals": false
+        },
+        "narration": {
+          "enabled": false,
+          "display": "above",
+          "format": "bullets",
+          "verbosity": "medium",
+          "up_sentiment": "good",
+          "aggregation": "sum",
+          "labels": [
+            {
+              "id": "session_id",
+              "title": "session_id",
+              "singular": "session_id",
+              "plural": "session_id"
+            },
+            {
+              "id": "column",
+              "title": "Column",
+              "singular": "Column",
+              "plural": "Column"
+            },
+            {
+              "id": "value",
+              "title": "Value",
+              "singular": "Value",
+              "plural": "Value"
+            },
+            {
+              "id": "session_idx",
+              "title": "session_idx",
+              "singular": "session_idx",
+              "plural": "session_idx"
+            }
+          ]
+        }
+      },
+      "instanceid": "3DAF8-8AE4-B6",
+      "drillToDashboardConfig": {
+        "drilledDashboardPrefix": "_drill",
+        "drilledDashboardsFolderPrefix": "",
+        "displayFilterPane": true,
+        "displayDashboardsPane": true,
+        "displayToolbarRow": true,
+        "displayHeaderRow": true,
+        "volatile": false,
+        "hideDrilledDashboards": true,
+        "hideSharedDashboardsForNonOwner": true,
+        "drillToDashboardMenuCaption": "Jump to dashboard",
+        "drillToDashboardRightMenuCaption": "Jump to ",
+        "drillToDashboardNavigateType": 2,
+        "drillToDashboardNavigateTypePivot": 2,
+        "drillToDashboardNavigateTypeCharts": 1,
+        "drillToDashboardNavigateTypeOthers": 3,
+        "excludeFilterDims": [],
+        "includeFilterDims": [],
+        "drilledDashboardDisplayType": 2,
+        "dashboardIds": [],
+        "modalWindowResize": false,
+        "showFolderNameOnMenuSelection": false,
+        "resetDashFiltersAfterJTD": false,
+        "sameCubeRestriction": true,
+        "showJTDIcon": true,
+        "sendPieChartMeasureFiltersOnClick": true,
+        "forceZeroInsteadNull": false,
+        "mergeTargetDashboardFilters": false,
+        "saveDisabledTargetFilters": false,
+        "drillToDashboardByName": false
+      },
+      "realTimeRefreshing": false,
+      "viewState": {
+        "activeTab": "filters"
+      },
+      "options": {
+        "dashboardFiltersMode": "filter",
+        "selector": false,
+        "triggersDomready": true,
+        "drillToAnywhere": true,
+        "autoUpdateOnEveryChange": true
+      },
+      "dashboardid": "633c68f6b01182003760ac80",
+      "lastOpened": null
+    }
+  ],
+  "hierarchies": []
+}

@@ -1,0 +1,328 @@
+_export:
+  !include : config/src_params.yml
+  !include : config/unify.yml
+
+### Unification Pre Process
++pre_process:
+  ### Parse and merged_keys defined in YML to be used in later tasks
+  +genrt_dynm_flds:
+    td>: queries/0_genrt_dynm_flds_0.sql
+    database: ${dest_db}
+    store_last_results: true
+
+  +work_profile:
+    td>: queries/1_profile.sql
+    database: ${dest_db}
+
+  +crt_unif_db:
+    td_ddl>:
+    create_databases: ["cdp_unification_${unif_name}"]
+    database: ${dest_db}
+
+  +crt_unif_input_tbl:
+    if>: ${unif_type=="full"}
+    _do:
+      +full_print:
+        echo>: "Running Unification in Full Mode"
+      ### Create ${dest_db}.work_profile_unify table for unification input
+      +creat_tbl:
+        td>: queries/2_profile_full.sql
+        database: ${dest_db}
+
+      ### Log the incremental records into log table.
+      +log_records:
+        td>:
+        query: "select 'Unification Input Records(${unif_type})' as step, cast(to_unixtime(CURRENT_TIMESTAMP) as bigint) as time, (select count(1) from ${dest_db}.${unif_src_tbl}) as records, cast(null as integer) latest_ingest_time, '${dest_db}.${dest_tbl}' as src_tbl, '${dest_db}.${unif_src_tbl}' as dest_tbl, ${session_id} as session_id, ${attempt_id} as attempt_id"
+        database: cdp_unification_${unif_name}
+        insert_into: unif_log
+
+    _else_do:
+      +inc_print:
+        echo>: "Running Unification in Incremental Mode"
+
+      ### Get records into ${dest_db}.${unif_src_tbl}_inc from ${dest_db}.${unif_src_tbl}
+      +get_inc_records:
+        td>: queries/3_get_inc_records.sql
+        database: ${dest_db}
+
+      ### Log the incremental records into log table.
+      +log_records:
+        td>:
+        query: "select 'Get Inc Records(${unif_type})' as step, cast(to_unixtime(CURRENT_TIMESTAMP) as bigint) as time, (select count(1) from ${dest_db}.${unif_src_tbl}_inc) as records, (select max(ingest_time) from ${dest_db}.${dest_tbl}) as latest_ingest_time, '${dest_db}.${dest_tbl}' as src_tbl, '${dest_db}.${unif_src_tbl}_inc' as dest_tbl, ${session_id} as session_id, ${attempt_id} as attempt_id"
+        database: cdp_unification_${unif_name}
+        insert_into: unif_log
+
+      ### Get matching inc profiles into ${dest_db}.${unif_src_tbl}_inc_matched_id_dupe from ${dest_db}.${unif_src_tbl}_inc and cdp_unification_${unif_name}.${unif_src_tbl}_full
+      +get_matching_inc_records:
+        +drop_tbl:
+          td_ddl>:
+          drop_tables: ["${dest_db}.${unif_src_tbl}_inc_matched_id_dupe"]
+          database: ${dest_db}
+
+        +crt_tbl:
+          td>:
+          query: "CREATE TABLE ${dest_db}.${unif_src_tbl}_inc_matched_id_dupe (${canonical_id_name} varchar) ${td.last_results.bucket_config};"
+          database: ${dest_db}
+
+        +repeat:
+          if>: ${multiple_keycols_of_same_keytype=="no"}
+          _do:
+            +keys_no:
+              _parallel: true
+              for_each>:
+                key: ${td.last_results.keys_for_loop}
+              _do:
+                +insrt:
+                  td>: queries/4_get_matching_inc_records_${multiple_keycols_of_same_keytype}.sql
+                  database: ${dest_db}
+                  insert_into: ${dest_db}.${unif_src_tbl}_inc_matched_id_dupe
+          _else_do:
+            +keys_yes:
+              _parallel: true
+              for_each>:
+                list: ${multiple_keys_map}
+              _do:
+                +for_each_keys:
+                  _parallel: true
+                  td_for_each>: queries/4_for_each_multi_keys.sql
+                  _do:
+                    +insrt:
+                      td>: queries/4_get_matching_inc_records_${multiple_keycols_of_same_keytype}.sql
+                      database: ${dest_db}
+                      insert_into: ${dest_db}.${unif_src_tbl}_inc_matched_id_dupe
+
+
+      ### Store the unique matching profiles into ${dest_db}.${unif_src_tbl}_inc_matched_id
+      +store_unique_matching_profile:
+        td>:
+        query: "select ${canonical_id_name} from ${dest_db}.${unif_src_tbl}_inc_matched_id_dupe group by 1"
+        database: ${dest_db}
+        create_table: ${dest_db}.${unif_src_tbl}_inc_matched_id
+
+      +drop_tbl:
+        td_ddl>:
+        drop_tables: ["${dest_db}.${unif_src_tbl}_inc_matched"]
+        database: ${dest_db}
+
+      +crt_tbl:
+        td>:
+        query: "CREATE TABLE ${dest_db}.${unif_src_tbl}_inc_matched (${canonical_id_name} varchar) ${td.last_results.bucket_config};"
+        database: ${dest_db}
+
+      ### Get matching inc records into ${dest_db}.${unif_src_tbl}_inc_matched_id from ${dest_db}.${unif_src_tbl}_inc_matched_id and cdp_unification_${unif_name}.${unif_src_tbl}_full
+      +store_matching_records:
+        td>:
+        query: "select * from cdp_unification_${unif_name}.${unif_src_tbl}_full where ${canonical_id_name} in (select ${canonical_id_name} from ${dest_db}.${unif_src_tbl}_inc_matched_id)"
+        database: ${dest_db}
+        insert_into: ${dest_db}.${unif_src_tbl}_inc_matched
+
+      ### Log the matching incremental records into log table.
+      +log_records_match:
+        td>:
+        query: "select 'Get Matching Inc Records(${unif_type})' as step, cast(to_unixtime(CURRENT_TIMESTAMP) as bigint) as time, (select count(1) from ${dest_db}.${unif_src_tbl}_inc_matched) as records, (select max(ingest_time) from ${dest_db}.${dest_tbl}) as latest_ingest_time, 'cdp_unification_${unif_name}.${unif_src_tbl}_full, ${dest_db}.${unif_src_tbl}_inc' as src_tbl, '${dest_db}.${unif_src_tbl}_inc_matched' as dest_tbl, ${session_id} as session_id, ${attempt_id} as attempt_id"
+        database: cdp_unification_${unif_name}
+        insert_into: unif_log
+
+      ### Insert all inc matched records from earlier unification result into current unification inc table.
+      ### Insert into ${dest_db}.${unif_src_tbl}_inc FROM ${dest_db}.${unif_src_tbl}_inc_matched
+      +insert_matching_inc_records:
+        td>: queries/5_0_reconcile_matching_inc_records.sql
+        database: ${dest_db}
+
+      ### Unification Input table.
+      +rename_tbl:
+        td_ddl>:
+        rename_tables: [{from: "${dest_tbl}${unif_src_tbl_suffix}_inc_merged", to: "${dest_tbl}${unif_src_tbl_suffix}"}]
+        database: ${dest_db}
+
+      ### Log the total records feed to unification into log table
+      +log_records_unif:
+        td>:
+        query: "select 'Unification Input Records(${unif_type})' as step, cast(to_unixtime(CURRENT_TIMESTAMP) as bigint) as time, (select count(1) from ${dest_db}.${unif_src_tbl}) as records, (select max(ingest_time) from ${dest_db}.${dest_tbl}) as latest_ingest_time, 'cdp_unification_${unif_name}.${unif_src_tbl}_inc_matched, ${dest_db}.${unif_src_tbl}_inc' as src_tbl, '${dest_db}.${unif_src_tbl}' as dest_tbl, ${session_id} as session_id, ${attempt_id} as attempt_id"
+        database: cdp_unification_${unif_name}
+        insert_into: unif_log
+
++get_unif_data:
+  td>:
+  query: "select count(1) as inc_records from ${dest_db}.${unif_src_tbl}"
+  database: cdp_unification_${unif_name}
+  store_last_results: true
+
++check_if_data_exists:
+  if>: ${td.last_results.inc_records == 0}
+  _do:
+    +print_no_data:
+      echo>: "There is No New data available to Unify. Hence, Not Running the Unification."
+  _else_do:
+    +print_run_unif:
+      echo>: "There is New data available to Unify. Hence, Running the Unification."
+
+    #### Persistent_ID Unification
+    +call_unification:
+      http_call>: ${unif_wf_endpoint}
+      headers:
+        - authorization: ${secret:td.apikey}
+      method: POST
+      retry: true
+      content_format: json
+      content:
+        run_canonical_ids: true
+        run_persistent_ids: true
+        run_enrichments: true
+        run_master_tables: false
+        full_refresh: true
+        keep_debug_tables: true
+
+        unification:
+          !include : config/unify.yml
+
+
+    ### Unification Post Process
+    +post_process:
+      _parallel: true
+      +start:
+        +initialise_bucket_vars:
+          td>: queries/0_genrt_dynm_flds_0.sql
+          database: ${dest_db}
+          store_last_results: true
+        +check:
+          if>: ${unif_type=="inc"}
+          _do:
+            ### After running the unification, Remove the matching records from enriched and lookup table from pevious run.
+            +fix_tbls:
+              _parallel: true
+              +enrich:
+                td>: queries/5_1_reconcile_enrich.sql
+                database: cdp_unification_${unif_name}
+              +lkup:
+                +check:
+                  if>: ${run_pid_unif == "no"}
+                  _do:
+                    +lkup:
+                      td>: queries/5_2_reconcile_lkup_0.sql
+                      database: cdp_unification_${unif_name}
+                  _else_do:
+                    +lkup:
+                      td>: queries/5_2_reconcile_lkup_1.sql
+                      database: cdp_unification_${unif_name}
+
+        +enrich:
+          if>: ${unif_type=="full"}
+          _do:
+
+            ### take backup of ${canonical_id_name}_lookup and enriched table
+            +bkup:
+              _parallel: true
+              +bkup:
+                +run:
+                  if>: ${td.last_results.table_exists == true}
+                  _do:
+                    +crt_only_full:
+                      td>: queries/8_1_bkp_lookup_0.sql
+                      database: cdp_unification_${unif_name}
+                  _else_do:
+                    +crt_both_full_n_hist:
+                      td>: queries/8_1_bkp_lookup_1.sql
+                      database: cdp_unification_${unif_name}
+
+              +enriched:
+                td>: queries/8_2_bkp_enriched.sql
+                database: cdp_unification_${unif_name}
+
+          _else_do:
+            +inc_print:
+              echo>: "Running Unification in Incremental Mode"
+
+            ### reconcile enrich and lookup tbl
+            +reconcile:
+              _parallel: true
+              +enrich:
+                td>: queries/6_1_reconcile_enrich.sql
+                database: cdp_unification_${unif_name}
+              +lkup:
+                td>: queries/6_2_reconcile_lkup.sql
+                database: cdp_unification_${unif_name}
+
+            # attach canonical_id to ${dest_tbl} using "${unif_src_tbl}_full"
+            +attach_canonical_id:
+              td>: queries/7_attach_canonical_id.sql
+              database: cdp_unification_${unif_name}
+
+            ### Clean up
+            +drop_tbls:
+             td_ddl>:
+             drop_tables: ["cdp_unification_${unif_name}.${canonical_id_name}_lookup_full_purged", "cdp_unification_${unif_name}.${unif_src_tbl}_full_purged", "${dest_db}.${unif_src_tbl}_inc_matched", "${dest_db}.${unif_src_tbl}_inc_matched_id_dupe", "${dest_db}.${unif_src_tbl}_inc_matched_id"]
+             database: ${dest_db}
+
+        +build_master_table:
+
+          +check:
+            if>: ${run_pid_unif == "no"}
+            _do:
+              +create_tmp:
+                td>: queries/9_create_master_table_0.sql
+                database: cdp_unification_${unif_name}
+            _else_do:
+              +create_tmp:
+                td>: queries/9_create_master_table_1.sql
+                database: cdp_unification_${unif_name}
+
+          +rename:
+            td_ddl>:
+            rename_tables: [{from: "master_table_tmp", to: "master_table"}]
+            database: cdp_unification_${unif_name}
+
+        ### Log the total records after unification into log table
+        +log_records_unif:
+          td>:
+          query: "select 'Unification Output Records(${unif_type})' as step, cast(to_unixtime(CURRENT_TIMESTAMP) as bigint) as time, (select count(1) from cdp_unification_${unif_name}.${unif_src_tbl}_full) as records, case when '${unif_type}' = 'inc' then (select max(ingest_time) from ${dest_db}.${dest_tbl}) else null end as latest_ingest_time, 'cdp_unification_${unif_name}.enriched_${unif_src_tbl}' as src_tbl, 'cdp_unification_${unif_name}.${unif_src_tbl}_full' as dest_tbl, (select count(distinct ${canonical_id_name}) from cdp_unification_${unif_name}.${unif_src_tbl}_full) as total_profiles, ${session_id} as session_id, ${attempt_id} as attempt_id"
+          database: cdp_unification_${unif_name}
+          insert_into: unif_log
+
+        ### Stores the merge/split records into unif_merge_split_log table
+        +unif_merge_split:
+          +merge_split:
+            if>: ${run_pid_unif == "no"}
+            _do:
+              +insrt:
+                td>: queries/10_unif_merge_split_log_0.sql
+                database: cdp_unification_${unif_name}
+            _else_do:
+              +insrt:
+                td>: queries/10_unif_merge_split_log_1.sql
+                database: cdp_unification_${unif_name}
+          +crt_lookup_full_hist:
+            td>: queries/11_crt_lookup_full_hist.sql
+            database: cdp_unification_${unif_name}
+
+      +check_create_key_stats_full:
+        if>: ${run_unif_stats=="yes"}
+        _do:
+          +create_key_stats_full:
+            call>: create_key_stats_full.dig
+
+    +get_dedug_tables:
+      if>: ${run_pid_unif=="no"}
+      _do:
+        +get_tbs:
+          td>:
+          query: "select transform(sequence(0, ${canonical_ids[0].merge_iterations}, 1), x -> '${canonical_ids[0].name}_graph_unify_loop_' || cast(x as varchar)) as tbl_list"
+          database: cdp_unification_${unif_name}
+          store_last_results: true
+      _else_do:
+        +get_tbs:
+          td>:
+          query: "select transform(sequence(0, ${persistent_ids[0].merge_iterations}, 1), x -> '${persistent_ids[0].name}_graph_unify_loop_' || cast(x as varchar)) as tbl_list"
+          database: cdp_unification_${unif_name}
+          store_last_results: true
+    +drop_dedug_tables:
+      td_ddl>:
+      drop_tables: "${td.last_results.tbl_list}"
+      database: cdp_unification_${unif_name}
+
+    +end:
+      _parallel: true
+      +monitor:
+        +monitor_pid:
+          td>: queries/14_monitor_pid.sql
+          database: cdp_unification_${unif_name}

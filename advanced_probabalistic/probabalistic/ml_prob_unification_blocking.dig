@@ -1,0 +1,63 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
++create_table:
+  td_ddl>:
+  empty_tables: ["prob_hash_table","${blocking_table}","prob_dedupe_blocking_schema"]
+
++generate_blocking_keys:
+  _parallel: true
+  for_each>:
+    column_name: ${dedupe_columns}
+  _do:
+    +check_for_email:
+      if>: ${column_name.type == 'email'}
+      _do:
+        +extract_blocking_key:
+          td>: sql/email_predicates.sql
+       
+    +check_for_phone:
+      if>: ${column_name.type == 'phone'}
+      _do:
+        +extract_blocking_key:
+          td>: sql/phone_predicates.sql
+    
+    +check_for_string:
+      if>: ${column_name.type == 'string'}
+      _do:
+        +extract_blocking_key:
+          td>: sql/string_predicates.sql
+      
+
++aggregate_queries:
+  td>: sql/blocking_query_agg.sql
+  store_last_results: true
+
++create_table_with_blocking_predicate:
+  td>: sql/create_blocking_table.sql
+  create_table: prob_hash_table
+
++create_features:
+  td>: sql/create_features.sql
+  store_last_results: true
+  echo: '${td.last_results.column_list}'
+
+
++create_clusters:
+  td>: sql/create_clusters_second_approach.sql
+  engine: hive
+  engine_version: stable
+  create_table: ${blocking_table}
+
+#### OLD VERSION #######
+# +create_clusters:
+#   td>: sql/create_clusters.sql
+#   engine: hive
+#   engine_version: stable
+#   create_table: ${blocking_table}
+ 
+
+
+  

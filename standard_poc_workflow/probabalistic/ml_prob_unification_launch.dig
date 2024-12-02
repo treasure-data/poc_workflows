@@ -1,0 +1,63 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
++ddl:
+  td_ddl>:
+  create_databases: ['${sink_database}']
+
+## Below allows you to easily concat a few of the string columns into one composite column to simplify the dedup process
+# +data_prep_concat_ids:
+#   td>: sql/concat_ids.sql
+#   create_table: prob_input_table
+
+# ## Below returns Top-K distinct values for each dedup column to prevent over-merging on bad strings
++check_if_eda_must_be_ran:
+  if>: ${run_eda =='yes'}
+  _do:
+    +run_columns_eda:
+      call>: ml_prob_idu_eda.dig
+
+## Below does Min-hashing of input columns and creates final_blocking_table using jaccard similarity threshold filter on hashed values
++run_blocking_workflow_presto_parallel:
+  call>: ml_prob_unification_presto_parallel.dig
+
++get_total_rows:
+  td>: sql/get_total_rows.sql
+  store_last_results: true
+
+## Below executes final Python code for fuzzy matching and clustering algorithm to assign similar records the same cluster_id
++check_if_blocking_table_size_exceeds_allowed_limit:
+  if>: ${td.last_results.total_rows < max_records_allowed}
+  _do:
+
+    +compare_row_count_with_limit:
+      if>: ${td.last_results.total_rows < record_limit}
+      _do:
+        +run_main_python_workflow:
+          call>: ml_prob_unification_python.dig
+      
+      _else_do:
+        +run_parallel_python_workflow:
+          call>: ml_prob_unification_parallel_python.dig
+
+  _else_do:
+    fail>: ${blocking_table} size exceeds the maximum allowed size of ${max_records_allowed} row limit
+
+############## DATAMODEL Create & Update ######################################
++check_if_need_to_create_dashboard:
+  if>: ${create_dashboard=='yes'}
+  _do:
+
+    +calculate_dash_stats:
+      call>: ml_prob_unification_dashboard_stats.dig
+
+    +run_datamodel_create_wf:
+      call>: ml_prob_datamodel_create.dig
+
+    +run_datamodel_refresh_wf:
+      call>: ml_prob_datamodel_update.dig
+
+      
+  

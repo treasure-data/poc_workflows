@@ -1,0 +1,30 @@
+name: prd
+
+keys:
+  - name: email
+    invalid_texts: ['', NULL]
+  - name: phone
+    invalid_texts: ['', NULL]
+  - name: td_client_id
+    invalid_texts: ['', NULL]
+  - name: td_global_id
+    invalid_texts: ['', NULL]
+
+tables:
+  - database: cdp_unification_src
+    table: work_profile_unify_td_full 
+    key_columns:
+      - {column: email, key: email}
+      - {column: phone, key: phone}
+      - {column: td_global_id, key: td_global_id}
+      - {column: td_client_id, key: td_client_id}
+
+
+###########################################################################
+### Declare hierarchy for unification. Define keys to use for each level.
+##########################################################################
+
+persistent_ids:
+  - name: td_canonical_id
+    merge_iterations: 10
+    merge_by_keys: [email, phone, td_client_id, td_global_id]

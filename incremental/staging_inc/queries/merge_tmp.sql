@@ -1,0 +1,1 @@
+SELECT *, TD_TIME_PARSE(cast(CURRENT_TIMESTAMP as varchar)) as processed_unix FROM ${stg}_${sub}_inc.${td.each.table_name}_tmp

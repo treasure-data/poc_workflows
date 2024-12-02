@@ -1,0 +1,21 @@
+{
+"model_name":  "prob_unification_prod"
+,
+"model_tables": [
+  {"db":"sink_database","name":"prob_session_global_filter"},
+  {"db":"sink_database","name":"prob_final_cluster_histogram"},
+  {"db":"sink_database","name":"prob_model_table_params"},
+  {"db":"sink_database","name":"prob_eda_input_columns"}
+                ]
+,
+  "shared_user_list": ["ps-ml-analytics+psdemo@treasure-data.com", "dilyan.kovachev+psdemo@treasure-data.com", "yish.lim+psdemo@treasure-data.com", "saisuraj.argula+psdemo@treasure-data.com", "gurbaksh.sharma+psdemo@treasure-data.com", "zhenya.warshavsky+psdemo@treasure-data.com", "se-us+psdemo@treasure-data.com", "prof-services+psdemo@treasure-data.com"]
+,
+"change_schema_cols": {"date": ["run_date", "event_time"], "text": ["ENTER_NAME"], "float": ["ENTER_NAME"], "bigint": ["ENTER_NAME"]}
+,
+"join_relations": {"pairs":[
+  {"db1": "sink_database", "tb1":"prob_session_global_filter","join_key1":"session_id","db2": "sink_database","tb2":"prob_final_cluster_histogram","join_key2":"session_id"},
+  {"db1": "sink_database","tb1":"prob_session_global_filter","join_key1":"session_id","db2": "sink_database","tb2":"prob_model_table_params","join_key2":"session_id"},
+  {"db1": "sink_database","tb1":"prob_session_global_filter","join_key1":"session_id","db2": "sink_database","tb2":"prob_eda_input_columns","join_key2":"session_id"}
+]
+                  }
+}

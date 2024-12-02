@@ -1,0 +1,50 @@
+_export:
+  !include : 'config/src_params.yml'
+  td:
+    database: ${stg}_${sub}
++incrementally_load:
+  _parallel: true
+  for_each>:
+    tbl: [
+        # 'alterian_xref_email_id', 'alterian_xref_universal_id', 
+        'cds_athena_data', 'cds', 
+      'daily_email_updates_decrypted', 'gam', 'id_conde_rds_decrypted', 'martech_d_email_extd', 
+      'martech_t_chargebee_subscription_created_decrypted', 
+      'sailthru_daily_profile_updates', 'sailthru_daily_stream_events', 'slv_core_events',
+      'slv_page_ping', 'trackonomics', 'permutive_unify_table'
+      ] 
+  _do:
+    +load: 
+      +create_table_first_time:
+        td>: staging_inc/queries/create_table_first_time.sql
+
+      +get_max_date: 
+        td>: staging_inc/queries/get_max_date.sql
+        store_last_results: true
+      
+      +echo: 
+        echo>: ${td.last_results.max_date}
+
+      +check_if_data: 
+        if>: ${td.last_results.stg_record_count > td.last_results.stg_inc_record_count}
+        _do: 
+          +insert_records_into_profile_tbl: 
+            +prep_profile_sql: 
+              py>: staging_inc.python.profile.main
+              _env:
+                TD_API_KEY: '${secret:secret_key}'
+                stg_inc_db: ${stg}_${sub}_inc   
+                current_table: ${tbl} 
+                max_date:   ${td.last_results.max_date}
+                time_chunk: ${incremental.time_chunk}   
+              docker:
+                image: "digdag/digdag-python:3.9"
+
+            +profile_table: 
+              td>: staging_inc/queries/profile.sql
+              insert_into: ${stg}_${sub}_inc.profile
+            
+            +add_next_date: 
+              td>: 
+              query: "SELECT COUNT(*) AS stg_inc_record_count, max(inc_unix) as inc_unix FROM ${stg}_${sub}_inc.profile where src = '${tbl}'"
+              insert_into: ${stg}_${sub}_inc.${tbl}  

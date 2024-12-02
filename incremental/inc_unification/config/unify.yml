@@ -1,0 +1,49 @@
+name: ${unif_name}
+keys:
+  - name: amg_uuid
+    invalid_texts: ['','999999999',null]
+  - name: appnexus
+    invalid_texts: ['',null]
+  - name: fbp
+    invalid_texts: ['',null]
+  - name: fingerprint_id
+    invalid_texts: ['',null]
+  - name: hash_email
+    invalid_texts: ['',null]
+  - name: mdw_id
+    invalid_texts: ['',null]
+  - name: permutive_id
+    invalid_texts: ['','[]',null]
+  - name: plain_text_email
+    invalid_texts: ['',null]
+  - name: profile_id
+    invalid_texts: ['',null]
+  - name: source_legacy_id
+    invalid_texts: ['',null]
+  - name: universal_id
+    invalid_texts: ['','0',null]
+  - name: xid
+    invalid_texts: ['',null]
+
+tables:
+  - database: ${dest_db}
+    table: ${dest_tbl}${unif_src_tbl_suffix}
+    key_columns:
+      - {column: amg_uuid, key: amg_uuid}
+      - {column: appnexus, key: appnexus}
+      - {column: fbp, key: fbp}
+      - {column: hash_email, key: hash_email}
+      - {column: mdw_id, key: mdw_id}
+      - {column: permutive_id, key: permutive_id}
+      - {column: fingerprint_id, key: fingerprint_id}
+      - {column: plain_text_email, key: plain_text_email}
+      - {column: profile_id, key: profile_id}
+      - {column: source_legacy_id, key: source_legacy_id}
+      - {column: universal_id, key: universal_id}
+      - {column: xid, key: xid}
+
+
+persistent_ids:
+  - name: canonical_id
+    merge_iterations: 20
+    merge_by_keys: [amg_uuid, appnexus, fbp, fingerprint_id, hash_email, mdw_id, permutive_id, plain_text_email,profile_id, source_legacy_id,universal_id,xid]

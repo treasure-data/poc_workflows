@@ -1,0 +1,99 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
++create_table:
+  td_ddl>:
+  empty_tables: ["prob_hash_table","prob_dedupe_blocking_schema", "${blocking_table}", "${blocking_table}_temp", "${blocking_table}_temp2",  "${output_table}"]
+
++generate_blocking_keys:
+  _parallel: true
+  for_each>:
+    column_name: ${dedupe_columns}
+  _do:
+    +check_for_email:
+      if>: ${column_name.type == 'email'}
+      _do:
+        +extract_blocking_key:
+          td>: sql/email_predicates.sql
+       
+    +check_for_phone:
+      if>: ${column_name.type == 'phone'}
+      _do:
+        +extract_blocking_key:
+          td>: sql/phone_predicates.sql
+    
+    +check_for_string:
+      if>: ${column_name.type == 'string'}
+      _do:
+        +extract_blocking_key:
+          td>: sql/string_predicates.sql
+      
+
++aggregate_queries:
+  td>: sql/blocking_query_agg.sql
+  store_last_results: true
+
++create_table_with_blocking_predicate:
+  td>: sql/create_blocking_table.sql
+  create_table: prob_hash_table
+
++create_features:
+  td>: sql/create_features.sql
+  store_last_results: true
+  # echo: ${td.last_results.column_list}
+
++create_blocking_temp:
+  td>: sql/create_blocking_temp.sql
+  engine: hive
+  engine_version: stable
+  create_table: ${blocking_table}_temp
+
++get_ranges:
+  td>: sql/get_equal_cluster_ranges.sql
+  store_last_results: true
+
++parallel_execution_of_ranges:
+  _parallel: true
+  td_for_each>: sql/get_equal_cluster_ranges.sql
+  _do:
+    +execute_cross_join:
+      td>: sql/create_clusters_${query_engine}_parallel.sql
+      engine: ${query_engine}
+      insert_into: ${blocking_table}_temp2
+
+
++hive_processing: 
+  if>: ${query_engine == 'hive'}
+  _do: 
+    +create_final_parallel_blocks_tmp:
+      td>: sql/create_final_blocks_hive_tmp.sql
+      engine: hive
+      create_table: ${blocking_table}_temp3
+
+    +create_final__parallel_blocks_tmp2:
+      td>: sql/create_final_blocks_hive_tmp2.sql
+      create_table: ${blocking_table}_temp4
+      engine: presto
+
+    +create_final_parallel_blocks:
+      td>: sql/create_final_blocks_hive.sql
+      create_table: ${blocking_table}
+      engine: hive
+
+  _else_do: 
+    +create_final_parallel_blocks_tmp:
+      td>: sql/create_final_blocks_presto.sql
+      engine: ${query_engine}
+      create_table: ${blocking_table}
+
+
+
+
+
+      
+    
+
+
+      

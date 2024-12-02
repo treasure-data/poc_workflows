@@ -1,0 +1,73 @@
+# ## Uncomment below export if there is need to run this piece of code indendently, Just Provide correct session_id
+# _export:
+#  !include : 'config/src_params.yml'
+#  !include : 'config/unify.yml'
+
++create_key_stats_full:
+  if>: ${unif_type=="inc"}
+  _do:
+
+    +get_key_stats_sql_from_latest_unif_run:
+      docker:
+        image: "digdag/digdag-python:3.9"
+      py>: python.unif_key_stats.main
+      _env:
+        TD_API_KEY: ${secret:td.apikey}
+        ## Note: This attempt_id variable return the attemp_id for current wf session.
+        WF_API_ENDPOINT: '${wf_api_endpoint}'
+        DEST_DB: ${dest_db}
+        DEST_TBL: ${dest_tbl}
+        UNIF_SRC_TBL: ${dest_tbl}${unif_src_tbl_suffix}
+        CANONICAL_ID_NAME: ${canonical_id_name}
+        SESSION_ID: ${session_id}
+      _retry:
+        limit: 1
+        interval: 10
+        interval_type: exponential
+
+    +copy_key_stats_inc:
+     _parallel: true
+     #### Added task to create source_key_stats for full Data even Unification is running on INC mode.
+     +create_src_key_stats_inc:
+       +create_extract_and_merge_replica_full:
+         td>: queries/12_crt_extract_and_merge_replica_full.sql
+         database: cdp_unification_${unif_name}
+       +create_src_key_stats_process:
+         td>: queries/12_crt_source_key_stats_full.sql
+         database: cdp_unification_${unif_name}
+         insert_into: cdp_unification_${unif_name}.${canonical_id_name}_source_key_stats_full
+
+     #### Added task to create results_key_stats for full Data even Unification is running on INC mode.
+     +result_Key_stats:
+       +create_result_Key_stats:
+         td>: queries/13_0_crt_result_key_stats_full.sql
+         database: cdp_unification_${unif_name}
+         insert_into: cdp_unification_${unif_name}.${canonical_id_name}_result_key_stats_full
+
+       +create_graph_prev:
+         td>: queries/13_1_crt_graph_prev_full.sql
+         database: cdp_unification_${unif_name}
+
+    +drop_tbls:
+      td_ddl>:
+      drop_tables: ["${canonical_id_name}_graph_unify_loop_9999", "work_${canonical_id_name}_graph_prev"]
+      database: cdp_unification_${unif_name}
+
+  #### if Unif_type is full, then copy key_stats data to key_stats_full tables & crate id_graph_prev table
+  _else_do:
+    +copy_key_stats_full:
+      _parallel: true
+      +copy_stats_table_log:
+        for_each>:
+          table: ["${canonical_id_name}_source_key_stats","${canonical_id_name}_result_key_stats"]
+        _parallel: true
+        _do:
+          td>:
+          query: "SELECT * FROM cdp_unification_${unif_name}.${table} WHERE time = (SELECT MAX(time) FROM cdp_unification_${unif_name}.${table})"
+          database: cdp_unification_${unif_name}
+          insert_into: cdp_unification_${unif_name}.${table}_full
+      +create_id_graph_prev:
+        td>:
+        query: "SELECT * FROM cdp_unification_${unif_name}.${canonical_id_name}_graph"
+        database: cdp_unification_${unif_name}
+        create_table: cdp_unification_${unif_name}.${canonical_id_name}_graph_prev

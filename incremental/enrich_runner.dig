@@ -1,0 +1,35 @@
+_export:
+  !include : config/src_params.yml
+  !include : inc_unification/config/src_params.yml
+  !include : config/stage_enrich.yml
+  td:
+    database: cdp_unification_${unif_name}
+
++execute_canonical_id_join:
+  _parallel: true
+  td_for_each>: enrich/queries/generate_join_query.sql
+  _do:
+    +execute:
+      if>: ${td.each.engine.toLowerCase() == "presto"}
+      _do:
+        +enrich_presto:
+          td>: enrich/queries/execute_join_presto
+          engine: ${td.each.engine}
+
+        +promote:
+          td_ddl>:
+          rename_tables: [{from: "${td.each.tbl}_tmp", to: "enrich_${td.each.tbl}"}]
+
+      _else_do:
+
+        +enrich_tbl_bucket:
+          td>: enrich/queries/enrich_tbl_creation
+          engine: presto
+
+        +enrich_hive:
+          td>: enrich/queries/execute_join_hive
+          engine: ${td.each.engine}
+
+        +promote:
+          td_ddl>:
+          rename_tables: [{from: "${td.each.tbl}_tmp", to: "enrich_${td.each.tbl}"}]

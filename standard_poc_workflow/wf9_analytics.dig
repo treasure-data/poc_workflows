@@ -1,0 +1,31 @@
+_export:
+  !include : 'config/src_params.yml'
+
+  td:
+    database: ${ana}
+    src_database: ${gld}_${sub}
+
++analytics:
+  +prepare_db:
+    td_ddl>:
+    create_databases: ["${ana}"]
+
+
+  ### Generate Data Needed for Web Analytics Dashboard
+  +report_analytics:
+    _parallel: true
+    +rep_ticket_sales:
+      td>: analytics/queries/analytics/queries/ticket_sales_distribution.sql
+      create_table: ${ana}.ticket_sales_distribution
+      database: ${gld}_${sub}
+
+    +rep_menu_item_sales:
+      td>: analytics/queries/analytics/queries/menu_item_sales.sql
+      create_table: ${ana}.menu_item_sales
+      database: ${gld}_${sub}
+
+    +rep_aov_day_of_week:
+      td>: analytics/queries/analytics/queries/aov_day_of_week.sql
+      create_table: ${ana}.aov_day_of_week
+      database: ${gld}_${sub}                 
+

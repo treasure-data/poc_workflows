@@ -1,0 +1,1 @@
+SELECT '${column_name.name} IS NOT NULL' as column_filter

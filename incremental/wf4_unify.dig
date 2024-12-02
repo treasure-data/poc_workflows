@@ -1,0 +1,9 @@
+_export:
+  !include : 'config/src_params.yml'
+  td:
+    database: ${stg}_${sub}
+
++run_inc_unification:
+  # echo>: "Running step ${step_name} and workflow name ${workflow_to_run} when run_all ${run_all} and historical run are empty or failed."
+  _export:
+  call>: inc_unification/custom_unification

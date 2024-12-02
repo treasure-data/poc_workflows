@@ -1,0 +1,201 @@
+name: ${sub}
+
+#####################################################
+##
+##Declare Validation logic for unification keys
+##
+#####################################################
+
+keys:
+  - name: tax_routing_cluster
+    invalid_texts: ['', null]
+    valid_regexp: "^(?!.*!asFTCB1gRu0kB4I3hDx1xJjh92tu4oX74vAYtg4Exs78|!aAp1igHI6NlvF8rPHK0ybBBBJcsqT1wZ8dn3Owk6EoMc).*"  
+  - name: divvy_uuid
+    invalid_texts: ['', null]
+  - name: organization_id
+    invalid_texts: ['', null]
+  # rule #1 
+  - name: duns
+    invalid_texts: ['', null]
+  # rule #2  
+  - name: tax_accnt_routing_addr70_zip_name70
+    invalid_texts: ['', null]
+  # rule #3   
+  - name: tax_accnt_routing_name80
+    invalid_texts: ['', null]
+  # rule #4  
+  - name: tax_accnt_routing_domain_addr80
+    invalid_texts: ['', null]
+  # rule #5
+  - name: tax_accnt_routing_domain_name80
+    invalid_texts: ['', null]
+  # rule #6
+  - name: tax_name90_addr80
+    invalid_texts: ['', null]
+  # rule #7 
+  - name: tax_domain_name90
+    invalid_texts: ['', null]
+  # rule #8 
+  - name: tax_domain_name80_addr80
+    invalid_texts: ['', null]
+  # rule #9 
+  - name: tax_accnt_routing_domain_name65_addr65
+    invalid_texts: ['', null]
+  # rule #10
+  - name: accnt_routing_addr80_name90
+    invalid_texts: ['', null]
+  # rule #11
+  - name: accnt_routing_domain_name90
+    invalid_texts: ['', null]
+  # rule #12
+  - name: accnt_routing_domain_addr90_name65
+    invalid_texts: ['', null]
+  # rule #13
+  - name: domain_addr80_name80
+    invalid_texts: ['', null]
+  # rule #14
+  - name: domain_addr95_name65
+    invalid_texts: ['', null]    
+  # rule #15
+  - name: addr95_name95
+    invalid_texts: ['', null]    
+
+#####################################################
+##
+## Declare databases, tables, and keys to use during unification
+##
+#####################################################
+
+tables:
+  - database: ${stg}2_${sub}
+    table: stg_edwh_cdp_match_bill_org
+    key_columns:
+      - {column: duns_number, key: duns}
+      - {column: tax_routing_cluster, key: tax_routing_cluster}
+      - {column: organization_id, key: organization_id}
+      - {column: tax_accnt_routing_domain_name80, key: tax_accnt_routing_domain_name80 }
+      - {column: tax_accnt_routing_name80, key: tax_accnt_routing_name80 }
+      - {column: tax_domain_name90, key: tax_domain_name90 }
+      - {column: tax_accnt_routing_addr70_zip_name70, key: tax_accnt_routing_addr70_zip_name70 }
+      - {column: tax_accnt_routing_domain_addr80, key: tax_accnt_routing_domain_addr80 }
+      - {column: tax_name90_addr80, key: tax_name90_addr80 }
+      - {column: tax_domain_name80_addr80, key: tax_domain_name80_addr80 }
+      - {column: tax_accnt_routing_domain_name65_addr65, key: tax_accnt_routing_domain_name65_addr65 }
+      - {column: accnt_routing_addr80_name90, key: accnt_routing_addr80_name90 }
+      - {column: accnt_routing_domain_name90, key: accnt_routing_domain_name90 }
+      - {column: accnt_routing_domain_addr90_name65, key: accnt_routing_domain_addr90_name65 }
+      - {column: domain_addr80_name80, key: domain_addr80_name80 }
+      - {column: domain_addr95_name65, key: domain_addr95_name65 }
+      - {column: addr95_name95, key: addr95_name95 }
+
+  - database: ${stg}2_${sub}
+    table: stg_edwh_cdp_match_divvy_company
+    key_columns:
+      - {column: duns_number, key: duns}
+      - {column: tax_routing_cluster, key: tax_routing_cluster}
+      - {column: divvy_uuid, key: divvy_uuid}
+      - {column: tax_accnt_routing_domain_name80, key: tax_accnt_routing_domain_name80 }
+      - {column: tax_accnt_routing_name80, key: tax_accnt_routing_name80 }
+      - {column: tax_domain_name90, key: tax_domain_name90 }
+      - {column: tax_accnt_routing_addr70_zip_name70, key: tax_accnt_routing_addr70_zip_name70 }
+      - {column: tax_accnt_routing_domain_addr80, key: tax_accnt_routing_domain_addr80 }
+      - {column: tax_name90_addr80, key: tax_name90_addr80 }
+      - {column: tax_domain_name80_addr80, key: tax_domain_name80_addr80 }
+      - {column: tax_accnt_routing_domain_name65_addr65, key: tax_accnt_routing_domain_name65_addr65 }
+      - {column: accnt_routing_addr80_name90, key: accnt_routing_addr80_name90 }
+      - {column: accnt_routing_domain_name90, key: accnt_routing_domain_name90 }
+      - {column: accnt_routing_domain_addr90_name65, key: accnt_routing_domain_addr90_name65 }
+      - {column: domain_addr80_name80, key: domain_addr80_name80 }
+      - {column: domain_addr95_name65, key: domain_addr95_name65 }
+      - {column: addr95_name95, key: addr95_name95 }
+
+#####################################################
+##
+##Declare hierarchy for unification. Define keys to use for each level.
+##
+#####################################################
+
+canonical_ids:
+  - name: bill_id
+    merge_by_keys: [duns, tax_routing_cluster, organization_id, divvy_uuid, tax_accnt_routing_name80, tax_accnt_routing_domain_name80, tax_domain_name90, tax_accnt_routing_addr70_zip_name70, tax_accnt_routing_domain_addr80, tax_name90_addr80, tax_domain_name80_addr80, tax_accnt_routing_domain_name65_addr65, accnt_routing_addr80_name90, accnt_routing_domain_name90, accnt_routing_domain_addr90_name65, domain_addr80_name80, domain_addr95_name65, addr95_name95]
+    merge_iterations: 12
+    incremental_merge_iterations: 4
+#####################################################
+##
+##Declare Survivorship Rules to Determine Best Value for Each Attribute
+##
+#####################################################
+
+
+master_tables:
+  - name: business_silver
+    canonical_id: bill_id
+    attributes:
+      - name: divvy_uuid
+        source_columns:
+          - {table: stg_edwh_cdp_match_divvy_company, column: divvy_uuid, priority: 1}
+      - name: organization_id
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: organization_id, priority: 1}
+      - name: hshtaxid
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: hshtaxid, priority: 1}
+          - {table: stg_edwh_cdp_match_divvy_company, column: tax_id_hash, priority: 2} 
+      - name: organization_name
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: organization_name, priority: 1}
+          - {table: stg_edwh_cdp_match_divvy_company, column: company_name, priority: 2} 
+      - name: routingnumber
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: routingnumber, priority: 1}
+          - {table: stg_edwh_cdp_match_divvy_company, column: bank_routing_number, priority: 2}
+      - name: duns_number
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: duns_number, priority: 1}
+          - {table: stg_edwh_cdp_match_divvy_company, column: duns_number, priority: 2} 
+      - name: address_cluster
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: address_cluster, priority: 1}
+          - {table: stg_edwh_cdp_match_divvy_company, column: address_cluster, priority: 2}
+      - name: address_line_1
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: trfmd_address1, priority: 1}
+          - {table: stg_edwh_cdp_match_divvy_company, column: address_line_2, priority: 2}
+      - name: address_line_2
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: trfmd_address2, priority: 1}
+          - {table: stg_edwh_cdp_match_divvy_company, column: address_line_2, priority: 2}
+      - name: address_line_3
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: trfmd_address3, priority: 1}
+      - name: address_line_4
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: trfmd_address4, priority: 1}
+      - name: city
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: trfmd_addresscity, priority: 1}
+          - {table: stg_edwh_cdp_match_divvy_company, column: city, priority: 2}
+      - name: state
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: trfmd_addressstate, priority: 1}
+          - {table: stg_edwh_cdp_match_divvy_company, column: state, priority: 2}
+      - name: postal_code
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: trfmd_addresszip, priority: 1}
+          - {table: stg_edwh_cdp_match_divvy_company, column: postal_code, priority: 2}
+      - name: country
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: trfmd_addresscountry, priority: 1}
+          - {table: stg_edwh_cdp_match_divvy_company, column: country, priority: 2}
+      - name: email_domain
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: email_domain, priority: 1}
+          - {table: stg_edwh_cdp_match_divvy_company, column: company_email_domain, priority: 2}
+      - name: routing_hash_cluster
+        source_columns:
+          - {table: stg_edwh_cdp_match_bill_org, column: routing_hash_cluster, priority: 1}
+          - {table: stg_edwh_cdp_match_divvy_company, column: routing_hash_cluster, priority: 2}
+    
+
+                                                                  
+       

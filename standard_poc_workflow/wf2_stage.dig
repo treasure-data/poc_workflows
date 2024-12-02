@@ -1,0 +1,11 @@
+_export:
+  !include : 'config/src_params.yml'
+  td:
+    database: ${src}_${sub}
++transformed:
+  _parallel: true
+  for_each>:
+    tbl: ['query_1', 'query_2', 'query_3']
+  _do:
+    td>: staging/queries/${tbl}.sql
+    create_table: ${stg}_${sub}.${tbl}
