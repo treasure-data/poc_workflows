@@ -3,7 +3,7 @@
 ## Unification Output Name
 ##
 #####################################################
-name: conde
+name: ${unif_name}
 #####################################################
 ##
 ##Declare Validation logic for unification keys

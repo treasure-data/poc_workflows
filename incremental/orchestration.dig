@@ -1,6 +1,6 @@
 # timezone: US/Eastern
 # schedule:
-#  cron>: 00 5 * * *
+##  cron>: 00 5 * * *
 
 _export:
   !include : 'config/src_params.yml'
@@ -38,32 +38,33 @@ _export:
 #     i: 0
 #   call>: run_workflow_with_logging.dig
 
-+repeat:
-  for_range>:
-    from: 1
-    to: ${incremental.loops + 1}
-    step: 1
-  _do: 
-    +incremental_unification: 
-      +staging_inc:
-        _export:
-          step_name: staging_inc
-          workflow_to_run: wf3_stage_inc
-          i: ${range.to}
-        call>: run_workflow_with_logging.dig
+# +repeat:
+#   for_range>:
+#     from: 1
+#     to: ${incremental.loops + 1}
+#     step: 1
+#   _do: 
+#     +incremental_unification: 
+#       +staging_inc:
+#         _export:
+#           step_name: staging_inc
+#           workflow_to_run: wf3_stage_inc
+#           i: ${range.to}
+#         call>: run_workflow_with_logging.dig
 
-      +unification:
-        _export:
-          step_name: unification
-          workflow_to_run: wf4_unify
-          i: ${range.to}
-        call>: run_workflow_with_logging.dig
+#       +unification:
+#         _export:
+#           step_name: unification
+#           workflow_to_run: wf4_unify
+#           i: ${range.to}
+#         call>: run_workflow_with_logging.dig
       
-      +enrich_tables:
-        _export:
-          step_name: enrich_tables
-          workflow_to_run: enrich_runner
-        call>: run_workflow_with_logging.dig
+# +enrich_tables:
+#   _export:
+#     step_name: enrich_tables
+#     workflow_to_run: enrich_runner
+#     i: 0
+#   call>: run_workflow_with_logging.dig
 
 
 +unification_dashboard:
