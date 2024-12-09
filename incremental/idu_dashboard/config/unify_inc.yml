@@ -1,47 +1,23 @@
-name: ${unif_name}
+name: prd
 
 keys:
-  - name: amg_uuid
-    invalid_texts: ['','999999999',null]
-  - name: appnexus
-    invalid_texts: ['',null]
-  - name: fbp
-    invalid_texts: ['',null]
-  - name: fingerprint_id
-    invalid_texts: ['',null]
-  - name: hash_email
-    invalid_texts: ['',null]
-  - name: mdw_id
-    invalid_texts: ['',null]
-  - name: permutive_id
-    invalid_texts: ['','[]',null]
-  - name: plain_text_email
-    invalid_texts: ['',null]
-  - name: profile_id
-    invalid_texts: ['',null]
-  - name: source_legacy_id
-    invalid_texts: ['',null]
-  - name: universal_id
-    invalid_texts: ['','0',null]
-  - name: xid
-    invalid_texts: ['',null]
+  - name: email
+    invalid_texts: ['', NULL]
+  - name: phone
+    invalid_texts: ['', NULL]
+  - name: td_client_id
+    invalid_texts: ['', NULL]
+  - name: td_global_id
+    invalid_texts: ['', NULL]
 
 tables:
-  - database: cdp_unification_inc_unification_vishal
+  - database: cdp_unification_src
     table: work_profile_unify_td_full 
     key_columns:
-      - {column: amg_uuid, key: amg_uuid}
-      - {column: appnexus, key: appnexus}
-      - {column: fbp, key: fbp}
-      - {column: fingerprint_id, key: fingerprint_id}
-      - {column: hash_email, key: hash_email}
-      - {column: mdw_id, key: mdw_id}
-      - {column: permutive_id, key: permutive_id}
-      - {column: plain_text_email, key: plain_text_email}
-      - {column: profile_id, key: profile_id}
-      - {column: source_legacy_id, key: source_legacy_id}
-      - {column: universal_id, key: universal_id}
-      - {column: xid, key: xid}
+      - {column: email, key: email}
+      - {column: phone, key: phone}
+      - {column: td_global_id, key: td_global_id}
+      - {column: td_client_id, key: td_client_id}
 
 
 ###########################################################################
@@ -49,6 +25,6 @@ tables:
 ##########################################################################
 
 persistent_ids:
-  - name: canonical_id
-    merge_iterations: 20
-    merge_by_keys:  [email_hash, plain_text_email, amg_id, universal_id, fingerprint_id, xid, permutive_id, fbp_id,appnexus_id]
+  - name: td_canonical_id
+    merge_iterations: 10
+    merge_by_keys: [email, phone, td_client_id, td_global_id]

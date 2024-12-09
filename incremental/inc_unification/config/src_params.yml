@@ -1,15 +1,25 @@
 ##### Required parameters for custom incremental unification solution
 
-unif_type: inc ## Provide only "full" or "inc".
+# unif_type: full ## Provide only "full" or "inc".
 canonical_id_name: canonical_id ## This is canonical_id name
 run_pid_unif: yes ## provide "yes" or "no". "yes" mean running PID unification, "no" means running normal unification
-unif_name: inc_unification_vishal ## This is suffix of unification database name;
-
 src_tbl: profile # This may all recods from all sources, may have extra columns other than unification merged keys.
-src_db: stg_vishal_dev_inc # the db which have src_tbl
 
+### 
+### ONLY CHANGE THIS FOR POC
+
+unif_name: vishal_dynamic ## This is suffix of unification database name;
+src_db: stg_vishal_dynamic_inc # the db which have src_tbl
 dest_tbl: work_profile # This contains unique set of keys derived from ${src_tbl} -- 5 keys, 1 time, 1 ingest_time. This is created at runtime.
-dest_db: stg_vishal_dev_inc # the db which have dest_tbl
+dest_db: stg_vishal_dynamic_inc # the db which have dest_tbl
+
+## Provide the Digdag workflow API corresponding to TD region. Below wf_api_endpoint is for US region.
+wf_api_endpoint: 'https://api-workflow.treasuredata.com'
+## Provide the Unification workflow endpoint corresponding to TD region. Below unif_wf_endpoint is for US region.
+unif_wf_endpoint: 'https://api-cdp.treasuredata.com/unifications/workflow_call'
+api_endpoint: api.treasuredata.com
+###
+###
 
 join_key_delimiter: '|' # This is used to separate the key values inind in join_key in ${dest_tbl} table.
 
@@ -31,11 +41,6 @@ multiple_keycols_of_same_keytype: no
 #   - key: hash_key
 #   - key: surrogate_key
 
-## Provide the Digdag workflow API corresponding to TD region. Below wf_api_endpoint is for US region.
-wf_api_endpoint: 'https://api-workflow.treasuredata.com'
-
-## Provide the Unification workflow endpoint corresponding to TD region. Below unif_wf_endpoint is for US region.
-unif_wf_endpoint: 'https://api-cdp.treasuredata.com/unifications/workflow_call'
 
 ## provide "yes" or "no". "yes" mean bucketing will be created on target tables, "no" means bucketing will be no available on target tables
 bucketing_flag: yes

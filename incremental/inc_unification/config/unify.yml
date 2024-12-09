@@ -44,6 +44,6 @@ tables:
 
 
 persistent_ids:
-  - name: canonical_id
+  - name: ${canonical_id}
     merge_iterations: 20
     merge_by_keys: [amg_uuid, appnexus, fbp, fingerprint_id, hash_email, mdw_id, permutive_id, plain_text_email,profile_id, source_legacy_id,universal_id,xid]

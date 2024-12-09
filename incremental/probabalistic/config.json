@@ -8,7 +8,7 @@
   {"db":"sink_database","name":"prob_eda_input_columns"}
                 ]
 ,
-  "shared_user_list": ["ps-ml-analytics+psdemo@treasure-data.com", "dilyan.kovachev+psdemo@treasure-data.com", "yish.lim+psdemo@treasure-data.com", "saisuraj.argula+psdemo@treasure-data.com", "gurbaksh.sharma+psdemo@treasure-data.com", "zhenya.warshavsky+psdemo@treasure-data.com", "se-us+psdemo@treasure-data.com", "prof-services+psdemo@treasure-data.com"]
+  "shared_user_list": ["jim.jacisin+condepoc@treasure-data.com","vishal.patel+condepoc@treasure-data.com","biswadip.paul+condepoc@treasure-data.com","gandhi.yellapu+condepoc@treasure-data.com"]
 ,
 "change_schema_cols": {"date": ["run_date", "event_time"], "text": ["ENTER_NAME"], "float": ["ENTER_NAME"], "bigint": ["ENTER_NAME"]}
 ,

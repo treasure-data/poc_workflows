@@ -1,12 +1,12 @@
-sink_database: cdp_unification_probabalistic_bill_divvy_eda
+# sink_database: cdp_unification_probabalistic_${sub}
 model_config_table: datamodel_build_history
 api_server: 'api.treasuredata.com'
-create_dashboard: 'no'
+create_dashboard: 'yes'
 
-base_table:                                       #Used ONLY if you plan to concat some of the original id_cols into a composite key
-source_db: gld_bill_divvy                     #DB where the source input table for probabilistic lives
-input_table: golden                          #name of input table
-id_col: unified_business_id               #name of canonica_id column created by Deterministic Unification
+base_table:                         #Used ONLY if you plan to concat some of the original id_cols into a composite key
+# source_db: cdp_unification_${sub}                      #DB where the source input table for probabilistic lives
+input_table: prob_input_table                          #name of input table
+# id_col: ${canonical_id}               #name of canonica_id column created by Deterministic Unification
 
 ######## EDA & EXCLUSION OF OVERMERGED IDs ################
 run_eda: 'yes'                                    #Run EDA framework to get Top-K Strings by value count to esnure there is not over-merging on faulty string values such as '/' or '-' etc.
@@ -17,14 +17,14 @@ top_k_vals: 100                                    #Top-K string values with the
 #--- columns used for Unification and their Types
 dedupe_columns:
 
-  - name: address_cluster                   #col name
+  - name: email                   #col name
     type: string                  #types are string, email, phone because we use different data-cleaning logic for the special column types to standerdize inputs
-    weight: 0.6                   #decimal from 0.0-1.0, determines how much weight % the similarity score of that column contributes to the final matching score
+    weight: 0.7                  #decimal from 0.0-1.0, determines how much weight % the similarity score of that column contributes to the final matching score
     final_approval: 'no'          #Default = 'no', 'yes' = if customer gives us a final custom approval logic (ex. only accept matches where this col IS NOT NULL) the 'sql/acceptance_create_final_table.sql' query will apply logic
 
-  - name: organization_name
+  - name: composite_address_zip
     type: string
-    weight: 0.4
+    weight: 0.3
     final_approval: 'no'
 
 
@@ -38,8 +38,8 @@ custom_filter: 'no'                               #if set to 'yes', the final ap
 #----  record_limit ----> Number of records to be processed by the Python code for the final clsutering/agorithm. If final blocking table exceeds this limit it will be split in chunks and processed in parallel docker images.
 
 blocking_table: prob_final_blocking    #name of the blocking table
-max_records_allowed: 900000000
-record_limit: 1000000
+max_records_allowed: 100000000
+record_limit: 500000
 
 
 #---- Increasing the value of hashes,keygroups and jaccard_similarity_threshold will increase the Recall
@@ -66,9 +66,9 @@ jaccard_similarity_threshold: 0.7
 ###---avg_spend_per_user ---> Default: 50 --> allows to define how much customer spends on AVG per year to send marketing campaigns to a single ID, which determines the estimated savings, shown in the final dashboard.
 
 convergence_threshold : 0.01
-cluster_threshold: 0.80
+cluster_threshold: 0.70
 string_type :
 fill_missing: True
 avg_spend_per_user: 100
-num_block_splits: 10
+num_block_splits: 1
 query_engine: presto

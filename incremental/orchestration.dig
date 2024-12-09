@@ -1,6 +1,6 @@
 # timezone: US/Eastern
 # schedule:
-##  cron>: 00 5 * * *
+#  cron>: 00 5 * * *
 
 _export:
   !include : 'config/src_params.yml'
@@ -9,21 +9,22 @@ _export:
   td:
     database: va_config_${sub}
 
-# +prepare_db:
-#   td_ddl>:
-#   create_databases: ["va_config_${sub}", "${stg}_${sub}","${stg}_${sub}_inc", "${gld}_${sub}", "${ana}_${sub}"]
++prepare_db:
+  td_ddl>:
+  create_databases: ["va_config_${sub}", "${stg}_${sub}",
+  "${stg}_${sub}_inc", "cdp_unification_${sub}", "${gld}_${sub}", "${ana}_${sub}"]
 
-# +prepare_log_table:
-#   database: va_config_${sub}
-#   td>: "queries/log_tbl.sql"
++prepare_log_table:
+  database: va_config_${sub}
+  td>: "queries/log_tbl.sql"
 
-# +empty_log_table:
-#   if>: ${run_all==true}
-#   _do:
-#     +del_log:
-#       td>:
-#       query: "delete from log_tbl where 1=1"
-#       database: va_config_${sub}
++empty_log_table:
+  if>: ${run_all==true}
+  _do:
+    +del_log:
+      td>:
+      query: "delete from log_tbl where 1=1"
+      database: va_config_${sub}
 
 # +data_profile:
 #   _export:
@@ -37,6 +38,30 @@ _export:
 #     workflow_to_run: wf2_stage
 #     i: 0
 #   call>: run_workflow_with_logging.dig
+
+# +first_full_unification: 
+#   if>: ${incremental.perform_first}
+#   _do: 
+#     +first: 
+#       +staging_inc:
+#         _export:
+#           step_name: staging_inc
+#           workflow_to_run: wf3_stage_inc
+#           i: 0 
+#         call>: run_workflow_with_logging.dig
+
+#       +unification:
+#         +prep: 
+#           td>: 
+#           query: "SELECT TD_TIME_PARSE(CAST(CURRENT_TIMESTAMP as VARCHAR)) as time,'full' as unif_type"
+#           insert_into: cdp_unification_${sub}.unif_type_log
+
+#         +unify: 
+#           _export:
+#             step_name: unification
+#             workflow_to_run: wf4_unify
+#             i: 0
+#           call>: run_workflow_with_logging.dig 
 
 # +repeat:
 #   for_range>:
@@ -53,11 +78,17 @@ _export:
 #         call>: run_workflow_with_logging.dig
 
 #       +unification:
-#         _export:
-#           step_name: unification
-#           workflow_to_run: wf4_unify
-#           i: ${range.to}
-#         call>: run_workflow_with_logging.dig
+#         +prep: 
+#           td>: 
+#           query: "SELECT TD_TIME_PARSE(CAST(CURRENT_TIMESTAMP as VARCHAR)) as time,'inc' as unif_type"
+#           insert_into: cdp_unification_${sub}.unif_type_log
+
+#         +unify: 
+#           _export:
+#             step_name: unification
+#             workflow_to_run: wf4_unify
+#             i: ${range.to}
+#           call>: run_workflow_with_logging.dig
       
 # +enrich_tables:
 #   _export:
@@ -67,8 +98,8 @@ _export:
 #   call>: run_workflow_with_logging.dig
 
 
-+unification_dashboard:
-    call>: idu_dashboard/idu_dashboard_launch
+# +unification_dashboard:
+#     call>: idu_dashboard/idu_dashboard_launch
   #   i : 0
   # call>: run_workflow_with_logging.dig
 
@@ -76,20 +107,17 @@ _export:
 #   _export:
 #     step_name: golden
 #     workflow_to_run: wf5_golden
+#     i: 0
 #   call>: run_workflow_with_logging.dig
 
 
-# +probabalistic: 
-#   _export: 
-#     step_name: probabalistic
-#     workflow_to_run: wf6_probabalistic
-#   call>: run_workflow_with_logging.dig
++probabalistic: 
+  _export: 
+    step_name: probabalistic
+    workflow_to_run: wf7_probabalistic
+    i: 0
+  call>: run_workflow_with_logging.dig
 
-# +re_unification: 
-#   _export: 
-#     step_name: reunify
-#     workflow_to_run: wf7_reunify
-#   call>: run_workflow_with_logging.dig
 
 # +refresh_master_segment:
 #   _export:

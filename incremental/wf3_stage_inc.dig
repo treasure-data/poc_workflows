@@ -36,7 +36,10 @@ _export:
                 stg_inc_db: ${stg}_${sub}_inc   
                 current_table: ${tbl} 
                 max_date:   ${td.last_results.max_date}
-                time_chunk: ${incremental.time_chunk}   
+                time_chunk: ${incremental.time_chunk}
+                processed_records: ${td.last_results.stg_inc_record_count}
+                original_records: ${td.last_results.stg_record_count}
+                limit: ${incremental.record_threshold}
               docker:
                 image: "digdag/digdag-python:3.9"
 

@@ -2,9 +2,10 @@ _export:
   !include : config/src_params.yml
   !include : config/unify.yml
 
+  
 ### Unification Pre Process
 +pre_process:
-  ### Parse and merged_keys defined in YML to be used in later tasks
+  ## Parse and merged_keys defined in YML to be used in later tasks
   +genrt_dynm_flds:
     td>: queries/0_genrt_dynm_flds_0.sql
     database: ${dest_db}
@@ -18,6 +19,16 @@ _export:
     td_ddl>:
     create_databases: ["cdp_unification_${unif_name}"]
     database: ${dest_db}
+
+  +get_unification_type: 
+    _export: 
+      db: cdp_unification_${unif_name}
+      endpoint: ${api_endpoint}
+    _env:
+        TD_API_KEY: ${secret:secret_key}
+    py>: python.get_unif_type.main
+    docker:
+      image: "digdag/digdag-python:3.9" 
 
   +crt_unif_input_tbl:
     if>: ${unif_type=="full"}

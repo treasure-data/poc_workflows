@@ -2,13 +2,17 @@ site: us
 raw: raw
 src: src
 stg: stg
-sub: vishal_dev
+sub: vishal_dynamic
 gld: gld
 ana: analytics
-project_name: incremental_dev
+project_name: incremental_dynamic_dev
 parent_segment_id: 12345
 run_all: true
 
+canonical_id: canonical_id
+
 incremental: 
-  time_chunk: "800w"
-  loops: 1
+  perform_first: true
+  time_chunk: "8w"
+  loops: 5
+  record_threshold: 500000000

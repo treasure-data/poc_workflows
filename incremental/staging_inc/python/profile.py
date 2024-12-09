@@ -1,6 +1,5 @@
 import yaml
 import digdag
-import pytd.pandas_td as td
 import os
 
 def main():
@@ -49,11 +48,24 @@ def main():
                 table_list.append(tbl)
         
         max_date = os.environ['max_date']
-        time_chunk = os.environ['time_chunk']
-
+        processed_records = int(os.environ['processed_records'])
+        original_records = int(os.environ['original_records'])
+        limit = int(os.environ['limit'])
+        print('**********')
+        print(processed_records)
+        print(original_records)
+        print(limit)
+        print(original_records - processed_records) 
+        print((original_records - processed_records) < limit)
+        print('**********')
         subque_arr = []
         for table in table_list:
             q_from = ' from ' + table['name'] 
+            if (((original_records - processed_records) < limit)): 
+                time_chunk = '800w'
+            else: 
+                time_chunk = os.environ['time_chunk']
+            print(time_chunk)
             q_where = f" WHERE TD_TIME_RANGE(inc_unix, {max_date}, TD_TIME_ADD({max_date}, '{time_chunk}'))"
             q_columns = []
             for key, col in table['columns'].items():

@@ -3,7 +3,7 @@
 ## Unification Output Name
 ##
 #####################################################
-name: ${unif_name}
+name: conde
 #####################################################
 ##
 ##Declare Validation logic for unification keys
@@ -40,39 +40,39 @@ keys:
 ##
 #####################################################
 tables:
-  - database: stg
+  - database: stg_${sub}
     table: cds
     key_columns:
       - {column: universal_id, key: universal_id}
       - {column: source_legacy_id, key: source_legacy_id}
-  - database: stg
+  - database: stg_${sub}
     table: cds_athena_data
     key_columns:
       - {column: source_legacy_id, key: source_legacy_id}
       - {column: email_md5, key: hash_email}
       - {column: email, key: plain_text_email}
-  - database: stg
+  - database: stg_${sub}
     table: gam
     key_columns:
       - {column: customtargeting_vnd_4d_xid_, key: xid}
-  - database: stg
+  - database: stg_${sub}
     table: id_conde_rds_decrypted
     key_columns:
       - {column: uuid, key: amg_uuid}
       - {column: email, key: plain_text_email}
-  - database: stg
+  - database: stg_${sub}
     table: martech_d_email_extd
     key_columns:
       - {column: email_md5_hash, key: hash_email}
       - {column: amg_uuid, key: amg_uuid}
-  - database: stg
+  - database: stg_${sub}
     table: martech_t_chargebee_subscription_created_decrypted
     key_columns:
       - {column: source_legacy_id, key: source_legacy_id}
       - {column: user_xid, key: xid}
       - {column: email_md5, key: hash_email}
       - {column: email, key: plain_text_email}
-  - database: stg
+  - database: stg_${sub}
     table: permutive_unify_table
     key_columns:
       - {column: permutive_id, key: permutive_id}
@@ -80,36 +80,36 @@ tables:
       - {column: amg, key: amg_uuid}
       - {column: appnexus, key: appnexus}
       - {column: fbp, key: fbp}
-  - database: stg
+  - database: stg_${sub}
     table: sailthru_daily_profile_updates
     key_columns:
       - {column: profile_id, key: profile_id}
       - {column: cust_id, key: mdw_id}
-  - database: stg
+  - database: stg_${sub}
     table: sailthru_daily_stream_events
     key_columns:
       - {column: email_md5, key: hash_email}
       - {column: profile_id, key: profile_id}
-  - database: stg
+  - database: stg_${sub}
     table: slv_core_events
     key_columns:
       - {column: xid, key: xid}
       - {column: amg_id, key: amg_uuid}
       - {column: mdw_id, key: mdw_id}
       - {column: fingerprint_visitor_id, key: fingerprint_id}
-  - database: stg
+  - database: stg_${sub}
     table: daily_email_updates_decrypted
     key_columns:
       - {column: profile_id, key: profile_id}
       - {column: email, key: plain_text_email}
-  - database: stg
+  - database: stg_${sub}
     table: slv_page_ping
     key_columns:
       - {column: xid, key: xid}
       - {column: mdw_id, key: mdw_id}
       - {column: amg_id, key: amg_uuid}
       - {column: fingerprint_visitor_id, key: fingerprint_id}
-  - database: stg
+  - database: stg_${sub}
     table: trackonomics
     key_columns:
       - {column: xid, key: xid}

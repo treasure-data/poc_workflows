@@ -1,13 +1,20 @@
 _export:
   !include : 'config/global.yml'
-  td:
-    database: ${sink_database}
+
++set_global_params: 
+  _export: 
+    unif_id: ${canonical_id}
+    proj_sub: ${sub}
+    api_site: ${site}
+  py>: python.set_params.main
+  docker:
+    image: "digdag/digdag-python:3.9" 
 
 +ddl:
   td_ddl>:
   create_databases: ['${sink_database}']
 
-## Below allows you to easily concat a few of the string columns into one composite column to simplify the dedup process
+# Below allows you to easily concat a few of the string columns into one composite column to simplify the dedup process
 # +data_prep_concat_ids:
 #   td>: sql/concat_ids.sql
 #   create_table: prob_input_table

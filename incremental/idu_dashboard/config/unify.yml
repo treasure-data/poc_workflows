@@ -1,154 +1,40 @@
-name: ${unif_name}
-
+name: prd
 keys:
-  - name: amg_uuid
-    invalid_texts: ['','999999999',null]
-  - name: appnexus
+  - name: td_client_id
     invalid_texts: ['',null]
-  - name: fbp
+  - name: td_global_id
     invalid_texts: ['',null]
-  - name: fingerprint_id
+  - name: email
     invalid_texts: ['',null]
-  - name: hash_email
-    invalid_texts: ['',null]
-  - name: mdw_id
-    invalid_texts: ['',null]
-  - name: permutive_id
-    invalid_texts: ['','[]',null]
-  - name: plain_text_email
-    invalid_texts: ['',null]
-  - name: profile_id
-    invalid_texts: ['',null]
-  - name: source_legacy_id
-    invalid_texts: ['',null]
-  - name: universal_id
-    invalid_texts: ['','0',null]
-  - name: xid
+  - name: phone
     invalid_texts: ['',null]
 
 tables:
-  - database: ${stg}_${sub}
-    table: cds
-    engine: presto
-    bucket_cols: ['${canonical_id_name}']    
+  - database: cdp_unification_src
+    table: pageviews_src
     key_columns:
-      - {column: universal_id, key: universal_id}
-      - {column: source_legacy_id, key: source_legacy_id}
+      - {column: td_client_id, key: td_client_id}
+      - {column: td_global_id, key: td_global_id}
+      - {column: formfill_email_submit, key: email}
 
-  - database: ${stg}_${sub}
-    table: cds_athena_data
-    engine: presto
-    bucket_cols: ['${canonical_id_name}']
+  - database: cdp_unification_src
+    table: customer_support_events_src
     key_columns:
-      - {column: source_legacy_id, key: source_legacy_id}
-      - {column: email_md5, key: hash_email}
-      - {column: email, key: plain_text_email}
+      - {column: customer_support_email, key: email}
+      - {column: phone_number, key: phone}
 
-  - database: ${stg}_${sub}
-    table: gam
-    engine: presto
-    bucket_cols: ['${canonical_id_name}']    
+  - database: cdp_unification_src
+    table: orders_src
     key_columns:
-      - {column: customtargeting_vnd_4d_xid_, key: xid} 
-
-  - database: ${stg}_${sub}
-    table: id_conde_rds_decrypted
-    engine: presto
-    bucket_cols: ['${canonical_id_name}']    
-    key_columns:
-      - {column: uuid, key: amg_uuid}
-      - {column: email, key: plain_text_email}
-
-  - database: ${stg}_${sub}
-    table: martech_d_email_extd
-    engine: presto
-    bucket_cols: ['${canonical_id_name}']    
-    key_columns:
-      - {column: email_md5_hash, key: hash_email}
-      - {column: amg_uuid, key: amg_uuid}
-
-  - database: ${stg}_${sub}
-    table: martech_t_chargebee_subscription_created_decrypted
-    engine: presto
-    bucket_cols: ['${canonical_id_name}']    
-    key_columns:
-      - {column: source_legacy_id, key: source_legacy_id}
-      - {column: user_xid, key: xid} 
-      - {column: email_md5, key: hash_email}
-      - {column: email, key: plain_text_email}
-
-  - database: ${stg}_${sub}
-    table: permutive_unify_table
-    engine: presto
-    bucket_cols: ['${canonical_id_name}']    
-    key_columns:
-      - {column: permutive_id, key: permutive_id}
-      - {column: xid, key: xid}
-      - {column: amg, key: amg_uuid}
-      - {column: appnexus, key: appnexus}
-      - {column: fbp, key: fbp}
-
-  - database: ${stg}_${sub}
-    table: sailthru_daily_profile_updates
-    engine: presto
-    bucket_cols: ['${canonical_id_name}']    
-    key_columns:
-      - {column: profile_id, key: profile_id}
-      - {column: cust_id, key: mdw_id}
-
-  - database: ${stg}_${sub}
-    table: sailthru_daily_stream_events
-    engine: presto
-    bucket_cols: ['${canonical_id_name}']    
-    key_columns:
-      - {column: email_md5, key: hash_email}
-      - {column: profile_id, key: profile_id}
-
-  - database: ${stg}_${sub}
-    table: slv_core_events
-    engine: presto
-    bucket_cols: ['${canonical_id_name}']    
-    key_columns:
-      - {column: xid, key: xid}
-      - {column: amg_id, key: amg_uuid}
-      - {column: mdw_id, key: mdw_id}
-
-
-  - database: ${stg}_${sub}
-    table: daily_email_updates_decrypted
-    engine: presto
-    bucket_cols: ['${canonical_id_name}']    
-    key_columns:
-      - {column: profile_id, key: profile_id}
-      - {column: email, key: plain_text_email}
-
-  - database: ${stg}_${sub}
-    table: slv_page_ping
-    engine: presto
-    bucket_cols: ['${canonical_id_name}']    
-    key_columns:
-      - {column: xid, key: xid}
-      - {column: mdw_id, key: mdw_id}      
-      - {column: amg_id, key: amg_uuid}
-      - {column: fingerprint_visitor_id, key: fingerprint_id}
-
-  - database: ${stg}_${sub}
-    table: trackonomics
-    engine: presto
-    bucket_cols: ['${canonical_id_name}']    
-    key_columns:
-      - {column: xid, key: xid}
-
-
+      - {column: order_email, key: email}
 
 ###########################################################################
 ### Declare hierarchy for unification. Define keys to use for each level.
 ##########################################################################
 
-persistent_ids:
-  - name: canonical_id
-    merge_iterations: 20
-    merge_by_keys: [amg_uuid, appnexus, fbp, fingerprint_id, hash_email, mdw_id, permutive_id, plain_text_email,profile_id, source_legacy_id,universal_id,xid]
+canonical_ids:
+  - name: td_canonical_id
+    merge_by_keys: [email, phone, td_client_id, td_global_id]
 
 ###################################################################### 
 ##Declare Survivorship Rules to Determine Best Value for Each Attribute
