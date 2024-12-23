@@ -8,4 +8,4 @@ _export:
     tbl: [company_name, address]
   _do:
     td>: probabalistic_staging/queries/${tbl}.sql
-    create_table: ${stg}_${sub}.${tbl}
+    create_table: ${stg}_probalistic_${sub}.${tbl}

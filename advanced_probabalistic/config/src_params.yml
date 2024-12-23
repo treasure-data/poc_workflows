@@ -1,8 +1,8 @@
 site: us
 raw: raw
-src: src
-stg: stg
-sub: customer_name
+src: bill
+stg: bill_stg
+sub: source
 gld: gld
 ana: analytics
 project_name: 

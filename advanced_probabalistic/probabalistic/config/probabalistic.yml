@@ -1,0 +1,40 @@
+probabalistic: 
+    - name: address
+      input_table: address
+      dedupe_columns:
+        - name: address                 #col name
+          type: string                  #types are string, email, phone because we use different data-cleaning logic for the special column types to standerdize inputs
+          weight: 1.0                   #decimal from 0.0-1.0, determines how much weight % the similarity score of that column contributes to the final matching score
+          final_approval: 'no'          #Default = 'no', 'yes' = if customer gives us a final custom approval logic (ex. only accept matches where this col IS NOT NULL) the 'sql/acceptance_create_final_table.sql' query will apply logic
+      output_suffix: user_master_addres                        #gets added at the end of output tables to track different runs on different intput data
+      #blocking conig
+      blocking_table: prob_final_blocking_address
+      jaccard_similarity_threshold: 0.70
+      max_records_allowed: 900000000
+      record_limit: 10000
+      #cluster config
+      output_table: prob_final_cluster_address   #name of final clsuter_table with probabilistic matched ID
+      convergence_threshold : 0.01
+      cluster_threshold: 0.8
+      num_block_splits: 20
+      query_engine: presto  
+    - name: company
+      input_table: company
+      dedupe_columns:
+        - name: company                 #col name
+          type: string                  #types are string, email, phone because we use different data-cleaning logic for the special column types to standerdize inputs
+          weight: 1.0                   #decimal from 0.0-1.0, determines how much weight % the similarity score of that column contributes to the final matching score
+          final_approval: 'no'          #Default = 'no', 'yes' = if customer gives us a final custom approval logic (ex. only accept matches where this col IS NOT NULL) the 'sql/acceptance_create_final_table.sql' query will apply logic
+      output_suffix: user_master_address                       #gets added at the end of output tables to track different runs on different intput data
+      #blocking conig
+      blocking_table: prob_final_blocking_company
+      jaccard_similarity_threshold: 0.70
+      max_records_allowed: 900000000
+      record_limit: 10000
+      #cluster config
+      output_table: prob_final_blocking_company   #name of final clsuter_table with probabilistic matched ID
+      convergence_threshold : 0.01
+      cluster_threshold: 0.8
+      num_block_splits: 20
+      query_engine: presto  
+

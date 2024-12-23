@@ -1,10 +1,10 @@
-sink_database: cdp_unification_probalistic_${sub}
+sink_database: cdp_unification_probabalistic_advanced_bill_divvy
 model_config_table: datamodel_build_history
 api_server: 'api.treasuredata.com'
 create_dashboard: 'no'
 
 base_table:                                       #Used ONLY if you plan to concat some of the original id_cols into a composite key
-source_db: ${stg}_probalistic_${sub}                    #DB where the source input table for probabilistic lives
+source_db: stg_bill_divvy_probabalistic_advanced                     #DB where the source input table for probabilistic lives
 input_table: address                          #name of input table
 id_col: index                                 #name of canonica_id column created by Deterministic Unification
 
@@ -15,20 +15,26 @@ top_k_vals: 100                                    #Top-K string values with the
 
 
 #--- columns used for Unification and their Types
-dedupe_columns: ${prob.dedupe_columns}
+dedupe_columns:
 
-output_suffix: ${prob.output_suffix}                        #gets added at the end of output tables to track different runs on different intput data
+  - name: address                 #col name
+    type: string                  #types are string, email, phone because we use different data-cleaning logic for the special column types to standerdize inputs
+    weight: 1.0                   #decimal from 0.0-1.0, determines how much weight % the similarity score of that column contributes to the final matching score
+    final_approval: 'no'          #Default = 'no', 'yes' = if customer gives us a final custom approval logic (ex. only accept matches where this col IS NOT NULL) the 'sql/acceptance_create_final_table.sql' query will apply logic
 
-output_table: ${prob.output_table}    #name of final clsuter_table with probabilistic matched IDs
+
+output_suffix: user_master_address_80                        #gets added at the end of output tables to track different runs on different intput data
+
+output_table: prob_final_cluster_address_80   #name of final clsuter_table with probabilistic matched IDs
 cluster_col_name : cluster_id                     #name of the distinct clsuter_id column assigned to records that match
 custom_filter: 'no'                               #if set to 'yes', the final approval logic param for each column will apply
 
 #----  max_records_allowed ----> Number of records allowed per blocking process. If table size exceeds this then it will be split in chunks of that and processed in parallel to avoid memory limits.
 #----  record_limit ----> Number of records to be processed by the Python code for the final clsutering/agorithm. If final blocking table exceeds this limit it will be split in chunks and processed in parallel docker images.
 
-blocking_table: ${prob.blocking_table}    #name of the blocking table
-max_records_allowed: ${prob.max_records_allowed} 
-record_limit: ${prob.record_limit} 
+blocking_table: prob_final_blocking_address_80    #name of the blocking table
+max_records_allowed: 900000000
+record_limit: 10000
 
 
 #---- Increasing the value of hashes,keygroups and jaccard_similarity_threshold will increase the Recall
@@ -38,7 +44,7 @@ record_limit: ${prob.record_limit}
 
 hashes: 7
 keygroups: 4
-jaccard_similarity_threshold: ${prob.jaccard_similarity_threshold} 
+jaccard_similarity_threshold: 0.70
 
 
 #---Params for clustering and similarity , use string_type cosine or jarowinkler
@@ -54,10 +60,10 @@ jaccard_similarity_threshold: ${prob.jaccard_similarity_threshold}
 
 ###---avg_spend_per_user ---> Default: 50 --> allows to define how much customer spends on AVG per year to send marketing campaigns to a single ID, which determines the estimated savings, shown in the final dashboard.
 
-convergence_threshold : ${prob.convergence_threshold} 
-cluster_threshold: ${prob.convergence_threshold}
+convergence_threshold : 0.01
+cluster_threshold: 0.8
 string_type :
 fill_missing: True
 avg_spend_per_user: 100
-num_block_splits: ${prob.num_block_splits}
-query_engine: ${prob.query_engine}
+num_block_splits: 20
+query_engine: presto
