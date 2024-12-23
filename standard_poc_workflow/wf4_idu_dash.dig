@@ -4,12 +4,6 @@ _export:
     database: cdp_unification_${sub}
     src_database: cdp_unification_${sub}
 
-+run_probabalistic:
-  # echo>: "Running step ${step_name} and workflow name ${workflow_to_run} when run_all ${run_all} and historical run are empty or failed."
-  _export:
-  call>: probabalistic/ml_prob_unification_launch
-
-+finalize_table: 
-  td>: probabalistic/sql/create_final_probabalstic_table.sql 
-  create_table: final_probabalistic_matches
-  database: cdp_unification_probabalistic_${sub}
++create_dashboard:
+  # _export:
+  call>: idu_dashboard/idu_dashboard_launch
