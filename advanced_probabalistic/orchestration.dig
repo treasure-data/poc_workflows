@@ -11,7 +11,7 @@ _export:
 
 +prepare_db:
   td_ddl>:
-  create_databases: ["va_config_${sub}", "${stg}_probalistic_${sub}", "${stg}_${sub}", "${gld}_${sub}"]
+  create_databases: ["va_config_${sub}", "${stg}_probabilistic_${sub}", "${stg}_${sub}", "${gld}_${sub}"]
 
 +prepare_log_table:
   database: va_config_${sub}
@@ -25,17 +25,17 @@ _export:
       query: "delete from log_tbl where 1=1"
       database: va_config_${sub}
 
-# +probabalistic_staging:
+# +probabilistic_staging:
 #   _export:
 #     step_name: staging
-#     workflow_to_run: wf3_probabalistic_stage
+#     workflow_to_run: wf3_probabilistic_stage
 #   call>: run_workflow_with_logging.dig
 
 
-+probabalistic:
++probabilistic:
   _export:
-    step_name: probabalistic_scoring
-    workflow_to_run: wf4_probabalistic
+    step_name: probabilistic_scoring
+    workflow_to_run: wf4_probabilistic
   call>: run_workflow_with_logging.dig
 
 # +deterministic_staging:

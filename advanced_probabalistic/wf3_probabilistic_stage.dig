@@ -7,5 +7,5 @@ _export:
   for_each>:
     tbl: [company_name, address]
   _do:
-    td>: probabalistic_staging/queries/${tbl}.sql
-    create_table: ${stg}_probalistic_${sub}.${tbl}
+    td>: probabilistic_staging/queries/${tbl}.sql
+    create_table: ${stg}_probabilistic_${sub}.${tbl}

@@ -11,7 +11,7 @@ _export:
 +iterate_through_each_column_for_eda:
   _parallel: true
   for_each>:
-    column_name: ${dedupe_columns}
+    column_name: ${JSON.parse(dedupe_columns)}
   _do:
     +extract_columns_eda:
       td>: sql/get_features_info.sql

@@ -1,4 +1,4 @@
-probabalistic: 
+probabilistic: 
     - name: address
       input_table: address
       dedupe_columns:

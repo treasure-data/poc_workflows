@@ -1,22 +1,22 @@
 _export:
   !include : 'config/src_params.yml'
-  !include : 'probabalistic/config/probabalistic.yml'
+  !include : 'probabilistic/config/probabilistic.yml'
   td:
     database: cdp_unification_${sub}
     src_database: cdp_unification_${sub}
 
 +for_all_configs: 
   for_each>: 
-    prob_col: ${probabalistic}
+    prob_col: ${probabilistic}
   _do: 
     +run_probabalistic:
       # echo>: "Running step ${step_name} and workflow name ${workflow_to_run} when run_all ${run_all} and historical run are empty or failed."
       _export:
         probalistic_config: ${prob_col}
-      call>: probabalistic/ml_prob_unification_launch
+      call>: probabilistic/ml_prob_unification_launch
 
 
-# +finalize_table: 
-#   td>: probabalistic/sql/create_final_probabalstic_table.sql 
-#   create_table: final_probabalistic_matches
-#   database: cdp_unification_probabalistic_${sub}
+  # +finalize_table: 
+  #   td>: probabilistic/sql/create_final_probabalstic_table.sql 
+  #   create_table: final_probabalistic_matches
+  #   database: cdp_unification_probabalistic_${sub}
