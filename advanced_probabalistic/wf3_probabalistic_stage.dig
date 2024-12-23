@@ -1,7 +1,7 @@
 _export:
   !include : 'config/src_params.yml'
   td:
-    database: ${src}
+    database: ${src}_${sub}
 +transformed:
   _parallel: true
   for_each>:

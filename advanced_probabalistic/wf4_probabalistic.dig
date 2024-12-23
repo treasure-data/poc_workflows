@@ -5,13 +5,14 @@ _export:
     database: cdp_unification_${sub}
     src_database: cdp_unification_${sub}
 
-+for_all_cnigs: 
++for_all_configs: 
   for_each>: 
-    ${prob_col}: ${probabalistic}
+    prob_col: ${probabalistic}
   _do: 
     +run_probabalistic:
       # echo>: "Running step ${step_name} and workflow name ${workflow_to_run} when run_all ${run_all} and historical run are empty or failed."
-      # _export:
+      _export:
+        probalistic_config: ${prob_col}
       call>: probabalistic/ml_prob_unification_launch
 
 

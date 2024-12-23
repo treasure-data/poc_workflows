@@ -5,10 +5,9 @@ _export:
 
 +set_global_params: 
   _export: 
-    unif_id: ${canonical_id}
     proj_stg: ${stg}
     proj_sub: ${sub}
-    prob: ${prob_col}
+    prob: ${probalistic_config}
   py>: python.set_params.main
   docker:
     image: "digdag/digdag-python:3.9" 
