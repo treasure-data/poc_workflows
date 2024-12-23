@@ -1,6 +1,6 @@
 _export:
   !include : 'config/src_params.yml'
-  !include : 'config/probabalistic.yml'
+  !include : 'probabalistic/config/probabalistic.yml'
   td:
     database: cdp_unification_${sub}
     src_database: cdp_unification_${sub}
