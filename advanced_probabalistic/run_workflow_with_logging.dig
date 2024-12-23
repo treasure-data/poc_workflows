@@ -32,7 +32,6 @@ _export:
           # echo>: "Running step ${step_name} and workflow name ${workflow_to_run} when run_all ${run_all} and historical run are empty or failed."
           _export:
           require>: ${workflow_to_run}
-          project_name: ${project_name}
 
         +update_log:
           td>:
@@ -46,21 +45,10 @@ _export:
       td>:
       query: "delete from log_tbl where step_name = '${step_name}'"
 
-    +check_incremental: 
-      if>: ${i > 0} 
-      _do: 
-        +run_workflow:
-          # echo>: "Running step ${step_name} and workflow name ${workflow_to_run} when run_all ${run_all} and no historical run is checked."
-          _export:
-          require>: ${workflow_to_run}
-          project_name: ${project_name}
-          session_time: ${moment(session_time).add(i*2+10, 'seconds').format()}
-      _else_do:
-        +run_workflow_once:
-          # echo>: "Running step ${step_name} and workflow name ${workflow_to_run} when run_all ${run_all} and no historical run is checked."
-          _export:
-          require>: ${workflow_to_run}
-          project_name: ${project_name}
+    +run_workflow:
+      # echo>: "Running step ${step_name} and workflow name ${workflow_to_run} when run_all ${run_all} and no historical run is checked."
+      _export:
+      require>: ${workflow_to_run}
 
     +update_log:
       td>:
