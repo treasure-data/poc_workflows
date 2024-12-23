@@ -59,21 +59,9 @@ _export:
 # +golden:
 #   _export:
 #     step_name: golden
-#     workflow_to_run: wf5_golden
+#     workflow_to_run: wf7_golden
 #   call>: run_workflow_with_logging.dig
 
-
-# +probabalistic: 
-#   _export: 
-#     step_name: probabalistic
-#     workflow_to_run: wf6_probabalistic
-#   call>: run_workflow_with_logging
-
-# +re_unification: 
-#   _export: 
-#     step_name: reunify
-#     workflow_to_run: wf7_reunify
-#   call>: run_workflow_with_logging
 
 # +refresh_master_segment:
 #   _export:
