@@ -5,7 +5,7 @@ create_dashboard: 'no'
 
 base_table:                                       #Used ONLY if you plan to concat some of the original id_cols into a composite key
 source_db: ${stg}_probabilistic_${sub}                    #DB where the source input table for probabilistic lives
-input_table: address                          #name of input table
+# input_table: address                          #name of input table
 id_col: index                                 #name of canonica_id column created by Deterministic Unification
 
 ######## EDA & EXCLUSION OF OVERMERGED IDs ################
