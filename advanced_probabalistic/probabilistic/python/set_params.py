@@ -9,6 +9,7 @@ def main(stg, sub, prob):
                       "source_db": f"{stg}_probalistic_${sub} ",
                       "sink_database": f"cdp_unification_probabalistic_{sub}",
                       "probabalistic": f"{json.loads(prob)}",
+                      "input_table": f"{json.loads(prob)['input_table']}",
                       "dedupe_columns" : f"{json.dumps(json.loads(prob)['dedupe_columns'])}", 
                       "blocking_table" : f"{json.loads(prob)['blocking_table']}", 
                       "max_records_allowed": f"{json.loads(prob)['max_records_allowed']}",
