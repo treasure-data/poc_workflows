@@ -9,7 +9,7 @@ source_db: ${stg}_probabilistic_${sub}                    #DB where the source i
 id_col: index                                 #name of canonica_id column created by Deterministic Unification
 
 ######## EDA & EXCLUSION OF OVERMERGED IDs ################
-run_eda: 'yes'                                    #Run EDA framework to get Top-K Strings by value count to esnure there is not over-merging on faulty string values such as '/' or '-' etc.
+run_eda: 'no'                                    #Run EDA framework to get Top-K Strings by value count to esnure there is not over-merging on faulty string values such as '/' or '-' etc.
 exclude_overmerging: 'no'                         #yes - autmatically excludes the Top-K strings from the blocking/clustering process of probabilistic
 top_k_vals: 100                                    #Top-K string values with the highest value counts you want to see from EDA and exclude from final unifcation
 
