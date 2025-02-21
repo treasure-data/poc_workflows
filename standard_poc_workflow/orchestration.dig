@@ -29,38 +29,38 @@ _export:
 #   _export:
 #     step_name: profiling
 #     workflow_to_run: wf1_profiling
-#   call>: orchestration/run_workflow_with_logging.dig
+#   call>: run_workflow_with_logging.dig
 
 # +staging:
 #   _export:
 #     step_name: staging
 #     workflow_to_run: wf2_stage
-#   call>: orchestration/run_workflow_with_logging.dig
+#   call>: run_workflow_with_logging.dig
 
 # +unification:
 #   _export:
 #     step_name: unification
 #     workflow_to_run: wf3_unify
-#   call>: orchestration/run_workflow_with_logging.dig
+#   call>: run_workflow_with_logging.dig
 
 # +unification_dashboard:
 #   _export:
 #     step_name: unification_dashboard
 #     workflow_to_run: wf4_idu_dash
-#   call>: orchestration/run_workflow_with_logging.dig
+#   call>: run_workflow_with_logging.dig
 
 # +golden:
 #   _export:
 #     step_name: golden
 #     workflow_to_run: wf5_golden
-#   call>: orchestration/run_workflow_with_logging.dig
+#   call>: run_workflow_with_logging.dig
 
 
 +probabalistic: 
   _export: 
     step_name: probabalistic
     workflow_to_run: wf6_probabalistic
-  call>: orchestration/run_workflow_with_logging.dig
+  call>: run_workflow_with_logging.dig
 
 +re_unification: 
   _export: 
@@ -72,13 +72,13 @@ _export:
 #   _export:
 #     step_name: refresh_master_segment
 #     workflow_to_run: wf8_refresh_master_segment
-#   call>: orchestration/run_workflow_with_logging.dig
+#   call>: run_workflow_with_logging.dig
 
 # +run_analytics:
 #   _export:
 #     step_name: run_analytics
 #     workflow_to_run: wf9_analytics
-#   call>: orchestration/run_workflow_with_logging.dig
+#   call>: run_workflow_with_logging.dig
 
 # Send mail success
 +send_success_alert:
