@@ -15,6 +15,10 @@ on:
         description: 'Database Name'
         required: true
         type: string
+      knowledge_base_name: 
+        description: 'Knowledge Base Name'
+        required: true
+        type: string
 
 jobs:
   create-agent:
@@ -37,4 +41,4 @@ jobs:
     - name: Create Staging Agent
       run: |
         cd knowledge_base_db/src
-        python main.py "${{ github.event.inputs.project_id }}" "${{ github.event.inputs.td_api_key }}" "${{ github.event.inputs.database_name }}"
+        python main.py "${{ github.event.inputs.project_id }}" "${{ github.event.inputs.td_api_key }}" "${{ github.event.inputs.database_name }}" "${{ github.event.inputs.knowledge_base_name }}"
