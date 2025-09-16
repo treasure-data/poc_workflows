@@ -53,7 +53,7 @@ jobs:
             td_wf_url="https://api-workflow.treasuredata.com"
           elif [[ "${{ inputs.td_region }}" == "aws-tokyo" ]]; then
             td_wf_url="https://api-workflow.treasuredata.co.jp"
-          elif [[ "${{ inputs.eu01 }}" == "eu01" ]]; then
+          elif [[ "${{ inputs.td_region }}" == "eu01" ]]; then
             td_wf_url="https://api-workflow.eu01.treasuredata.com/"
           elif [[ "${{ inputs.td_region }}" == "ap01" ]]; then
             td_wf_url="https://api-workflow.ap01.treasuredata.com/"
