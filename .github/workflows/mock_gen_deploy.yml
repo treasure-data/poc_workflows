@@ -54,9 +54,9 @@ jobs:
           elif [[ "${{ inputs.td_region }}" == "aws-tokyo" ]]; then
             td_wf_url="https://api-workflow.treasuredata.co.jp"
           elif [[ "${{ inputs.td_region }}" == "eu01" ]]; then
-            td_wf_url="https://api-workflow.eu01.treasuredata.com/"
+            td_wf_url="https://api-workflow.eu01.treasuredata.com"
           elif [[ "${{ inputs.td_region }}" == "ap01" ]]; then
-            td_wf_url="https://api-workflow.ap01.treasuredata.com/"
+            td_wf_url="https://api-workflow.ap01.treasuredata.com"
           else
             td_wf_url="default_value" # Fallback option if no match is found
           fi
