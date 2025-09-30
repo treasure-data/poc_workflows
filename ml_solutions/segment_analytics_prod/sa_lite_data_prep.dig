@@ -1,0 +1,234 @@
+_export:
+  !include : config/input_params.yml
+  td:
+    database: ${sink_database}
+
+###### EXTRACT SQL SYNTAX FROM AUDIENCE API FOR EACH SEGMENT IN AUDIENCE STUDIO ############## 
++run_segment_mapping_python_code:
+  call>: sa_lite_map_segments_to_profiles.dig
+
++create_segment_mapping_table:
+  td>: sql/segments_dashboard_segment_profile_mapping.sql
+  create_table: ${project_prefix}_segment_profile_mapping
+
+### Loop Through Audience IDs and Aggregate KPIs Grouped By Segment #####################  
+
++create_params_table:
+  td>: sql/parse_table_params.sql
+  create_table: ${project_prefix}_params_yml
+
++check_last_run_history:
+    +check_if_final_table_exists:
+      td>:
+        data: "SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE REGEXP_LIKE(table_schema, '${sink_database}') AND table_name = '${project_prefix}_final_metrics_table' "
+      store_last_results: true
+
+    +if_table_exists_check_latest_timestamp:
+      if>: ${Object.keys(td.last_results).length != 0}
+      _do:
+        +create_final_lookup_table:
+          td>: sql/final_lookup_table.sql
+          create_table: ${project_prefix}_final_lookup_table
+
+        +create_model_config_table:
+          td_ddl>:
+          empty_tables: ["${project_prefix}_new_metrics_segments_tracker"]    
+
+        +create_temp_metrics_tables:
+          _parallel: true
+
+          td_for_each>: sql/parse_table_params.sql
+          _do:
+            +create_new_metrics_segments_table:
+              td>: sql/kpis/check_metric_exists.sql
+              insert_into: ${project_prefix}_new_metrics_segments_tracker
+
++create_temp_metrics_tables:
+  _parallel: true
+
+  td_for_each>: sql/parse_table_params.sql
+  _do:
+    +check_if_table_exists:
+      td>:
+        data: "SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE REGEXP_LIKE(table_schema, '${sink_database}') AND table_name = '${project_prefix}_${td.each.output_table}' "
+      store_last_results: true
+
+    +if_table_exists_check_latest_timestamp:
+      if>: ${Object.keys(td.last_results).length != 0}
+      _do:
+        +check_metric_exists:
+          td>: 
+            data: "SELECT * from ${project_prefix}_new_metrics_segments_tracker where metric_table = '${td.each.output_table}' "
+          store_last_results: true
+        +check_new_metric_or_segments_added:
+          if>: ${td.last_results.new_metrics_count > 0 || td.last_results.new_segments_count > 0}
+          _do:
+            +check_new_metric_added:
+              if>: ${td.last_results.new_metrics_count > 0 && td.last_results.new_segments_count < 1}
+              _do:
+                +set_latest_timestamp:
+                  td>:
+                    data: "SELECT '1950-01-01' as max_date, (select concat('(',array_join(old_segment_ids,','),')') from ${project_prefix}_new_metrics_segments_tracker where metric_table = '${td.each.output_table}' ) as segment_ids "
+                  store_last_results: true
+
+                +drop_and_create_table:
+                  td_ddl>:
+                  empty_tables: ["${project_prefix}_${td.each.output_table}"]
+
+                +check_if_custom_query_process_required:
+                  if>: ${td.each.query_type != 'custom'}
+                  _do:
+                    +create_agg_table:
+                      td>: sql/kpis/create_output_table.sql
+                      insert_into: ${project_prefix}_${td.each.output_table}
+
+                  _else_do:
+                    +create_agg_table_from_custom_query:
+                      td>: sql/kpis/${td.each.output_table}.sql
+                      insert_into: ${project_prefix}_${td.each.output_table}
+
+            +check_new_segment_added:
+              if>: ${td.last_results.new_metrics_count < 1 && td.last_results.new_segments_count > 0 }
+              _do:
+                +insert_old_records_of_new_segments:
+                  +set_latest_timestamp:
+                    td>:
+                      data: "SELECT '1950-01-01' as max_date, (select concat('(',array_join(new_segments_list,','),')')  from ${project_prefix}_new_metrics_segments_tracker where metric_table = '${td.each.output_table}') as segment_ids "
+                    store_last_results: true
+
+                  +check_if_custom_query_process_required:
+                    if>: ${td.each.query_type != 'custom'}
+                    _do:
+                      +create_agg_table:
+                        td>: sql/kpis/create_output_table.sql
+                        insert_into: ${project_prefix}_${td.each.output_table}
+
+                    _else_do:
+                      +create_agg_table_from_custom_query:
+                        td>: sql/kpis/${td.each.output_table}.sql
+                        insert_into: ${project_prefix}_${td.each.output_table}
+                        
+                +insert_new_records_of_old_segments:
+                  +get_latest_timestamp:
+                    td>:
+                      data: "SELECT MAX(event_date) as max_date,(select  concat('(',array_join(old_segment_ids,','),')')  from ${project_prefix}_new_metrics_segments_tracker where metric_table = '${td.each.output_table}') as segment_ids FROM ${project_prefix}_${td.each.output_table}"
+                    store_last_results: true
+
+                  +check_if_custom_query_process_required:
+                    if>: ${td.each.query_type != 'custom'}
+                    _do:
+                      +create_agg_table:
+                        td>: sql/kpis/create_output_table.sql
+                        insert_into: ${project_prefix}_${td.each.output_table}
+
+                    _else_do:
+                      +create_agg_table_from_custom_query:
+                        td>: sql/kpis/${td.each.output_table}.sql
+                        insert_into: ${project_prefix}_${td.each.output_table}
+          _else_do:
+            +set_time_and_segments:
+              td>:
+                data: "SELECT MAX(event_date) as max_date,(select  concat('(',array_join(old_segment_ids,','),')')  from ${project_prefix}_new_metrics_segments_tracker where metric_table = '${td.each.output_table}') as segment_ids FROM ${project_prefix}_${td.each.output_table}"
+              store_last_results: true
+
+            +check_if_custom_query_process_required:
+              if>: ${td.each.query_type != 'custom'}
+              _do:
+                +create_agg_table:
+                  td>: sql/kpis/create_output_table.sql
+                  insert_into: ${project_prefix}_${td.each.output_table}
+
+              _else_do:
+                +create_agg_table_from_custom_query:
+                  td>: sql/kpis/${td.each.output_table}.sql
+                  insert_into: ${project_prefix}_${td.each.output_table}              
+              
+      _else_do:
+        +set_time_and_segments:
+          td>:
+            data: "SELECT '1950-01-01' as max_date,(select concat('(',array_join(array_agg(distinct segment_id),','),')') FROM ${project_prefix}_ps_stats) as segment_ids   "
+          store_last_results: true
+
+        +check_if_custom_query_process_required:
+          if>: ${td.each.query_type != 'custom'}
+          _do:
+            +create_agg_table:
+              td>: sql/kpis/create_output_table.sql
+              insert_into: ${project_prefix}_${td.each.output_table}
+
+          _else_do:
+            +create_agg_table_from_custom_query:
+              td>: sql/kpis/${td.each.output_table}.sql
+              insert_into: ${project_prefix}_${td.each.output_table}
+
++create_final_combined_table:
+  +insert_into_base_table:
+    _parallel: true
+
+    td_for_each>: sql/kpis/base_table_syntax.sql
+    _do:
+      +check_if_table_exists:
+        td>:
+          data: "SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE REGEXP_LIKE(table_schema, '${sink_database}') AND table_name = '${project_prefix}_final_lookup_table' "
+        store_last_results: true
+
+      +check_metric:        
+        if>: ${Object.keys(td.last_results).length != 0}
+        _do:
+          +insert_into_combined_metrics:
+            td>: sql/kpis/base_table_create.sql
+            insert_into: ${project_prefix}_kpis_combined
+        _else_do:
+          +insert_into_combined_metrics_first_time:
+            td>: sql/kpis/base_table_create_first_time.sql
+            insert_into: ${project_prefix}_kpis_combined
+
++create_final_temp_table_with_journeys:
+  #check if journeys exist and add journey_name to metrics_join table if applicable
+  +check_if_journeys_exist:
+    td>:
+      data: "SELECT COUNT_IF(segment_type = 'journey') as journeys_num FROM ${project_prefix}_segment_profile_mapping"
+    store_last_results: true
+
+  +create_metrics_join_table_with_journeys_or_not:
+    if>: ${td.last_results.journeys_num > 0}
+    _do:
+      +segments_dashboard_metrics_join_journeys:
+        td>: sql/segments_dashboard_metrics_join_journeys.sql
+        create_table: ${project_prefix}_final_metrics_temp
+
+    _else_do:
+      +create_final_lookup_table:
+        +check_if_table_exists:
+          td>:
+            data: "SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE REGEXP_LIKE(table_schema, '${sink_database}') AND table_name = '${project_prefix}_final_lookup_table' "
+          store_last_results: true
+
+        +if_table_exists_check_latest_timestamp:
+          if>: ${Object.keys(td.last_results).length != 0}
+          _do:
+            +segments_dashboard_metrics_join:
+              td>: sql/segments_dashboard_metrics_join.sql
+              create_table: ${project_prefix}_final_metrics_temp
+          _else_do:
+            +segments_dashboard_metrics_join_first_time:
+              td>: sql/segments_dashboard_metrics_join_first_time.sql
+              create_table: ${project_prefix}_final_metrics_temp
+
++create_final_metrics_table:
+#### Check if there is already a final table from a previous run
+  +check_if_metrics_table_exists:
+    td>:
+      data: "SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE REGEXP_LIKE(table_schema, '${sink_database}') AND table_name = '${project_prefix}_final_metrics_table' "
+    store_last_results: true
+
+  +if_table_exists_insert_new_data_and_flag_query_change:
+    if>: ${Object.keys(td.last_results).length != 0}
+    _do:
+      +insert_into_final_table:
+        td>: sql/final_metrics_table.sql
+        insert_into: ${project_prefix}_final_metrics_table
+    _else_do:
+      +create_final_table_for_first_time:
+        td>: sql/final_metrics_table_first_run.sql
+        create_table: ${project_prefix}_final_metrics_table

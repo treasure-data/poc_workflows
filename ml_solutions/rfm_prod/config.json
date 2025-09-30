@@ -1,0 +1,22 @@
+{
+  "model_name":  "rfm_prod"
+  ,
+  "model_tables": [
+    {"db": "sink_database","name":"rfm_stats_daily_agg"},
+    {"db":"sink_database","name":"rfm_stats_global_session_filter"},
+    {"db":"sink_database","name":"rfm_stats_histogram"},
+    {"db":"sink_database","name":"rfm_stats_model_params"}
+                  ]
+  ,
+  "shared_user_list": ["dilyan.kovachev+psdemo@treasure-data.com"],
+  
+  "change_schema_cols": {"date": ["event_date", "run_time"], "text": ["ENTER_NAME"], "float": ["ENTER_NAME"], "bigint": ["ENTER_NAME"]}, 
+  
+  "join_relations": {"pairs": 
+[
+  {"db1": "sink_database", "tb1":"rfm_stats_global_session_filter","join_key1":"session_id","db2": "sink_database","tb2":"rfm_stats_daily_agg","join_key2":"session_id"},
+  {"db1": "sink_database","tb1":"rfm_stats_global_session_filter","join_key1":"session_id","db2": "sink_database","tb2":"rfm_stats_histogram","join_key2":"session_id"},
+  {"db1": "sink_database","tb1":"rfm_stats_global_session_filter","join_key1":"session_id","db2": "sink_database","tb2":"rfm_stats_model_params","join_key2":"session_id"}
+]
+  }
+                    }

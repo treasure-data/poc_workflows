@@ -1,0 +1,17 @@
+_export:
+  !include : 'config/input_params.yml'
+  td:
+    database: ${globals.sink_database}
+
++run_rfm:
+  ipynb>:
+    notebook: RFM
+    input_table: ${globals.sink_database}.${input_table}
+    output_table: ${globals.sink_database}.${output_table}
+    user_column: ${globals.canonical_id}
+    disable_clustering: true
+    aggregated_input: true
+    output_column_prefix:
+    # branch: develop
+    audience_name:
+    foreign_key: ${globals.canonical_id}

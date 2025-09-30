@@ -1,0 +1,55 @@
+################## SCHEDULE PARAMS ##################################  
+timezone: UTC
+
+schedule:
+  weekly>: Sun, 05:30:00 #(this will run every Sunday, at 4am UTC)
+
+#################### ERROR EMAIL NOTIFICATION ######################### 
+_error:
+  mail>: body.txt
+  subject: Segment Analytics Workflow Failed - Sales Demo Dev
+  to: ['yasuyuki+globalprod@treasure-data.com']
+
+####################### TRIGGER MAIN PROJECT WORKFLOW #################################
+_export:
+  !include : config/input_params.yml
+  td:
+    database: ${sink_database}
+
+# ############## CREATE REPORTING DATABASE IF NOT EXIST ###############################
+# +create_sink_database:
+#   td_ddl>:
+#   create_databases: ["${sink_database}"]
+
+############## SCAN PARENT SEGMENTS IN TD ACCOUNT ##################################
++extract_ps_stats_table:
+  call>: sa_lite_scan_parent_segments.dig
+  
+########## EXTRACT POPULATIONS AND AGGREGATE METRICS FOR AUDIENCES ################
++segment_dashboard_data_prep:
+  call>: sa_lite_data_prep.dig
+
+############### DATAMODEL BUILDOUT, UPDATE & DELETE WFs ###########################
++check_if_need_to_create_dashboard:
+  if>: ${create_dashboard=='yes'}
+  _do:
+    +run_model_create_wf:
+      call>: sa_lite_datamodel_create.dig
+
+    +run_model_refresh_build_wf:
+      call>: sa_lite_datamodel_build.dig
+
+################### CLEANUP TEMP TABLES #########################################
++cleanup_temp_tables:
+  if>: ${cleanup_temp_tables == 'yes'}
+  _do:
+    +run_cleanup_workflow:
+      call>: sa_lite_cleanup_runner.dig
+
+# ##### RESETS ALL TABLES - USE BELOW TO DELETE ALL TABLES AND DO A FRESH RUN ##############
+# +check_if_fresh_run:
+#     if>: ${fresh_run == 'yes'} 
+#     _do: 
+#       ####Reset all base tables
+#       +reset_base_tables:
+#         call>: sa_lite_reset_tables.dig

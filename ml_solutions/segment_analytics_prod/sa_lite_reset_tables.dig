@@ -1,0 +1,14 @@
+_export:
+  !include : config/input_params.yml
+  td:
+    database: ${sink_database}
+
++reset_tables:
+  td_for_each>: sql/reset/select_tables.sql
+
+  _parallel: true
+
+  _do:
+    +drop_table:
+      td_ddl>:
+      drop_tables: ["${td.each.table_name}"]

@@ -1,0 +1,37 @@
+_export:
+  !include : 'config/input_params.yml'
+  td:
+    database: ${sink_database}
+
+#Extracts info for all Audience Studio Objects via API and writes to `segment_analytics_ps_stats` table
++extract_parent_segments_info:   
+    py>: python_files.scan_parent_segments.extract_segment_stats
+    _env:
+      TD_API_KEY: '${secret:secret_key}'
+      TD_API_SERVER: '${api_endpoint}'
+      SINK_DB: '${sink_database}'
+      FOLDER_DEPTH: '${folder_depth}'
+      OUTPUT_TABLE: '${project_prefix}_ps_stats_temp'
+      v5_flag: '${filters.v5_flag}'
+      apply_ps_filters: '${filters.apply_ps_filters}'
+      ps_to_include: '${filters.ps_to_include}'
+      folders_to_include: '${filters.folders_to_include}'
+      segments_to_include: '${filters.segments_to_include}'
+      journeys_to_include: '${filters.journeys_to_include}'
+    docker:
+      image: "digdag/digdag-python:3.9"
+
++get_ps_stats:
+  _parallel: true
+
+  +track_populations:
+    td>: sql/ps_populations_history.sql
+    insert_into: ${project_prefix}_population_tracker
+
+  +create_final_ps_stats:
+    td>: sql/ps_stats_final.sql
+    create_table: ${project_prefix}_ps_stats
+
+
+
+  

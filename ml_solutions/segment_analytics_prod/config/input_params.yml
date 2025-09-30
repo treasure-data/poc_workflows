@@ -1,0 +1,101 @@
+#####################################################################
+########################## GLOBAL PARAMS ############################
+#####################################################################
+project_prefix: sa_lite         #this is added as prefix to the name of all output tables, so user can find them easily in the database
+sink_database: reporting_qsr_prod             #database where all model output tables will be saved
+unique_user_id: td_id           #the main join key that will be used to join behaviors tables to customers table, unless a foreign join key is required - this can be defined in next step
+secondary_id_list:                        #Use format 'id1, id2, id3' to list foreign join keys you can later use for joining to behavior source tables without primary unique ID such as canonical_id
+api_endpoint: 'api.treasuredata.com'      #endpoint for the region of the current TD instance, for EU use api.eu01.treasuredata.com
+folder_depth: '10'                              #determines how deeply into nested folders in Audience Studio the code will scan to find the Segments you want to analyze
+model_config_table: 'datamodel_build_history'   #stores list of datamodel names and OIDs existing in the TD account used to find if datamodel_name already exists and should only be updated
+run_type: 'full'                                 #use 'inc' for incremental metric add, else it will do a full aggregation of metrics
+
+create_dashboard: 'yes'                #'yes' - will trigger datamodel and dashboard build sub-workflow
+cleanup_temp_tables: 'yes'            #'yes' - will DELETE all temp_tables not used by final dashboard
+fresh_run: 'no'                      #'yes' - will DELETE all previous tables built by the solution and start a fresh new run from scratch
+
+#####################################################################
+######################## FILTER PARAMS ############################## <--- NOTE** It is VERY important to apply these correctly when running this for customers with lots of Parent Segments / Audiences
+#####################################################################
+filters:
+  v5_flag: 1                            #'1' - will only scan segments in V5, 0 - only in V4
+  apply_ps_filters: 'yes'               #'yes' - applies filters below and only returns info on specific Parent Segments, Folders, or Segments and Journeys, 'no' - returns all objects in Audience Studio
+  ps_to_include: 'qsr'               #use lower letter REGEXP notation to only scan selected Parent Segments that include 'ml_' in their name (leave blank to scan all)
+  folders_to_include: 'rfm|campaign|segmentation'    #use lower letter REGEXP notation to only scan selected Audience Studio Folders that include 'rfm OR nba OR next' in their name  (leave blank to scan all)
+  segments_to_include:                  #use lower letter REGEXP notation such as 'segment_name|segment_name_2|segment_name_3' to only scan selected Segments (leave blank to scan all)
+  journeys_to_include:                #use lower letter REGEXP notation such as 'journey_name|journey_name_2|etc.' to only scan selected Journeys (leave blank to scan all)
+  time_filter_type: interval               #Use 'range' to specify fixed start/end dates OR 'interval' to lookback days/weeks/months from time_range_end_date
+  time_range_start_date: 2024-02-01     #Defines start date for`TD_TIME_RANGE` use format YYYY-MM-DD
+  time_range_end_date: 2024-12-31       #To always end TIME_RANGE at the latest available date, leave default as '222-02-02'. To end on a custom date use format YYYY-MM-DD
+  lookback_period: -365d                #-1M looksback a month, -30d looks back 30 days, - 2w looksback 2 weeks etc. Used only with TD_INTERVAL
+
+#####################################################################
+############# TABLE PARAMS FOR SOURCE AND OUTPUT TABLES #############
+#####################################################################
+aggregate_metrics_tables:
+  - src_table: gld_qsr_prod.pageviews    #database.table name to aggreagte the KPI from
+    output_table: pageview_events_kpis
+    unixtime_col: time                  #UNIXTIME timestamp column for time-filtering and date-grouping
+    join_key: td_id                     #unique customer_id
+    apply_time_filter: 'no'             #set to 'yes' when you want to apply time filter to this specific source table
+    table_filter:  td_id IS NOT NULL    #gets applied to the global src_table if any specific records need to be filtered out before the AGG metric is calculated 
+    query_type: 
+    metrics:
+      - metric_name: pageviews             #name of metric as you want it to appear i nthe final table
+        agg: count                    #AGG type for 'GROUP BY' clause for the metric you want to aggregate (Ex. 'COUNT', 'AVG', 'SUM' etc.)
+        agg_col_name: '1'             #We use '1' instead of '*' because in some instances we might want to SUM(agg_col_name)
+        filter:                       #Add custom 'WHERE' CLAUSE filter if needed
+
+      - metric_name: ad_clicks
+        agg: count
+        agg_col_name: '1'             
+        filter: "REGEXP_LIKE(lower(td_url), ''utm_'')"
+
+  - src_table: gld_qsr_prod.email_activity        #database.table name to aggreagte the KPI from
+    output_table: email_events_kpis
+    unixtime_col: activity_date_unix              #UNIXTIME timestamp column for time-filtering and date-grouping
+    join_key: td_id                               #unique customer_id
+    apply_time_filter: 'no'
+    table_filter: td_id IS NOT NULL
+    query_type: 
+    metrics:
+      - metric_name: email_clicks
+        agg: count
+        agg_col_name: '1'
+        filter: REGEXP_LIKE(lower(activity_type), ''clicked'')
+
+      - metric_name: email_opens
+        agg: count
+        agg_col_name: time
+        filter: REGEXP_LIKE(lower(activity_type), ''open'')
+
+############## METRICS BELOW have query_type param = 'custom', so they are aggreagted via custom queries ####################
+
+  - src_table: gld_qsr_prod.order_details               #database.table name to aggreagte the KPI from
+    output_table: order_events_kpis
+    unixtime_col: order_datetime_unix                     #UNIXTIME timestamp column for time-filtering and date-grouping
+    join_key: td_id                                       #unique customer_id
+    apply_time_filter: 'no'
+    table_filter: td_id IS NOT NULL
+    query_type: 'custom' 
+    metrics:
+      - metric_name: total_spend
+        agg: sum
+        agg_col_name: amount
+        filter: amount > 0.0
+
+      - metric_name: total_spend_offline
+        agg: approx_distinct
+        agg_col_name: amount
+        filter:  amount > 0.0
+
+      - metric_name: total_spend_digital
+        agg: sum
+        agg_col_name: amount
+        filter:  amount > 0.0  
+
+      - metric_name: total_items_ordered
+        agg: sum
+        agg_col_name: quantity
+        filter:  
+

@@ -1,0 +1,21 @@
+{
+"model_name":  "qsr_sa_lite_prod" 
+,
+"model_tables": [
+  {"db":"sink_database","name":"sa_lite_final_metrics_table"},
+  {"db":"sink_database","name":"sa_lite_ps_stats"},
+  {"db":"sink_database","name":"sa_lite_population_tracker"}
+                ]
+,
+"shared_user_list": ["us-presales-demo@treasure-data.com"]
+,
+"change_schema_cols": {"date": ["event_date","run_time", "run_date"], "text": ["ENTER_NAME"], "float": ["ENTER NAME"], "bigint": ["ENTER NAME"]}
+,
+"join_relations": {"pairs":[
+  {"db1": "sink_database","tb1":"sa_lite_population_tracker","join_key1":"segment_id","db2": "sink_database","tb2":"sa_lite_final_metrics_table","join_key2":"segment_id"}
+]
+                  }
+}
+
+
+
