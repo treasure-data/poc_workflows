@@ -1,0 +1,55 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
+########## Create table with metadata of all tables on the YML list
++columns_datatype:
+  td>: queries/get_columns_datatype.sql
+  insert_into: tables_column_metadata_temp
+
+######### Extract Datatypes and Column Labels
++extract_col_types_and_labels:
+  _parallel: true
+
+  +varchar_cols:
+    ######### Extract VARCHAR columns
+    +get_varchar_columns:
+      td>: queries/get_varchar_data.sql
+      store_last_results: true
+
+    +check_if_varchar_exist:
+      if>: ${Object.keys(td.last_results).length != 0} 
+      _do:
+
+      ####### Check for PII columns or numerical columns written as VARCHAR in TD at Ingest
+        +loop_through_column_list_and_regexp_column_syntax_for_pii:
+          _parallel: 
+            limit: ${paralel_limit}
+
+          for_each>: 
+            col_name: ${td.last_results.column_list}
+          _do:
+            td>: queries/column_type_detection_varchar.sql
+            insert_into: tables_column_metadata_datatype_detect
+
+  +numeric_cols:
+    ########## Extract NUMERIC columns
+    +get_original_num_columns:
+      td>: queries/get_original_num_columns.sql
+      store_last_results: true
+
+    +check_if_num_exist:
+      if>: ${Object.keys(td.last_results).length != 0}
+      _do: 
+
+      ###### Check for UNIXTIME AND BOOLEAN columns
+        +loop_through_column_list_and_regexp_column_syntax_for_unixtime:
+          _parallel:
+            limit: ${paralel_limit}
+
+          for_each>: 
+            col_name: ${td.last_results.column_list}
+          _do:
+            td>: queries/column_type_detection_num.sql
+            insert_into: tables_column_metadata_datatype_detect

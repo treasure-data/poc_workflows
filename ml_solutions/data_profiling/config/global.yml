@@ -1,0 +1,80 @@
+#####################################################################
+########################## GLOBAL PARAMS ############################
+#####################################################################
+project_prefix: data_prof              #this is added as prefix to the name of all output tables, so user can find them easily in the database
+sink_database: reporting_stellantis            #database where model tables will be saved
+api_endpoint: 'api.eu01.treasuredata.com'       #endpoint for the region of the current TD instance, for EU use api.eu01.treasuredata.com
+canonical_id: stellantics_id 
+paralel_limit: 50
+                          #When doing a full table scan will prioritize tablles with less columns first
+
+run_data_profiling_wf: 'yes'
+get_db_table_list: 'yes'         #'yes' = this will scan all table names in the sink_database
+run_type: 'full'                #'full' scans all tables in database, 'custom' scans only tables defined in 'table_list' param under
+cleanup_temp_tables: 'no'      #'yes' - will DELETE all temp_tables not used by final dashboard
+auto_send_email: 'no'         #'yes' will send table/column names that might need data validation 
+
+############# DASHBOARD PARAMS ##################################################
+create_dashboard: 'yes'                                                 #'yes' - will trigger datamodel and dashboard build sub-workflow
+model_config_table: 'datamodel_build_history'                           #table where TI model name and OID are saved
+datamodel_name: data_profiling                                                      #name of datamodel to build
+datamodel_shared_users: ['gandhi.yellapu+se-emea@treasure-data.com', 'vishal.patel+se-emea@treasure-data.com']    #list of users to share datamodel with   
+
+#### Params below apply if run_type = 'full' in line 14 above, otherwise custom table params can be provided at the end of this YAML
+full_run_params:
+  col_count_limit: 120                                      #When doing a full table scan will prioritize tablles with less columns first
+  row_count_limit: 5                                        #Min # of records required per table for it to go trhough data profiling
+  tables_to_include:            #Empty will include all tables, otherwise provide rexep like 'tab1|tab2|etc.'
+  exclude_cols: '^time$|_id|_train|td_ip|_key|table_name'
+  date_col: 'time'
+  id_or_code_cols: '_id|td_ip|postal_code|td_browser_version|_key|id$'
+    
+
+####### INFORMATION SCHEMA PARAMS #######################
+include_dbs_tbs: WHERE REGEXP_LIKE(table_schema, 'gld_stellantis')      #used to extract table metadata from any DB, use pipe notation to scan multiple DBs ex. 'ml_prod|ml_dev'
+metadata_table: ${project_prefix}_tables_column_metadata                     #table name where the scanned table metadata is saved                 
+head_sample: 5                                                            #how many value samples will be shown in dashboard from each col
+
+################ VARCHAR PARAMS ########################
+varchar_params:
+  top_k_vals: 5                       #number of the top values by count to show in Dashboard
+  min_rows: 5                         #min number of occurance for value to be included
+  exclude_pii: #AND pii_flag = 0      #leave blank to include PII OR uncommend line after 'AND' to exclude PII columns from Data Profiling Dashboard
+  exclude_array_or_json:  AND array_or_json = 0     ###Comment this out if you don't want to exclude string columns with array or JSON format
+
+################ PII and DOUBLE DETECTION PARAMS ##############
+data_threshold: 0.40           #what percent of the data must pass REGEXP criteria to be flagged as PII, num, date or other datatype 
+numeric_flag_threshold: 0.85   #what % of the data must contain only digits and signs BUT no letters to be passed as numeric column
+sample_size: 25                #what % of NON-NULL values to sample from each column for metadata detection
+
+################# NUMERICAL COLUMN PARAMS ###############
+num_bins: 10          #bins count for data-distribution plots
+
+#################### DATE COLUMN PARAMS #######################
+top_k_days_by_event_cnt: 5      #how many days to show with the most events
+date_range_format: 'day'        #use 'month' for month etc.
+
+#################### DATE ISSUES PARAMS #######################
+tstamp_days_limit: 3650     #Time ranges higher than this limit in days are flagged as data-issue
+null_perc_limit: 0.75      #NULL % over that limit flags column as data-issue
+
+############# TABLE LIST #############################
+table_list:             #below list all tables you want to perform data-profiling for
+
+  - name : customers                               #name of table to scan
+    db : cdp_audience_343858                       #name of database where table lives
+    exclude_cols: '_id|_train|td_ip'               #column names to exclude from data-profiling add as col_1|col2|col3 etc..
+    date_col: time                                 #unixtime col name
+    id_or_code_cols: '_id|td_ip|postal_code'       #regexp with pipe of column_names to be excluded from numeric stats calculation because they are IDs or Codes, not actual numeric values
+
+  - name : enrich_orders
+    db : gldn
+    exclude_cols: ${canonical_id}
+    date_col: time
+    id_or_code_cols: '${canonical_id}|item_id'
+
+  - name : enrich_pageviews
+    db : gldn
+    exclude_cols: '${canonical_id}|td_ip|rank'
+    date_col: time
+    id_or_code_cols: '${canonical_id}|td_browser_version|td_ip'

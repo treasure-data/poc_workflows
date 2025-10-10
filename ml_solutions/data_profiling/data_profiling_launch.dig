@@ -1,0 +1,21 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
+############## EDA TABLE CREATION WORKFLOW #####################################
++check_if_data_profiling_tables_to_be_built:
+  if>: ${run_data_profiling_wf =='yes'}
+  _do:
+    +run_model_create_wf:
+      call>: data_profiling_data_prep.dig
+
+# ############### DATAMODEL BUILDOUT, UPDATE & DELETE WFs ######################################
++check_if_need_to_create_dashboard:
+  if>: ${create_dashboard=='yes'}
+  _do:
+    +run_model_create_wf:
+      call>: data_profiling_create_datamodel.dig
+
+    +run_model_refresh_build_wf:
+      call>: data_profiling_refresh_model_build.dig

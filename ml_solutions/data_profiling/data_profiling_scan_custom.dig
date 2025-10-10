@@ -1,0 +1,67 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
+#### Deletes old tables and creates new epmty tables
++create_table:
+  td_ddl>:
+  empty_tables: ["${metadata_table}_temp", "${metadata_table}", "tables_column_metadata_temp", "tables_column_metadata_datatype_detect", "tables_column_metadata_head", "${project_prefix}_varchar_column_stats", "${project_prefix}_numeric_column_stats", "${project_prefix}_date_column_stats", "${project_prefix}_numeric_column_histogram"]
+
+##### Loop through tables in YML that you want to perform  on. We're using require to avoid task limit
++loop_tables:
+  loop>:  ${table_list.length}
+
+  _parallel:
+    limit: ${paralel_limit}
+
+  _do:
+    +call_schema_detect_sub_workflow:
+      require>: data_profiling_column_schema_scan
+      # ignore_failure: true
+      session_time: ${moment(session_time).add(i*2+10, 'seconds').format()}
+      params:
+        list_dx: ${i}
+        table_name: ${table_list[i].name}
+        table_db: ${table_list[i].db}
+        table_exclude_cols: ${table_list[i].exclude_cols}
+        table_date_col: ${table_list[i].date_col}
+        table_id_or_code_cols: ${table_list[i].id_or_code_cols}
+
+########## Create Temp COLUMN METADATA table with detailed column type info
++create_final_metadata_table_temp:
+  td>: queries/create_final_metadata_table_temp.sql
+  create_table: ${metadata_table}_temp
+
+########## Start New loop and use final metadata temp table to select columns you need
++loop_tables_again:
+  loop>:  ${table_list.length}
+
+  _parallel:
+    limit: ${paralel_limit}
+
+  _do:
+    +call_get_col_stats_sub_workflow:
+      require>: data_profiling_column_stats
+      # ignore_failure: true
+      session_time: ${moment(session_time).add(i*2+10, 'seconds').format()}
+      params:
+        list_dx: ${i}
+        table_name: ${table_list[i].name}
+        table_db: ${table_list[i].db}
+        table_exclude_cols: ${table_list[i].exclude_cols}
+        table_date_col: ${table_list[i].date_col}
+
+########## Create final COLUMN METADATA table with detailed column type info
++create_final_metadata_table:
+  td>: queries/create_final_metadata_table.sql
+  create_table: ${metadata_table}
+
+
+############## CLEANUP TEMP TABLES ###########################
++check_if_cleanup_temp_tables_required:
+  if>: ${cleanup_temp_tables == 'yes'}
+  _do:
+    +clean_tables:
+      td_ddl>: 
+      drop_tables: ["tables_column_metadata_temp", "tables_column_metadata_datatype_detect", "_schema_corr", "tables_column_metadata_head", "${metadata_table}_temp"]  

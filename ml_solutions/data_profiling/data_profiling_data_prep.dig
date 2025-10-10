@@ -1,0 +1,48 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
+##### Get List of all databases and tables in the current TD account
++check_if_databse_summary_required:
+  if>: ${get_db_table_list == 'yes'}
+  _do:
+    +create_information_schema_summary:
+      td>: queries/get_db_table_list.sql
+      create_table: ${project_prefix}_db_tables_summary
+
+#### Run full table scan or selected custom table scan
++run_table_stats_workflow:
+  call>: data_profiling_scan_${run_type}.dig
+
++create_issues_to_check_temp:
+  td>: queries/alert_issues_table.sql
+  create_table: ${project_prefix}_issues_to_check_temp
+
++create_summary_of_data_to_validate:
+  td>: queries/issues_table_final.sql
+  create_table: ${project_prefix}_issues_to_check
+
+#### Send Automated email with list of tables/columns that might need data validation
++check_if_auto_email_send_required:
+  if>: ${auto_send_email == 'yes'}
+  _do:
+    +create_summary_of_data_to_validate:
+      td>: queries/email_alert.sql
+      store_last_results: true
+
+    +send_mail_with_results:
+      mail>: config/email_msg.txt
+      subject: "Data Profiling Data Validation Summary"
+      to: ['dilyan.kovachev@treasure-data.com']
+
+
+
+
+
+
+
+
+
+
+

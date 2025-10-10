@@ -1,0 +1,32 @@
+{
+  "model_name": "data_profiling",
+  "model_tables": [
+    {"db": "sink_database", "name": "data_prof_tables_column_metadata"},
+    {"db": "sink_database", "name": "data_prof_date_column_stats"},
+    {"db": "sink_database", "name": "data_prof_numeric_column_stats"},
+    {"db": "sink_database", "name": "data_prof_varchar_column_stats"},
+    {"db": "sink_database", "name": "data_prof_numeric_column_histogram"},
+    {"db": "sink_database", "name": "data_prof_issues_to_check"}
+  ],
+  "shared_user_list": ["gandhi.yellapu+se-emea@treasure-data.com"],
+  "change_schema_cols": {
+    "date": ["ENTER_NAME"],
+    "text": ["ENTER_NAME"],
+    "float": ["ENTER_NAME"],
+    "bigint": ["ENTER_NAME"]
+  },
+  "join_relations": {
+    "pairs": [
+      {"db1": "sink_database", "tb1": "data_prof_tables_column_metadata", "join_key1": "table_name", "db2": "sink_database", "tb2": "data_prof_date_column_stats", "join_key2": "table_name"},
+      {"db1": "sink_database", "tb1": "data_prof_tables_column_metadata", "join_key1": "table_name", "db2": "sink_database", "tb2": "data_prof_numeric_column_stats", "join_key2": "table_name"},
+      {"db1": "sink_database", "tb1": "data_prof_tables_column_metadata", "join_key1": "table_name", "db2": "sink_database", "tb2": "data_prof_varchar_column_stats", "join_key2": "table_name"},
+      {"db1": "sink_database", "tb1": "data_prof_tables_column_metadata", "join_key1": "table_name", "db2": "sink_database", "tb2": "data_prof_numeric_column_histogram", "join_key2": "table_name"},
+      {"db1": "sink_database", "tb1": "data_prof_tables_column_metadata", "join_key1": "table_name", "db2": "sink_database", "tb2": "data_prof_issues_to_check", "join_key2": "table_name"},
+      {"db1": "sink_database", "tb1": "data_prof_tables_column_metadata", "join_key1": "column_name", "db2": "sink_database", "tb2": "data_prof_date_column_stats", "join_key2": "column_name"},
+      {"db1": "sink_database", "tb1": "data_prof_tables_column_metadata", "join_key1": "column_name", "db2": "sink_database", "tb2": "data_prof_numeric_column_stats", "join_key2": "column_name"},
+      {"db1": "sink_database", "tb1": "data_prof_tables_column_metadata", "join_key1": "column_name", "db2": "sink_database", "tb2": "data_prof_varchar_column_stats", "join_key2": "column_name"},
+      {"db1": "sink_database", "tb1": "data_prof_tables_column_metadata", "join_key1": "column_name", "db2": "sink_database", "tb2": "data_prof_numeric_column_histogram", "join_key2": "column_name"},
+      {"db1": "sink_database", "tb1": "data_prof_tables_column_metadata", "join_key1": "column_name", "db2": "sink_database", "tb2": "data_prof_issues_to_check", "join_key2": "column_name"}
+    ]
+  }
+}

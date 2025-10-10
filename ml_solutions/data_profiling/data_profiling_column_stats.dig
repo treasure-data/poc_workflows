@@ -1,0 +1,114 @@
+_export:
+  !include : 'config/global.yml'
+  td:
+    database: ${sink_database}
+
+########## Extract ALL columns for HEAD(5)
++get_all_columns_for_head:
+  td>: queries/get_all_cols_for_head_sample.sql
+  store_last_results: True
+
+####### Check for PII columns or numerical columns written as VARCHAR in TD at Ingest
++loop_through_column_list_and_geat_head5_sample:
+  _parallel: 
+    limit: ${paralel_limit}
+
+  for_each>: 
+    col_name: ${td.last_results.column_list}
+  _do:
+    td>: queries/get_column_head_sample.sql
+    insert_into: tables_column_metadata_head
+
+######### Extract Datatypes and Column Labels
++extract_col_stats_process:
+  _parallel: true
+
+  ########## Extract VARCHAR columns
+  +varchar_cols:
+
+    +get_varchar_columns_again:
+      td>: queries/get_varchar_data_no_date_or_num.sql
+      store_last_results: true
+
+    +check_if_varchar_exist:
+      if>: ${Object.keys(td.last_results).length != 0} 
+      _do:
+
+        ########## Get important statistics for each column
+        +loop_through_varchar_column_list_and_get_value_counts:
+          _parallel: 
+            limit: ${paralel_limit}
+
+          for_each>: 
+            col_name: ${td.last_results.column_list}
+          _do:
+            td>: queries/get_stats_varchar_data.sql
+            insert_into: ${project_prefix}_varchar_column_stats
+
+      ######## Run EMPTY Queries for VARCHAR tables
+      _else_do:
+        +run_empty_query_varchar_stats:
+          td>: queries/no_stats_varchar.sql
+          insert_into: ${project_prefix}_varchar_column_stats
+
+  ######## Extract Numerical Columns
+  +numeric_cols:
+
+    +get_numerical_columns:
+      td>: queries/get_numerical_data.sql
+      store_last_results: true
+
+    +check_if_numerical_exist:
+      if>: ${Object.keys(td.last_results).length != 0} 
+      _do:
+
+        +loop_through_numerical_column_list:
+          _parallel: 
+            limit: ${paralel_limit}
+
+          for_each>:
+            col_name: ${td.last_results.column_list}     
+          _do:
+            +get_aggregate_numeric_data:
+              td>: queries/get_stats_numerical_data.sql
+              insert_into: ${project_prefix}_numeric_column_stats
+
+            +get_binned_numeric_data:
+              td>: queries/get_binned_numerical_data.sql
+              insert_into: ${project_prefix}_numeric_column_histogram
+
+      ######## Run EMPTY Queries for numeric tables
+      _else_do:
+        +run_empty_query_numeric_stats:
+          td>: queries/no_stats_numerical.sql
+          insert_into: ${project_prefix}_numeric_column_stats
+
+        +run_empty_query_numeric_histogram:
+          td>: queries/no_binned_numerical_hist.sql
+          insert_into: ${project_prefix}_numeric_column_histogram
+
+  ######## Extract Date Columns
+  +datetime_cols:
+    +get_date_columns:
+      td>: queries/get_date_data.sql
+      store_last_results: true
+
+    +check_if_date_columns_exist:
+      if>: ${Object.keys(td.last_results).length != 0} 
+      _do:
+
+        +loop_through_date_column_list:
+          _parallel: 
+            limit: ${paralel_limit}
+            
+          for_each>:
+            col_name: ${td.last_results.column_list}     
+          _do:
+            td>: queries/get_stats_date_data.sql
+            insert_into: ${project_prefix}_date_column_stats
+
+      ######## Run EMPTY Queries for Date tables
+      _else_do:
+        +run_empty_query_date_stats:
+          td>: queries/no_stats_date_data.sql
+          insert_into: ${project_prefix}_date_column_stats

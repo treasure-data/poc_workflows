@@ -1,0 +1,6 @@
+TD Data Profiling Tool Recommends Validating the data in the tables below:
+
+${td.last_results.error_msg}
+
+Best regards,
+  TD PS Data Team
