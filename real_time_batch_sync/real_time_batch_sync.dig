@@ -1,0 +1,86 @@
+_export:
+  reactor_importer_endpoint: "https://bulk-storage-importer-api-production-aws-us-east-1.internal.treasuredata.com"
+  reactor_instance: 'a12390n1'
+  td:
+    database: real_time
+  #following variables should be the same in unify.yml
+  unification_name: real_time_2_demo 
+  master_table_name: profiles
+  unification_id: cdp_unification_id
+
+####
+## ID graph feedback
+##
++load_ids:
+  # Extract updated IDs to ids_updated table
+  +extract_ids_updated:
+    td>: queries/extract_ids_updated.sql
+    database: cdp_unification_${unification_name}
+
+  # Upload ids_updated using the "rest" output connector
+  +upload_ids_updated:
+      td>:
+      database: cdp_unification_${unification_name}
+      query: |
+        select '${unification_id}:' || ${unification_id} as ${unification_id}, id_set
+        from ids_updated
+      result_url: |
+        {
+          "type": "rest",
+          "method": "POST",
+          "authorization": "${secret:td.apikeytd1}",
+          "endpoint": "${reactor_importer_endpoint}/internal/bulk-stitch",
+          "headers": "{\"x-reactor-instance-name\": \"${reactor_instance}\"}",
+          "parallelism": "10",
+          "page_size": 10000
+        }
+
+  # Save the hash digests of the uploaded data to ids_digests_new table
+  +extract_ids_digests_new:
+    td>: queries/extract_ids_digests_new.sql
+    database: cdp_unification_${unification_name}
+
+  # Rename ids_digests_new to ids_digests for next incremental loading
+  +update_ids_digests:
+    td_ddl>:
+    database: cdp_unification_${unification_name}
+    rename_tables: [{from: ids_digests_new, to: ids_digests}]
+    drop_tables: [ids_updated]
+
+
+# ####
+# ## Batch attribute loading - not required if using UI 
+# ##
+# +load_attrs:
+#   # Extract updated attributes to attrs_updated table
+#   +extract_attrs_updated:
+#     td>: queries/extract_attrs_updated.sql
+#     database: cdp_unification_${unification_name} 
+
+#   # Upload attrs_updated using the "rest" output connector
+#   +upload_attrs_updated:
+#     td>:
+#     database: cdp_unification_${unification_name}
+#     query: |
+#       select ${unification_id}, payload
+#       from attrs_updated
+#     result_url: |
+#       {
+#         "type": "rest",
+#         "method": "POST",
+#         "endpoint": "${reactor_importer_endpoint}/internal/bulk-load",
+#         "authorization": "${secret:td.apikeytd1}",
+#         "headers": "{\"x-reactor-instance-name\": \"${reactor_instance}\"}"
+#       }
+
+  # # Save the hash digests of the uploaded data to attrs_digests_new table
+  # +extract_attrs_digests_new:
+  #   td>: queries/extract_attrs_digests_new.sql
+  #   database: cdp_unification_${unification_name} 
+
+  # # Rename attrs_digests_new to attrs_digests for next incremental loading
+  # +update_attrs_digests:
+  #   td_ddl>:
+  #   database: cdp_unification_${unification_name}
+  #   rename_tables: [{from: attrs_digests_new, to: attrs_digests}]
+  #   drop_tables: [attrs_updated]

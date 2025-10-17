@@ -1,0 +1,42 @@
+_export:
+  reactor_importer_endpoint: "https://bulk-storage-importer-api-production-aws-us-east-1.internal.treasuredata.com"
+  reactor_instance: "a123n1"
+  unification_id: cdp_unification_id
+  td:
+    database: real_time
+
++delete_external_attrs:
+# Delete reacords from reactor external storage using the "rest" output connector
+  +call_profiles_deleted:
+    td>:
+    query: |
+      SELECT DISTINCT ${unification_id}
+      FROM id_digest
+    result_url: |
+      {
+        "type": "rest",
+        "method": "POST",
+        "authorization": "${secret:td.apikeytd1}",
+        "endpoint": "${reactor_importer_endpoint}/internal/bulk-delete-external",
+        "headers": "{\"x-reactor-instance-name\": \"${reactor_instance}\"}",
+        "parallelism": "10",
+        "page_size": 10000
+      }
+
++delete_internal_id_graph:
+# Delete reacords from reactor internal storage using the "rest" output connector
+  +call_profiles_deleted:
+    td>:
+    query: |
+      SELECT DISTINCT ${unification_id}
+      FROM id_digest
+    result_url: |
+      {
+        "type": "rest",
+        "method": "POST",
+        "authorization": "${secret:td.apikey}",
+        "endpoint": "${reactor_importer_endpoint}/internal/bulk-delete-internal",
+        "headers": "{\"x-reactor-instance-name\": \"${reactor_instance}\"}",
+        "parallelism": "10",
+        "page_size": 10000
+      }

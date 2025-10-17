@@ -1,0 +1,77 @@
+name: real_time_2_demo
+
+#####################################################
+##
+##Declare Validation logic for unification keys
+##
+#####################################################
+
+keys:
+  - name: email
+    invalid_texts: ['', null]  
+  - name: phone
+    invalid_texts: ['', null]
+  - name: hashed_email
+    invalid_texts: ['', null]     
+
+#####################################################
+##  
+##Declare datebases, tables, and keys to use during unification
+##
+#####################################################
+
+tables:
+  
+  - database: real_time
+    table: customers
+    key_columns:
+      - {column: email, key: email}
+      - {column: phone, key: phone}
+      - {column: hashed_email, key: hashed_email}
+      
+    
+#####################################################
+##  
+##Declare hierarchy for unification. Define keys to use for each level.
+##
+#####################################################
+
+canonical_ids:
+  - name: cdp_unification_id
+    merge_iterations: 5
+    incremental_merge_iterations: 4    
+    merge_by_keys: [email, phone, hashed_email]
+
+#####################################################
+##  
+##Declare Similar Attributes and standardize into a single column 
+##
+#####################################################
+
+master_tables:
+  - name: profiles
+    canonical_id: cdp_unification_id
+    attributes:
+      - name: email
+        source_columns:
+          - {table: customers, column: email, priority: 1} 
+      - name: phone
+        source_columns:
+          - {table: customers, column: phone, priority: 1} 
+      - name: hashed_email
+        source_columns:
+          - {table: customers, column: hashed_email, priority: 1} 
+      - name: full_name
+        source_columns:
+          - {table: customers, column: name, priority: 1}           
+      - name: ltv
+        source_columns:
+          - {table: customers, column: ltv, priority: 1}     
+      - name: last_year_transaction_count
+        source_columns:
+          - {table: customers, column: last_year_transaction_count, priority: 1}    
+      - name: next_best_category
+        source_columns:
+          - {table: customers, column: next_best_category, priority: 1}      
+      
+      
