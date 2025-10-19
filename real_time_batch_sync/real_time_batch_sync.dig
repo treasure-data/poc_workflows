@@ -28,7 +28,7 @@ _export:
         {
           "type": "rest",
           "method": "POST",
-          "authorization": "${secret:td.apikeytd1}",
+          "authorization": "TD1 ${secret:td.apikeytd1}",
           "endpoint": "${reactor_importer_endpoint}/internal/bulk-stitch",
           "headers": "{\"x-reactor-instance-name\": \"${reactor_instance}\"}",
           "parallelism": "10",
